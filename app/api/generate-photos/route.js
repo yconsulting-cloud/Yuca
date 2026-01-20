@@ -118,6 +118,7 @@ export async function POST(req) {
     // Limiter le nombre d'images strictement
     const imagesToGenerate = Math.min(Math.max(1, count || 5), 50);
     const images = [];
+    const falErrors = [];
 
     // Sélectionner les templates selon le nombre demandé
     // If the requested count is greater than available templates, cycle through templates
@@ -158,7 +159,9 @@ export async function POST(req) {
 
         const text = await falResponse.text();
         if (!falResponse.ok) {
-          console.error(`Fal.ai error for image ${i}: status=${falResponse.status} body=`, text);
+          const msg = `Fal.ai error for image ${i}: status=${falResponse.status} body=${text}`;
+          console.error(msg);
+          falErrors.push(msg);
           continue;
         }
 
@@ -196,6 +199,13 @@ export async function POST(req) {
     }
 
     if (images.length === 0) {
+      if (process.env.DEBUG_API_ERRORS === '1' && falErrors.length > 0) {
+        return NextResponse.json(
+          { error: 'Aucune image générée', details: falErrors },
+          { status: 500 }
+        );
+      }
+
       return NextResponse.json(
         { error: 'Aucune image générée' },
         { status: 500 }
