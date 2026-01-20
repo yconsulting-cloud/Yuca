@@ -2,6 +2,7 @@
 // /app/api/generate-photos/route.js
 
 import { NextResponse } from 'next/server';
+import { fal } from '@fal-ai/client';
 
 // Templates de prompts pour différents arrière-plans
 const BACKGROUND_TEMPLATES = [
@@ -124,77 +125,42 @@ export async function POST(req) {
     // If the requested count is greater than available templates, cycle through templates
     const selectedTemplates = Array.from({ length: imagesToGenerate }).map((_, idx) => BACKGROUND_TEMPLATES[idx % BACKGROUND_TEMPLATES.length]);
 
-    // Générer les photos
+    // Initialize Fal client with credentials from env
+    fal.config({ credentials: process.env.FAL_KEY });
+
+    // Générer les photos using official Fal client (queue/subscribe flow)
     for (let i = 0; i < selectedTemplates.length; i++) {
       const template = selectedTemplates[i];
-      const fullPrompt = template.prompt.replace('{product}', description);
+      const fullPrompt = template.prompt.replace('{product}', description) + '\n\nIMPORTANT: Preserve the main object exactly as in the provided image. Do not change its shape, color, texture, or details. Only change the background and scene around the object to match the described setting.';
 
       try {
-        // Appel à Fal.ai Flux-2-Pro Edit API (see https://fal.ai/models/fal-ai/flux-2-pro/edit/api)
-        // We pass the user's original image as base64 and a clear instruction to ONLY change the background/scene
-        // and NOT alter the main object (bottle/plate/dish/etc.). We also be tolerant to different response shapes.
-
-        const payload = {
-          // Using the edit endpoint: include the image data and the text prompt
-          prompt: fullPrompt + '\n\nIMPORTANT: Preserve the main object exactly as in the provided image. Do not change its shape, color, texture, or details. Only change the background and scene around the object to match the described setting.',
-          // supply the image as data URL under a commonly-accepted field name (many Fal endpoints accept `image` or `image_url`)
-          image: imageData,
-          // generation controls — tuned conservatively to preserve object
-          num_images: 1,
-          guidance_scale: 3.5,
-          num_inference_steps: 28,
-          output_format: 'jpeg',
-          // ask the model to use editing mode
-          mode: 'edit',
-        };
-
-        const falResponse = await fetch('https://api.fal.ai/models/fal-ai/flux-2-pro/edit', {
-          method: 'POST',
-          headers: {
-            'Authorization': `Key ${process.env.FAL_KEY}`,
-            'Content-Type': 'application/json',
+        const subResult = await fal.subscribe('fal-ai/flux-2-pro/edit', {
+          input: {
+            prompt: fullPrompt,
+            image_urls: [imageData],
+            image_size: 'auto',
+            output_format: 'jpeg',
+            safety_tolerance: '2',
+            enable_safety_checker: true,
           },
-          body: JSON.stringify(payload),
+          logs: true,
         });
 
-        const text = await falResponse.text();
-        if (!falResponse.ok) {
-          const msg = `Fal.ai error for image ${i}: status=${falResponse.status} body=${text}`;
+        // subResult.data should follow schema: { images: [{ url }] }
+        const resData = subResult?.data;
+        if (resData && resData.images && resData.images[0] && resData.images[0].url) {
+          images.push({ url: resData.images[0].url, background: template.name });
+        } else {
+          const msg = `Fal.ai returned unexpected shape for image ${i}: ${JSON.stringify(resData)}`;
           console.error(msg);
           falErrors.push(msg);
-          continue;
-        }
-
-        // Try to parse JSON result robustly
-        let result;
-        try {
-          result = JSON.parse(text);
-        } catch (e) {
-          console.warn('Fal.ai returned non-JSON response, using raw text');
-          result = { raw: text };
-        }
-
-        // Result can have different shapes; try common locations for the generated image URL
-        let imageUrl = null;
-        if (result.images && result.images[0] && result.images[0].url) {
-          imageUrl = result.images[0].url;
-        } else if (result.output && result.output[0] && result.output[0].url) {
-          imageUrl = result.output[0].url;
-        } else if (result.data && result.data[0] && result.data[0].url) {
-          imageUrl = result.data[0].url;
-        } else if (typeof result.raw === 'string' && result.raw.startsWith('http')) {
-          imageUrl = result.raw;
-        }
-
-        if (imageUrl) {
-          images.push({ url: imageUrl, background: template.name });
-        } else {
-          console.error(`Fal.ai response did not contain an image URL for image ${i}:`, result);
         }
 
       } catch (err) {
-        console.error(`Error generating image ${i}:`, err);
-        // Continue même si une image échoue
+        const msg = `Fal.ai client error for image ${i}: ${String(err)}`;
+        console.error(msg);
+        falErrors.push(msg);
+        // continue to next template
       }
     }
 
