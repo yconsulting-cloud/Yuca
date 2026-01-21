@@ -216,9 +216,9 @@ export default function ShopshotsClient() {
           <h1 className="hero__title">Transformez votre photo en <span className="hero__title-gradient">dizaines de variantes</span></h1>
           <p className="hero__subtitle">Téléchargez une photo, obtenez des images professionnelles pour votre e‑commerce et réseaux sociaux en quelques minutes.</p>
           <div className="hero__ctas">
-            <button className="hero__cta hero__cta--primary btn btn-accent" onClick={() => fileInputRef.current?.click()}>Téléverser une photo</button>
-            <button className="hero__cta hero__cta--secondary btn btn-outline" onClick={() => window.location.href = '/#faq'}>Comment ça marche</button>
+            <button className="hero__cta hero__cta--primary btn btn-accent" onClick={() => fileInputRef.current?.click()}>Commencer</button>
           </div>
+          <div style={{marginTop:8}}><a href="/#faq" style={{color:'var(--c-text-sec)', fontSize:'0.95rem'}}>Comment ça marche ?</a></div>
         </div>
       </section>
 
