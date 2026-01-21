@@ -218,7 +218,6 @@ export default function ShopshotsClient() {
           <div className="hero__ctas">
             <button className="hero__cta hero__cta--primary btn btn-accent" onClick={() => fileInputRef.current?.click()}>Commencer</button>
           </div>
-          <div style={{marginTop:8}}><a href="/#faq" style={{color:'var(--c-text-sec)', fontSize:'0.95rem'}}>Comment ça marche ?</a></div>
         </div>
       </section>
 
