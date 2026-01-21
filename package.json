@@ -1,7 +1,7 @@
 {
-  "name": "yuca-product-photos",
+  "name": "yuca",
   "version": "1.0.0",
-  "description": "AI Product Photography by Yuca",
+  "description": "Yuca — product photography and tools",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

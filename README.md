@@ -1,6 +1,6 @@
-# 🎨 Yuca Photos Produit - Générateur IA
+# 🎨 Yuca — Photos Produit (Produit Complet)
 
-Photos professionnelles générées par IA pour votre e-commerce.
+Photos produit professionnelles et outils Yuca pour votre e‑commerce.
 
 ## 📋 Fonctionnalités
 
