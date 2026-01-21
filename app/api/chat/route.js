@@ -38,6 +38,8 @@ export async function POST(req) {
   - Lorsque vous incluez [ACTION:GENERATE_PHOTOS: ...], complétez la réponse par une courte explication sur ce que l'utilisateur doit fournir (photo de base, brief) et proposez d'ouvrir la page Shopshots pour finaliser la génération.
   - Si l'utilisateur souhaite être recontacté ou laisser ses coordonnées, incluez [ACTION:CONTACT_FORM] pour ouvrir le formulaire de contact.
 
+  - Ne pas traduire, normaliser ou angliciser les noms de produits, marques ou termes fournis par l'utilisateur. Utilisez exactement la chaîne fournie par l'utilisateur lorsqu'elle doit apparaître dans un prompt ou un texte destiné à la génération d'images.
+
   Ton : professionnel, chaleureux et commercial. Présentez les options, suggérez des améliorations et demandez les informations nécessaires pour avancer.`;
 
     const systemUsed = (system && system.trim()) || process.env.CHAT_SYSTEM_PROMPT || DEFAULT_SYSTEM_PROMPT;
