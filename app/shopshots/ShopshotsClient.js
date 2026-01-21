@@ -106,13 +106,24 @@ export default function ShopshotsClient() {
 
     try {
       const base64Image = await fileToBase64(productImage);
-      const response = await fetch('/api/generate-photos', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ imageData: base64Image, description: productDescription, count: selectedPlan.images }) });
+      const response = await fetch('/api/generate-photos', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ imageData: base64Image, description: productDescription, productNameExact: productDescription, count: selectedPlan.images }) });
       if (!response.ok) throw new Error('Erreur lors de la génération');
       const data = await response.json();
       // ensure a visible transition to 100%
       setProgress(99);
       setTimeout(() => setProgress(100), 250);
-      setGeneratedImages(data.images || []);
+
+      // Post-check: ensure product preserved — annotate each image with `preserved`
+      const imagesIn = data.images || [];
+      const annotated = await Promise.all(imagesIn.map(async (it) => {
+        const preserved = await checkPreservation(productImagePreview, it.url).catch((e) => {
+          console.warn('Preservation check failed (CORS or error), assuming preserved', e);
+          return true; // if we cannot check, assume preserved to avoid false negatives
+        });
+        return { ...it, preserved };
+      }));
+
+      setGeneratedImages(annotated);
     } catch (err) {
       console.error('Generation error:', err);
       setError('Une erreur est survenue. Réessayez.');
@@ -122,6 +133,47 @@ export default function ShopshotsClient() {
       setIsGenerating(false);
     }
   };
+
+  // Check if generated image preserved the main object compared to original
+  async function checkPreservation(originalDataUrl, generatedUrl) {
+    if (!originalDataUrl || !generatedUrl) return true;
+    // load images
+    const loadImage = (src) => new Promise((resolve, reject) => {
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
+      img.onload = () => resolve(img);
+      img.onerror = (e) => reject(e);
+      img.src = src;
+    });
+
+    const [origImg, genImg] = await Promise.all([loadImage(originalDataUrl), loadImage(generatedUrl)]);
+
+    // compare resized to 256x256 to be fast
+    const W = 256, H = 256;
+    const c1 = document.createElement('canvas'); c1.width = W; c1.height = H;
+    const c2 = document.createElement('canvas'); c2.width = W; c2.height = H;
+    const ctx1 = c1.getContext('2d'); const ctx2 = c2.getContext('2d');
+    // draw fit
+    ctx1.drawImage(origImg, 0, 0, W, H);
+    ctx2.drawImage(genImg, 0, 0, W, H);
+
+    // get pixels
+    const d1 = ctx1.getImageData(0,0,W,H).data;
+    const d2 = ctx2.getImageData(0,0,W,H).data;
+
+    let diffCount = 0; const total = W * H;
+    for (let i = 0; i < d1.length; i += 4) {
+      const dr = Math.abs(d1[i] - d2[i]);
+      const dg = Math.abs(d1[i+1] - d2[i+1]);
+      const db = Math.abs(d1[i+2] - d2[i+2]);
+      const delta = dr + dg + db; // 0-765
+      if (delta > 60) diffCount++; // pixel considered changed if combined channel diff > 60
+    }
+
+    const pct = diffCount / total;
+    // allow up to 12% changed pixels (small lighting/background edits may exceed small areas)
+    return pct <= 0.12;
+  }
 
   const fileToBase64 = (file) => new Promise((resolve, reject) => { const reader = new FileReader(); reader.onloadend = () => resolve(reader.result); reader.onerror = reject; reader.readAsDataURL(file); });
 
@@ -223,7 +275,14 @@ export default function ShopshotsClient() {
         {generatedImages.length > 0 && (
           <div className="generated-card">
             <div className="generated-header"><h3 className="generated-title">Vos photos sont prêtes ! 🎉</h3><button onClick={downloadAllAsZip} className="download-btn">📥 Télécharger tout (ZIP)</button></div>
-            <div className="image-grid">{generatedImages.map((img, index) => (<div key={index} className="image-tile"><img src={img.url} alt={`Photo ${index + 1}`} onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = '/images/placeholder.png'; }} /></div>))}</div>
+            <div className="image-grid">{generatedImages.map((img, index) => (
+              <div key={index} className="image-tile">
+                <div className="image-wrap">
+                  <img src={img.url} alt={`Photo ${index + 1}`} onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = '/images/placeholder.png'; }} />
+                  {img.preserved === false && <div className="preserved-badge">Produit modifié</div>}
+                </div>
+              </div>
+            ))}</div>
           </div>
         )}
       </main>
