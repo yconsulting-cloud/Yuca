@@ -63,7 +63,7 @@ export default function ChatWidget() {
     async function callAPI(msg){
       try{
         const msgs = state.messages.map(m => ({ role: m.role, content: m.content }));
-        const res = await fetch('https://yuca-api.vercel.app/api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 1000, system: SYSTEM_PROMPT, messages: msgs }) });
+        const res = await fetch('/api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 1000, system: SYSTEM_PROMPT, messages: msgs }) });
         if(!res.ok) throw new Error('API error');
         const data = await res.json(); return data.content?.[0]?.text || '';
       }catch(e){ throw e; }
@@ -100,7 +100,7 @@ export default function ChatWidget() {
       if(!name || !email){ addSys('Nom et email requis.', true); return; }
       if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ document.getElementById('cfEmail')?.classList.add('error'); document.getElementById('cfErr').textContent='Email invalide'; document.getElementById('cfErr').style.display='block'; return; }
       markSent();
-      fetch('https://yuca-api.vercel.app/api/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name, email, phone, business: biz, project:'chatbot', source: 'chatbot' }) });
+      fetch('/api/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name, email, phone, business: biz, project:'chatbot', source: 'chatbot' }) });
       btn.disabled = true; btn.textContent = '✓ Envoyé !'; btn.classList.add('success'); form.classList.add('disabled'); setTimeout(()=>addBot(`Merci ${name} ! 🎉 Je vous recontacte sous 24h.`, ['Comment ça marche ?','Voir les tarifs']),500);
     }
 
