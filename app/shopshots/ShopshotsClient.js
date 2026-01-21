@@ -229,7 +229,7 @@ export default function ShopshotsClient() {
             {PLANS.map((plan) => (
               <div key={plan.id} onClick={() => handleSelectPlan(plan)} className={`plan-card ${plan.locked ? 'locked' : ''} ${selectedPlan.id === plan.id ? 'selected' : ''}`}>
                 {plan.popular && <div className="badge-popular">POPULAIRE</div>}
-                {plan.locked && <div className="badge-soon">BIENTÔT</div>}
+                {plan.locked && <div className="badge-lock" aria-hidden>🔒</div>}
                 <div>
                   <h4 className="plan-name">{plan.name}</h4>
                   <div className="plan-price">{plan.price === 0 ? 'GRATUIT' : `${plan.price}€`}</div>
