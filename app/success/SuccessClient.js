@@ -20,9 +20,19 @@ export default function SuccessClient() {
   }
 
   return (
-    <div>
-      <h1>Payment Success</h1>
-      <p>Session ID: {sessionId}</p>
-    </div>
+    <main>
+      <section className="hero">
+        <div className="hero__bg" />
+        <div className="hero__content container">
+          <div className="hero__badge">Commande reçue</div>
+          <h1 className="hero__title">Merci — paiement confirmé</h1>
+          <p className="hero__subtitle">Votre paiement a bien été traité. Référence : {sessionId}</p>
+          <div className="hero__ctas">
+            <a className="hero__cta hero__cta--primary" href="/">Retour à l'accueil</a>
+            <a className="hero__cta hero__cta--secondary" href="/contact">Nous contacter</a>
+          </div>
+        </div>
+      </section>
+    </main>
   )
 }

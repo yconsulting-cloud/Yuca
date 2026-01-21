@@ -5,6 +5,7 @@
 ### 1. **Métadonnées optimisées** ✅
 ```javascript
 - Title: "Yuca Photos Produit IA - Générateur Photos E-commerce"
+ - Title: "Yuca Photos Produit - Générateur Photos E-commerce"
 - Description: 117 caractères (optimal pour Google)
 - 15+ mots-clés ciblés
 - Open Graph (Facebook/LinkedIn)
@@ -28,9 +29,13 @@ Primaires:
 - "générateur photos produit IA"
 - "photos e-commerce IA"
 - "photos produit automatiques"
+ - "générateur photos produit"
+ - "photos e-commerce"
+ - "photos produit automatisées"
 
 Secondaires:
 - "photos Shopify IA"
+ - "photos Shopify"
 - "photos Etsy automatiques"
 - "générateur images produit"
 
@@ -38,6 +43,7 @@ Long tail:
 - "comment créer photos produit professionnelles"
 - "générateur photos e-commerce gratuit"
 - "IA photos produit pas cher"
+ - "photos produit pas cher"
 ```
 
 ---
@@ -76,7 +82,7 @@ Long tail:
 #### 2. Google Business Profile
 ```
 1. Créer/mettre à jour fiche Google Business
-2. Ajouter "Générateur photos produit IA" dans services
+2. Ajouter "Générateur photos produit" dans services
 3. Ajouter photos avant/après
 4. Demander avis clients
 ```
@@ -89,7 +95,7 @@ Long tail:
 Créer 3-5 articles sur madebyyuca.com:
 
 ```
-Article 1: "Comment créer des photos produit professionnelles avec l'IA"
+Article 1: "Comment créer des photos produit professionnelles avec notre outil"
 - 1500+ mots
 - Inclure exemples
 - Lien vers générateur
@@ -98,7 +104,7 @@ Article 2: "Photos e-commerce: 10 erreurs à éviter"
 - Conseils pratiques
 - CTA vers générateur
 
-Article 3: "Shopify vs Photos IA: Comparatif 2026"
+Article 3: "Shopify vs Photos: Comparatif 2026"
 - Guide complet
 - Tableaux comparatifs
 - Lien vers outil
@@ -106,10 +112,11 @@ Article 3: "Shopify vs Photos IA: Comparatif 2026"
 
 #### 2. Landing page optimisée
 ```
-Créer: madebyyuca.com/generateur-photos-produit-ia
+
+Créer: madebyyuca.com/generateur-photos-produit
 
 Contenu:
-- H1: "Générateur Photos Produit IA - Essai Gratuit"
+- H1: "Générateur Photos Produit - Essai Gratuit"
 - 5 sections:
   1. Avantages (avec chiffres)
   2. Avant/Après (exemples visuels)
@@ -158,8 +165,8 @@ Contacter blogs e-commerce FR:
 <section>
   <h2>Questions Fréquentes</h2>
   
-  <h3>Comment fonctionne le générateur de photos IA?</h3>
-  <p>Notre IA analyse votre photo produit et génère...</p>
+  <h3>Comment fonctionne le générateur de photos?</h3>
+  <p>Notre outil analyse votre photo produit et génère...</p>
   
   <h3>Combien coûte la génération de photos produit?</h3>
   <p>Pack découverte gratuit (5 photos), puis...</p>
@@ -179,7 +186,7 @@ Contacter blogs e-commerce FR:
   <div itemscope itemtype="https://schema.org/Review">
     <span itemprop="author">Marie, Boutique Etsy</span>
     <span itemprop="reviewRating">5/5</span>
-    <p>"Mes ventes ont augmenté de 40% grâce aux photos IA"</p>
+    <p>"Mes ventes ont augmenté de 40% grâce aux photos"</p>
   </div>
   
   [5 témoignages avec Schema.org]
@@ -192,15 +199,15 @@ Contacter blogs e-commerce FR:
 
 ### **Faciles à ranker (faible compétition):**
 ```
-1. "générateur photos produit IA france" (50 recherches/mois)
+1. "générateur photos produit france" (50 recherches/mois)
 2. "photos e-commerce automatiques" (30 recherches/mois)
-3. "ia photos boutique en ligne" (20 recherches/mois)
-4. "photos produit pas cher ia" (40 recherches/mois)
+3. "photos boutique en ligne" (20 recherches/mois)
+4. "photos produit pas cher" (40 recherches/mois)
 ```
 
 ### **Moyens (compétition modérée):**
 ```
-1. "générateur photos ia" (500 recherches/mois)
+1. "générateur photos" (500 recherches/mois)
 2. "photos produit professionnel" (300 recherches/mois)
 3. "créer photos e-commerce" (200 recherches/mois)
 ```

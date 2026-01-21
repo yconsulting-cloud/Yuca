@@ -1,0 +1,11 @@
+# Robots.txt pour madebyyuca.com (production)
+
+User-agent: *
+Allow: /
+
+# Disallow internal API and non-public pages
+Disallow: /api/
+Disallow: /success/
+
+# Sitemap
+Sitemap: https://madebyyuca.com/sitemap.xml

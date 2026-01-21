@@ -1,0 +1,256 @@
+
+> yuca@1.0.0 dev
+> next dev
+
+ ⚠ Port 3000 is in use, trying 3001 instead.
+  ▲ Next.js 14.2.35
+  - Local:        http://localhost:3001
+  - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 1657ms
+ ✓ Compiled /middleware in 60ms
+ ✓ Compiled (72 modules)
+ ○ Compiling / ...
+ ✓ Compiled / in 1387ms (455 modules)
+ GET / 200 in 1477ms
+ ✓ Compiled /shopshots in 437ms (542 modules)
+ GET /shopshots 200 in 525ms
+ ✓ Compiled in 921ms (233 modules)
+ ✓ Compiled in 663ms (233 modules)
+ ○ Compiling / ...
+ ✓ Compiled / in 512ms (230 modules)
+ ⨯ TypeError: __webpack_modules__[moduleId] is not a function
+    at Object.__webpack_require__ [as require] (/Users/luca/Desktop/yuca-product-photos/.next/server/webpack-runtime.js:33:42)
+    at JSON.parse (<anonymous>)
+digest: "4094042475"
+TypeError: __webpack_modules__[moduleId] is not a function
+    at Object.__webpack_require__ [as require] (/Users/luca/Desktop/yuca-product-photos/.next/server/webpack-runtime.js:33:42)
+    at require (/Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:40:20064)
+    at /Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:108376
+    at ea (/Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:108583)
+    at /Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:110813
+    at Object._fromJSON (/Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:111370)
+    at JSON.parse (<anonymous>)
+    at ec (/Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:109078)
+    at eo (/Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:108123)
+    at /Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:115291
+    at /Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:115308
+    at /Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:115341
+    at /Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:115358
+    at t (/Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:115581)
+ ⨯ TypeError: __webpack_modules__[moduleId] is not a function
+    at Object.__webpack_require__ [as require] (/Users/luca/Desktop/yuca-product-photos/.next/server/webpack-runtime.js:33:42)
+    at require (/Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:40:20064)
+    at /Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:108376
+    at ea (/Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:108583)
+    at /Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:110813
+    at Object._fromJSON (/Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:111370)
+    at JSON.parse (<anonymous>)
+    at ec (/Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:109078)
+    at eo (/Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:108123)
+    at /Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:115291
+    at /Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:115308
+    at /Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:115341
+    at /Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:115358
+    at t (/Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:115581) {
+  page: '/'
+}
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 1138ms (690 modules)
+ GET / 500 in 2001ms
+ ✓ Compiled /shopshots in 70ms (351 modules)
+ GET /shopshots 200 in 168ms
+ ✓ Compiled in 878ms (466 modules)
+ ✓ Compiled / in 255ms (270 modules)
+ GET / 200 in 631ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 1025ms (691 modules)
+ GET /_next/static/css/app/layout.css?v=1768993659506 404 in 1152ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 1156ms
+ GET /_next/static/chunks/main-app.js?v=1768993659506 404 in 1163ms
+ GET /_next/static/chunks/app/layout.js 404 in 1151ms
+ GET /_next/static/chunks/app/page.js 404 in 1161ms
+ ✓ Compiled /shopshots in 123ms (351 modules)
+ GET /shopshots 200 in 454ms
+ GET /_next/static/chunks/main-app.js?v=1768993661352 404 in 32ms
+ GET /_next/static/css/app/layout.css?v=1768993661352 404 in 35ms
+ GET /_next/static/chunks/app/shopshots/page.js 404 in 32ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 33ms
+ GET /_next/static/chunks/app/layout.js 404 in 18ms
+ ✓ Compiled /services in 412ms (780 modules)
+ GET /services 307 in 504ms
+ GET / 200 in 25ms
+ GET /_next/static/css/app/layout.css?v=1768993662185 404 in 47ms
+ GET /_next/static/chunks/main-app.js?v=1768993662185 404 in 51ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 51ms
+ GET /_next/static/chunks/app/page.js 404 in 51ms
+ GET /_next/static/chunks/app/layout.js 404 in 51ms
+ ✓ Compiled /consulting in 147ms (782 modules)
+ GET /consulting 307 in 186ms
+ GET / 200 in 35ms
+ GET /_next/static/css/app/layout.css?v=1768993662494 404 in 33ms
+ GET /_next/static/chunks/app/page.js 404 in 35ms
+ GET /_next/static/chunks/app/layout.js 404 in 32ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 36ms
+ GET /_next/static/chunks/main-app.js?v=1768993662494 404 in 37ms
+ ✓ Compiled /success in 147ms (792 modules)
+ GET /success 200 in 202ms
+ GET /_next/static/css/app/layout.css?v=1768993662780 404 in 11ms
+ GET /_next/static/chunks/app/layout.js 404 in 22ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 25ms
+ GET /_next/static/chunks/main-app.js?v=1768993662780 404 in 25ms
+ GET / 200 in 117ms
+ GET /_next/static/css/app/layout.css?v=1768993729592 404 in 48ms
+ GET /_next/static/chunks/main-app.js?v=1768993729592 404 in 165ms
+ GET /_next/static/chunks/app/page.js 404 in 160ms
+ GET /_next/static/chunks/app/layout.js 404 in 159ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 165ms
+ GET /shopshots 200 in 84ms
+ GET /_next/static/css/app/layout.css?v=1768993736276 404 in 22ms
+ GET /_next/static/chunks/main-app.js?v=1768993736276 404 in 35ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 33ms
+ GET /_next/static/chunks/app/shopshots/page.js 404 in 33ms
+ GET /_next/static/chunks/app/layout.js 404 in 33ms
+ GET / 200 in 65ms
+ GET /_next/static/css/app/layout.css?v=1768993766720 404 in 26ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 143ms
+ GET /_next/static/chunks/main-app.js?v=1768993766720 404 in 144ms
+ GET /_next/static/chunks/app/layout.js 404 in 143ms
+ GET /_next/static/chunks/app/page.js 404 in 143ms
+ ✓ Compiled in 1675ms (471 modules)
+ ✓ Compiled in 116ms (423 modules)
+ ✓ Compiled / in 290ms (270 modules)
+ ⨯ TypeError: __webpack_modules__[moduleId] is not a function
+    at Object.__webpack_require__ [as require] (/Users/luca/Desktop/yuca-product-photos/.next/server/webpack-runtime.js:33:42)
+    at JSON.parse (<anonymous>)
+digest: "4094042475"
+TypeError: __webpack_modules__[moduleId] is not a function
+    at Object.__webpack_require__ [as require] (/Users/luca/Desktop/yuca-product-photos/.next/server/webpack-runtime.js:33:42)
+    at require (/Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:40:20064)
+    at /Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:108376
+    at ea (/Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:108583)
+    at /Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:110813
+    at Object._fromJSON (/Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:111370)
+    at JSON.parse (<anonymous>)
+    at ec (/Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:109078)
+    at eo (/Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:108123)
+    at /Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:115291
+    at /Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:115308
+    at /Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:115341
+    at /Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:115358
+    at t (/Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:115581)
+ ⨯ TypeError: __webpack_modules__[moduleId] is not a function
+    at Object.__webpack_require__ [as require] (/Users/luca/Desktop/yuca-product-photos/.next/server/webpack-runtime.js:33:42)
+    at require (/Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:40:20064)
+    at /Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:108376
+    at ea (/Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:108583)
+    at /Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:110813
+    at Object._fromJSON (/Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:111370)
+    at JSON.parse (<anonymous>)
+    at ec (/Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:109078)
+    at eo (/Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:108123)
+    at /Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:115291
+    at /Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:115308
+    at /Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:115341
+    at /Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:115358
+    at t (/Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:115581) {
+  page: '/'
+}
+ ✓ Compiled /_error in 111ms (695 modules)
+ ⨯ Error: Cannot find module './682.js'
+Require stack:
+- /Users/luca/Desktop/yuca-product-photos/.next/server/webpack-runtime.js
+- /Users/luca/Desktop/yuca-product-photos/.next/server/pages/_document.js
+- /Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/server/require.js
+- /Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/server/load-components.js
+- /Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/build/utils.js
+- /Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/server/dev/hot-middleware.js
+- /Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/server/dev/hot-reloader-webpack.js
+- /Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/server/lib/router-server.js
+- /Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/server/lib/start-server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1420:15)
+    at /Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/server/require-hook.js:55:36
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1058:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1063:22)
+    at Module._load (node:internal/modules/cjs/loader:1226:37)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1503:12)
+    at mod.require (/Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/server/require-hook.js:65:28)
+    at require (node:internal/modules/helpers:152:16)
+    at __webpack_require__.f.require (/Users/luca/Desktop/yuca-product-photos/.next/server/webpack-runtime.js:198:28)
+    at /Users/luca/Desktop/yuca-product-photos/.next/server/webpack-runtime.js:111:40
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (/Users/luca/Desktop/yuca-product-photos/.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (/Users/luca/Desktop/yuca-product-photos/.next/server/webpack-runtime.js:162:22)
+    at /Users/luca/Desktop/yuca-product-photos/.next/server/pages/_document.js:1:335
+    at Object.<anonymous> (/Users/luca/Desktop/yuca-product-photos/.next/server/pages/_document.js:1:376)
+    at Module._compile (node:internal/modules/cjs/loader:1760:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1892:10)
+    at Module.load (node:internal/modules/cjs/loader:1480:32)
+    at Module._load (node:internal/modules/cjs/loader:1299:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1503:12)
+    at mod.require (/Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/server/require-hook.js:65:28)
+    at require (node:internal/modules/helpers:152:16)
+    at requirePage (/Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/server/require.js:109:84)
+    at /Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/server/load-components.js:72:65
+    at async Promise.all (index 0)
+    at async loadComponentsImpl (/Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/server/load-components.js:71:33)
+    at async DevServer.findPageComponentsImpl (/Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/server/next-server.js:714:36) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/Users/luca/Desktop/yuca-product-photos/.next/server/webpack-runtime.js',
+    '/Users/luca/Desktop/yuca-product-photos/.next/server/pages/_document.js',
+    '/Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/server/require.js',
+    '/Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/server/load-components.js',
+    '/Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/build/utils.js',
+    '/Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/server/dev/hot-middleware.js',
+    '/Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/server/dev/hot-reloader-webpack.js',
+    '/Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js',
+    '/Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/server/lib/router-server.js',
+    '/Users/luca/Desktop/yuca-product-photos/node_modules/next/dist/server/lib/start-server.js'
+  ]
+}
+ GET / 500 in 1399ms
+ ✓ Compiled /shopshots in 68ms (351 modules)
+ GET /shopshots 200 in 292ms
+ ✓ Compiled /_not-found in 98ms (778 modules)
+ GET /_next/static/css/app/layout.css?v=1768994149556 404 in 135ms
+ GET /_next/static/chunks/main-app.js?v=1768994149556 404 in 135ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 136ms
+ GET /_next/static/chunks/app/shopshots/page.js 404 in 136ms
+ GET /_next/static/chunks/app/layout.js 404 in 128ms
+ ✓ Compiled /services in 35ms (360 modules)
+ GET /services 307 in 124ms
+ GET / 200 in 51ms
+ GET /_next/static/css/app/layout.css?v=1768994149998 404 in 32ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 39ms
+ GET /_next/static/chunks/main-app.js?v=1768994149998 404 in 41ms
+ GET /_next/static/chunks/app/page.js 404 in 39ms
+ GET /_next/static/chunks/app/layout.js 404 in 30ms
+ ✓ Compiled /consulting in 56ms (362 modules)
+ GET /consulting 307 in 104ms
+ GET / 200 in 25ms
+ GET /_next/static/css/app/layout.css?v=1768994150201 404 in 149ms
+ GET /_next/static/chunks/main-app.js?v=1768994150201 404 in 179ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 180ms
+ GET /_next/static/chunks/app/page.js 404 in 181ms
+ GET /_next/static/chunks/app/layout.js 404 in 146ms
+ ✓ Compiled /success in 79ms (368 modules)
+ GET /success 200 in 188ms
+ GET /_next/static/css/app/layout.css?v=1768994150560 404 in 23ms
+ GET /_next/static/chunks/app/layout.js 404 in 64ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 70ms
+ GET /_next/static/chunks/app/success/page.js 404 in 70ms
+ GET /_next/static/chunks/main-app.js?v=1768994150560 404 in 71ms
+ GET / 200 in 792ms
+ GET /_next/static/css/app/layout.css?v=1768994374469 404 in 183ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 368ms
+ GET /_next/static/chunks/app/page.js 404 in 326ms
+ GET /_next/static/chunks/main-app.js?v=1768994374469 404 in 391ms
+ GET /_next/static/chunks/app/layout.js 404 in 318ms

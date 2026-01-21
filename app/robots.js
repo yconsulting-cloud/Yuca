@@ -6,6 +6,6 @@ export default function robots() {
       allow: '/',
       disallow: ['/api/', '/success/'],
     },
-    sitemap: 'https://madebyyuca.com/photos-produit/sitemap.xml',
+    sitemap: 'https://madebyyuca.com/sitemap.xml',
   };
 }

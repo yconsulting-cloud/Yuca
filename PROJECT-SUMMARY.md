@@ -8,7 +8,7 @@
 yuca-product-photos/
 ├── app/
 │   ├── api/
-│   │   ├── generate-photos/route.js    ✅ Génération IA (Fal.ai)
+│   │   ├── generate-photos/route.js    ✅ Génération automatique (Fal.ai)
 │   │   └── create-checkout/route.js    ✅ Paiement Stripe
 │   ├── success/page.js                 ✅ Page confirmation paiement
 │   ├── layout.js                       ✅ Layout principal
@@ -36,12 +36,12 @@ yuca-product-photos/
 - Design moderne et responsive
 
 ### ✅ Système de packs
-- **Pack Découverte:** 5 photos (GRATUIT) ✅ ACTIF
+ - **Pack Découverte:** 3 photos (GRATUIT) ✅ ACTIF
 - **Pack Essentiel:** 10 photos (14.99€) 🔒 Verrouillé
 - **Pack Professionnel:** 25 photos (29.99€) 🔒 Verrouillé
 - **Pack Premium:** 50 photos (49.99€) 🔒 Verrouillé
 
-### ✅ Génération IA
+### ✅ Génération automatique
 - 5 styles d'arrière-plans différents
 - Génération via Fal.ai FLUX Pro
 - Qualité HD
@@ -221,7 +221,7 @@ NEXT_PUBLIC_APP_URL=https://madebyyuca.com
 ### Moyen terme (intermédiaire):
 - [ ] Upload multiple (batch)
 - [ ] Templates par industrie (bijoux, vêtements, etc.)
-- [ ] Retouche IA (changer couleurs, etc.)
+ - [ ] Retouche automatique (changer couleurs, etc.)
 - [ ] API pour intégration Shopify
 - [ ] Programme d'affiliation
 
@@ -230,7 +230,7 @@ NEXT_PUBLIC_APP_URL=https://madebyyuca.com
 - [ ] Marketplace de templates
 - [ ] White-label pour agences
 - [ ] App mobile native
-- [ ] Assistant IA pour descriptions
+ - [ ] Assistant pour descriptions
 
 ---
 
