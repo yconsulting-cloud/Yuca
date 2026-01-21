@@ -5,7 +5,16 @@ import { useEffect } from 'react';
 export default function ChatWidget() {
   useEffect(() => {
     // Ported/adapted chat logic from original landing page to keep identical behavior
-    const SYSTEM_PROMPT = `Vous êtes l'assistant Yuca...`;
+    const SYSTEM_PROMPT = `Vous êtes l'assistant Yuca, un assistant conversationnel professionnel pour les sites web de petites entreprises (artisans, commerçants, restaurateurs, e‑commerçants).
+  Vous connaissez les offres de Yuca (création de site, assistant IA, génération de photos produit/packshots) et vous aidez le visiteur à obtenir un devis, des informations sur les offres et à générer des visuels produits.
+
+  Règles importantes :
+  - Toujours demander le maximum d'informations utiles quand on prépare un site ou une génération d'images (nom du produit, description, couleurs, formats, style souhaité, usage: e‑commerce / fiche produit / réseaux sociaux, nombre d'images demandé).
+  - Si l'utilisateur demande explicitement des photos produit ou des variantes (packshots, lifestyle), répondez par une sortie qui inclut la balise spéciale [ACTION:GENERATE_PHOTOS: courte description], où courte description est un prompt clair et concis pour la génération (ex: "Bouteille de sauce tomate artisanale, fond blanc, lumière studio, 4 variantes: face, incliné, zoom détail étiquette, lifestyle cuisine").
+  - Lorsque vous incluez [ACTION:GENERATE_PHOTOS: ...], complétez aussi la réponse par une explication courte sur ce que l'utilisateur doit envoyer (photo de base ou brief) et proposez d'ouvrir la page Shopshots pour finaliser la génération.
+  - Si l'utilisateur souhaite qu'on prenne contact ou laisse ses coordonnées, incluez [ACTION:CONTACT_FORM] pour ouvrir le formulaire de contact.
+
+  Ton ton : professionnel, clair, orienté conversion. Donne des exemples concrets et des suggestions d'amélioration des photos (angles, contraste, accessoires).`;
     const DISPOSABLE_EMAILS = ['mailinator.com','tempmail'];
 
     const state = { isOpen: false, messages: [], isLoading: false, hasWelcome: false, msgTimestamps: [], isLimited: false, limitEnd: 0, formOpened: null, formSent: false };
@@ -76,11 +85,23 @@ export default function ChatWidget() {
       input.value = ''; input.disabled = true; sendBtn.disabled = true; state.isLoading = true;
       addUser(content); showTyping();
       try{
-        let resp = await callAPI(content); hideTyping(); let sugg = null, showForm = false;
+        let resp = await callAPI(content); hideTyping(); let sugg = null, showForm = false, showGenerate = false, genDesc = null;
         if(resp.includes('[ACTION:CONTACT_FORM]')){ showForm = true; resp = resp.replace('[ACTION:CONTACT_FORM]','').trim(); }
+        const genMatch = resp.match(/\[ACTION:GENERATE_PHOTOS(?::([^\]]+))?\]/);
+        if(genMatch){ showGenerate = true; genDesc = genMatch[1] ? genMatch[1].trim() : null; resp = resp.replace(genMatch[0],'').trim(); }
         const m = resp.match(/\[SUGGESTIONS:(.+?)\]/); if(m){ sugg = m[1].split('|').map(s=>s.trim()); resp = resp.replace(m[0],'').trim(); }
         addBot(resp, sugg);
         if(showForm) setTimeout(addForm, 300);
+        if(showGenerate){ // append quick action to last bot message
+          setTimeout(()=>{
+            if(!msgBox) return; const last = msgBox.lastElementChild; if(!last) return;
+            const wrap = document.createElement('div'); wrap.className = 'yuca-generate-photos';
+            const q = genDesc ? encodeURIComponent(genDesc) : '';
+            const href = '/shopshots' + (q ? `?prompt=${q}` : '');
+            wrap.innerHTML = `<div style="margin-top:8px"><a class="yuca-generate-btn" href="${href}">Générer des photos</a></div>`;
+            last.appendChild(wrap);
+          }, 200);
+        }
       }catch(e){ hideTyping(); addBot(`Désolé, problème technique. Contactez-moi via contact@madebyyuca.com`, ['Réessayer','Voir les tarifs']); }
       state.isLoading = false; input.disabled = false; sendBtn.disabled = false; input.focus();
     }
