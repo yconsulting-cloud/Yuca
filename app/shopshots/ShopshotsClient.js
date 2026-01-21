@@ -90,15 +90,37 @@ export default function ShopshotsClient() {
   };
 
   const generatePhotos = async () => {
-    setIsGenerating(true); setProgress(5); setGeneratedImages([]); setError(null);
-    let prog = 5; const progInterval = setInterval(() => { prog = Math.min(90, prog + Math.random() * 8); setProgress(prog); }, 700);
+    setIsGenerating(true);
+    setProgress(3);
+    setGeneratedImages([]);
+    setError(null);
+
+    let prog = 3;
+    // smoother progression: approach soft cap (97) with decreasing increments
+    const progInterval = setInterval(() => {
+      if (prog >= 97) { prog = 97; setProgress(prog); return; }
+      const delta = prog < 60 ? (1 + Math.random() * 6) : Math.max(0.4, (100 - prog) * 0.03 + Math.random() * 0.6);
+      prog = Math.min(97, Math.round((prog + delta) * 10) / 10);
+      setProgress(prog);
+    }, 400);
+
     try {
       const base64Image = await fileToBase64(productImage);
       const response = await fetch('/api/generate-photos', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ imageData: base64Image, description: productDescription, count: selectedPlan.images }) });
       if (!response.ok) throw new Error('Erreur lors de la génération');
-      const data = await response.json(); setGeneratedImages(data.images); setProgress(100);
-    } catch (err) { console.error('Generation error:', err); setError('Une erreur est survenue. Réessayez.'); }
-    finally { clearInterval(progInterval); setIsGenerating(false); }
+      const data = await response.json();
+      // ensure a visible transition to 100%
+      setProgress(99);
+      setTimeout(() => setProgress(100), 250);
+      setGeneratedImages(data.images || []);
+    } catch (err) {
+      console.error('Generation error:', err);
+      setError('Une erreur est survenue. Réessayez.');
+      setProgress(0);
+    } finally {
+      clearInterval(progInterval);
+      setIsGenerating(false);
+    }
   };
 
   const fileToBase64 = (file) => new Promise((resolve, reject) => { const reader = new FileReader(); reader.onloadend = () => resolve(reader.result); reader.onerror = reject; reader.readAsDataURL(file); });
@@ -184,6 +206,13 @@ export default function ShopshotsClient() {
 
         {error && <div className="error-box">⚠️ {error}</div>}
 
+        {isGenerating && (
+          <div className="progress-card progress-top">
+            <div className="progress-bar" aria-hidden="true"><div className="progress-fill" ref={progressFillRef} style={{width: `${progress}%`}} /></div>
+            <p className="progress-text">Génération des photos... {Math.round(progress)}%</p>
+          </div>
+        )}
+
         <div className="generate-wrap">
           <button onClick={handleGenerate} disabled={isGenerating || !productImage || !productDescription.trim()} className={`generate-btn ${isGenerating || !productImage || !productDescription.trim() ? 'disabled' : 'enabled'}`}>
             {isGenerating ? <span className="btn-loading"><span className="spinner" />Génération en cours...</span> : `Générer ${selectedPlan.images} photos ${selectedPlan.price > 0 ? `(${selectedPlan.price}€)` : '(Gratuit)'} `}
@@ -191,14 +220,10 @@ export default function ShopshotsClient() {
           {selectedPlan.price === 0 && <p className="generate-note">🎉 Pack gratuit pour tester le service !</p>}
         </div>
 
-        {isGenerating && (
-          <div className="progress-card"><div className="progress-bar"><div className="progress-fill" ref={progressFillRef} /></div><p className="progress-text">Génération des photos... {Math.round(progress)}%</p></div>
-        )}
-
         {generatedImages.length > 0 && (
           <div className="generated-card">
             <div className="generated-header"><h3 className="generated-title">Vos photos sont prêtes ! 🎉</h3><button onClick={downloadAllAsZip} className="download-btn">📥 Télécharger tout (ZIP)</button></div>
-            <div className="image-grid">{generatedImages.map((img, index) => (<div key={index} className="image-tile"><Image src={img.url} alt={`Photo ${index + 1}`} width={400} height={400} /></div>))}</div>
+            <div className="image-grid">{generatedImages.map((img, index) => (<div key={index} className="image-tile"><img src={img.url} alt={`Photo ${index + 1}`} onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = '/images/placeholder.png'; }} /></div>))}</div>
           </div>
         )}
       </main>
