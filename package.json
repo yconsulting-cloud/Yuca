@@ -6,22 +6,26 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "generate-images": "node scripts/generate-images.js",
+    "generate-remote-images": "node scripts/fetch-and-generate-images.js",
     "lint": "next lint"
   },
   "dependencies": {
+    "@fal-ai/client": "^1.0.0",
+    "file-saver": "^2.0.5",
+    "jszip": "^3.10.1",
+    "next": "^14.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "next": "^14.0.0",
-    "stripe": "^14.0.0",
-    "jszip": "^3.10.1",
-    "file-saver": "^2.0.5"
-    ,"@fal-ai/client": "^1.0.0"
+    "stripe": "^14.0.0"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
     "eslint": "^8.0.0",
-    "eslint-config-next": "^14.0.0"
+    "eslint-config-next": "^14.0.0",
+    "playwright": "^1.57.0",
+    "sharp": "^0.34.5"
   }
 }

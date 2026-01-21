@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Yuca — Assistant</title>
+    <style>
+      body{font-family:Inter,system-ui,Arial,sans-serif;margin:0;background:#f7f9fb;color:#0a0a0b}
+      .container{max-width:720px;margin:18px auto;padding:18px}
+      .header{display:flex;align-items:center;gap:12px}
+      .logo{width:44px;height:44px;border-radius:8px;background:#00d9ff;color:#001;display:flex;align-items:center;justify-content:center;font-weight:700}
+      .bubble{background:#fff;border-radius:12px;padding:14px;margin-top:14px;box-shadow:0 6px 18px rgba(11,22,40,.06)}
+      .inputRow{display:flex;gap:8px;margin-top:12px}
+      input[type="text"]{flex:1;padding:10px;border:1px solid #e6eef6;border-radius:8px}
+      button.send{background:#00d9ff;border:none;color:#001;padding:10px 12px;border-radius:8px;cursor:pointer}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="logo">Y</div>
+        <div>
+          <strong>Assistant Yuca</strong>
+          <div style="font-size:13px;color:#475569">Bonjour — comment puis-je vous aider aujourd'hui ?</div>
+        </div>
+      </div>
+
+      <div class="bubble">
+        <p>Je peux vous aider à générer des photos produit, expliquer les forfaits, ou répondre aux questions fréquentes.</p>
+      </div>
+
+      <div class="inputRow">
+        <input id="msg" type="text" placeholder="Posez votre question..." />
+        <button class="send" id="send">Envoyer</button>
+      </div>
+    </div>
+
+    <script>
+      // Minimal front-end: echo messages locally and open support link for more.
+      document.getElementById('send').addEventListener('click', function(){
+        var v = document.getElementById('msg').value.trim();
+        if(!v) return; alert('Merci — votre message : "'+v+'"\nNous vous répondrons via le formulaire de contact.');
+      });
+    </script>
+  </body>
+</html>

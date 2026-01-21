@@ -144,6 +144,6 @@ A: Oui, mais ça vous coûte 0.25€ par test
 
 ## 🎯 C'EST TOUT!
 
-Vous êtes prêt à générer des photos produit par IA!
+Vous êtes prêt à générer des photos produit professionnelles!
 
 **Besoin d'aide?** Lire README.md ou DEPLOYMENT.md

@@ -62,7 +62,7 @@ export async function POST(req) {
       );
     }
 
-    const { imageData, description, count } = await req.body.json();
+    const { imageData, description, count } = await req.json();
 
     // 2. VALIDATION STRICTE
     if (!imageData || !description) {
@@ -116,8 +116,8 @@ export async function POST(req) {
       );
     }
 
-    // Limiter le nombre d'images strictement
-    const imagesToGenerate = Math.min(Math.max(1, count || 5), 50);
+    // Limiter le nombre d'images strictement (par défaut 3 pour la version gratuite)
+    const imagesToGenerate = Math.min(Math.max(1, count || 3), 50);
     const images = [];
     const falErrors = [];
 
@@ -186,6 +186,19 @@ export async function POST(req) {
 
   } catch (error) {
     console.error('Generation error:', error);
+
+    if (process.env.DEBUG_API_ERRORS === '1') {
+      const details = {
+        message: String(error?.message || error),
+        stack: error?.stack,
+      };
+
+      return NextResponse.json(
+        { error: 'Erreur lors de la génération', details },
+        { status: 500 }
+      );
+    }
+
     return NextResponse.json(
       { error: 'Erreur lors de la génération' },
       { status: 500 }

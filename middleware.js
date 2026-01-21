@@ -19,7 +19,7 @@ export function middleware(request) {
     "img-src 'self' data: https: blob:; " +
     "font-src 'self' https://fonts.gstatic.com; " +
     "connect-src 'self' https://fal.run https://api.stripe.com; " +
-    "frame-src https://js.stripe.com https://vercel.live;"
+    "frame-src 'self' https://js.stripe.com https://vercel.live;"
   );
 
   return response;
