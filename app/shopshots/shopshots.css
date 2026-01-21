@@ -151,6 +151,11 @@
 .shopshots-page .image-wrap{position:relative;width:100%}
 .shopshots-page .preserved-badge{position:absolute;left:8px;top:8px;background:rgba(255,50,50,0.95);color:#fff;padding:6px 8px;border-radius:8px;font-weight:700;font-size:0.85rem;box-shadow:0 6px 18px rgba(0,0,0,0.12)}
 
+/* Preserve threshold control */
+.shopshots-page .preserve-control{margin-top:12px;display:flex;flex-direction:column;gap:6px;align-items:center}
+.shopshots-page .preserve-control label{font-size:.95rem;color:var(--c-text-sec)}
+.shopshots-page .preserve-control input[type="range"]{width:320px}
+
 .shopshots-page .generated-card{margin-top:var(--sp-6)}
 .shopshots-page .image-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:var(--sp-4);align-items:start}
 

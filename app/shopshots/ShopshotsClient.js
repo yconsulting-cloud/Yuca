@@ -54,6 +54,9 @@ export default function ShopshotsClient() {
   const [generatedImages, setGeneratedImages] = useState([]);
   const [progress, setProgress] = useState(0);
   const [error, setError] = useState(null);
+  const [preserveThreshold, setPreserveThreshold] = useState(() => {
+    try { const v = localStorage.getItem('yuca_preserve_threshold'); return v ? Number(v) : 0.08; } catch (e) { return 0.08; }
+  });
   const fileInputRef = useRef(null);
   const progressFillRef = useRef(null);
 
@@ -171,8 +174,9 @@ export default function ShopshotsClient() {
     }
 
     const pct = diffCount / total;
-    // allow up to 12% changed pixels (small lighting/background edits may exceed small areas)
-    return pct <= 0.12;
+    // use adjustable threshold (preserveThreshold) — allow small lighting/background edits
+    const threshold = typeof preserveThreshold === 'number' && !Number.isNaN(preserveThreshold) ? preserveThreshold : 0.12;
+    return pct <= threshold;
   }
 
   const fileToBase64 = (file) => new Promise((resolve, reject) => { const reader = new FileReader(); reader.onloadend = () => resolve(reader.result); reader.onerror = reject; reader.readAsDataURL(file); });
@@ -270,6 +274,11 @@ export default function ShopshotsClient() {
             {isGenerating ? <span className="btn-loading"><span className="spinner" />Génération en cours...</span> : `Générer ${selectedPlan.images} photos ${selectedPlan.price > 0 ? `(${selectedPlan.price}€)` : '(Gratuit)'} `}
           </button>
           {selectedPlan.price === 0 && <p className="generate-note">🎉 Pack gratuit pour tester le service !</p>}
+        </div>
+
+        <div className="preserve-control">
+          <label>Seuil de préservation du produit: <strong>{Math.round(preserveThreshold * 100)}%</strong></label>
+          <input type="range" min="0" max="20" step="1" value={Math.round(preserveThreshold * 100)} onChange={(e)=>{ const v = Number(e.target.value)/100; setPreserveThreshold(v); try{ localStorage.setItem('yuca_preserve_threshold', String(v)); }catch{} }} />
         </div>
 
         {generatedImages.length > 0 && (
