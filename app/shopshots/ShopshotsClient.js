@@ -229,7 +229,14 @@ export default function ShopshotsClient() {
             {PLANS.map((plan) => (
               <div key={plan.id} onClick={() => handleSelectPlan(plan)} className={`plan-card ${plan.locked ? 'locked' : ''} ${selectedPlan.id === plan.id ? 'selected' : ''}`}>
                 {plan.popular && <div className="badge-popular">POPULAIRE</div>}
-                {plan.locked && <div className="badge-lock" aria-hidden>🔒</div>}
+                {plan.locked && (
+                  <div className="badge-lock" aria-hidden>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <rect x="3" y="11" width="18" height="10" rx="2" stroke="currentColor" strokeWidth="1.5" fill="none" />
+                      <path d="M7 11V8a5 5 0 0 1 10 0v3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                    </svg>
+                  </div>
+                )}
                 <div>
                   <h4 className="plan-name">{plan.name}</h4>
                   <div className="plan-price">{plan.price === 0 ? 'GRATUIT' : `${plan.price}€`}</div>
