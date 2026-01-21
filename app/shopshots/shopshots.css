@@ -91,7 +91,7 @@
 
 /* Plan card exact styling to match reference */
 .shopshots-page .plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-6);align-items:stretch;justify-items:center;grid-auto-rows:1fr}
-.shopshots-page .plan-card{cursor:pointer;padding:28px;border:1px solid rgba(0,0,0,0.06);border-radius:18px;background:#ffffff;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;text-align:left;width:100%;max-width:340px;height:100%;box-sizing:border-box;transition:box-shadow .18s,transform .18s;position:relative}
+.shopshots-page .plan-card{cursor:pointer;padding:28px;border:1px solid rgba(0,0,0,0.06);border-radius:18px;background:#ffffff;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;text-align:left;width:100%;max-width:340px;height:100%;box-sizing:border-box;transition:box-shadow .18s,transform .18s;position:relative;overflow:visible}
 .shopshots-page .plan-card .plan-name{align-self:center;width:100%;text-align:center}
 .shopshots-page .plan-card .plan-price{font-size:2rem;text-align:center;width:100%;margin-top:6px}
 .shopshots-page .plan-card .plan-desc,.shopshots-page .plan-card .plan-features{color:var(--c-text-sec);margin-top:6px}
@@ -103,7 +103,7 @@
 
 /* Badge positions */
 .shopshots-page .badge-popular{position:absolute;left:50%;transform:translateX(-50%);top:-16px;padding:6px 14px;border-radius:9999px;background:linear-gradient(180deg,var(--c-accent),#00c6ea);color:var(--c-bg-dark);font-weight:800;box-shadow:0 6px 20px rgba(0,217,255,0.12);z-index:12}
-.shopshots-page .plan-card .badge-soon{position:absolute;left:16px;top:16px;z-index:11}
+.shopshots-page .plan-card .badge-soon{position:absolute;left:50%;transform:translateX(-50%);bottom:-14px;z-index:11;padding:6px 12px;border-radius:12px;background:#fff3cd;color:#856404;border:1px solid rgba(0,0,0,0.04);box-shadow:0 8px 20px rgba(2,6,23,0.06)}
 
 
 .shopshots-page .plans-section{padding:var(--sp-12) 0}
@@ -166,6 +166,17 @@
 @media(max-width:900px){
 	.shopshots-page .plans-grid{grid-template-columns:repeat(auto-fit,minmax(220px,1fr));}
 	.shopshots-page .plan-card{width:auto}
+}
+
+/* Mobile: add safe padding to header, hero text and main container to avoid text touching edges */
+@media(max-width:768px){
+	.shopshots-page .site-header .container,
+	.shopshots-page .hero__content,
+	.shopshots-page .main-container {
+		padding-left:16px;
+		padding-right:16px;
+	}
+	.shopshots-page .hero { padding-left: 0; padding-right: 0; }
 }
 
 /* Cookie card tweak to match reference */
