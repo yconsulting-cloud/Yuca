@@ -11,12 +11,12 @@
 .shopshots-page .main-container{padding:var(--sp-24) var(--pad);max-width:var(--max-w);margin:0 auto}
 .shopshots-page .hero{
 	position:relative;
-	min-height:80vh;
+	min-height:100vh;
 	display:flex;
 	flex-direction:column;
 	align-items:center;
 	justify-content:center;
-	padding:var(--sp-12) 0;
+	padding:var(--sp-24) var(--pad);
 	text-align:center;
 	width:100%;
 	max-width:100%;
@@ -175,8 +175,7 @@
     		padding-left:12px;
     		padding-right:12px;
     	}
-    	.shopshots-page .hero { padding-left: 0; padding-right: 0; min-height:60vh }
-    	.shopshots-page .hero__title{font-size:clamp(1.6rem,6vw,2.4rem)}
+    	.shopshots-page .hero { padding-left: 0; padding-right: 0; min-height:40vh }
     	.shopshots-page .plans-grid{gap:var(--sp-4)}
 }
 
