@@ -91,8 +91,8 @@ export default function RootLayout({ children }) {
       :root{--pad:clamp(1.5rem,5vw,6%)}
       .nav{position:fixed;top:0;left:0;right:0;padding:16px var(--pad);background:transparent}
       .nav__logo{font-family:var(--ff-display);font-size:1.25rem;font-weight:700}
-      .hero{min-height:60vh;display:flex;align-items:center;justify-content:space-between;padding:48px 1.5rem;position:relative;overflow:visible}
-      .hero__content{max-width:640px;z-index:2}
+      .hero{min-height:100vh;display:flex;align-items:center;padding:clamp(5.5rem,13vh,8rem) var(--pad) clamp(3rem,8vh,5rem);position:relative;overflow:hidden}
+      .hero__content{max-width:580px;z-index:2}
       .hero__title{font-size:clamp(1.8rem,4vw,3.25rem);line-height:1.05;margin:0 0 .5rem}
       .hero__subtitle{margin:0 0 1rem;color:var(--c-text-sec)}
       .hero__visual{width:48%;min-width:280px;position:relative}
