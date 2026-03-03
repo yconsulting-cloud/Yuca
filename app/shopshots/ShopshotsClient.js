@@ -9,7 +9,7 @@ import JSZip from 'jszip';
 const PLANS = [
   {
     id: 'pack-3',
-    name: 'Pack Découverte',
+    name: 'Essai gratuit',
     images: 3,
     price: 0,
     priceId: null,
@@ -18,30 +18,31 @@ const PLANS = [
   },
   {
     id: 'pack-10',
-    name: 'Pack Essentiel',
+    name: 'Pack 10 visuels',
     images: 10,
-    price: 14.99,
+    price: 9,
     priceId: 'price_xxx',
     popular: false,
     locked: true,
   },
   {
-    id: 'pack-25',
-    name: 'Pack Professionnel',
-    images: 25,
-    price: 29.99,
+    id: 'pack-30',
+    name: 'Pack 30 visuels',
+    images: 30,
+    price: 19,
     priceId: 'price_xxx',
     popular: true,
     locked: true,
   },
   {
-    id: 'pack-50',
-    name: 'Pack Premium',
-    images: 50,
-    price: 49.99,
+    id: 'abo-20',
+    name: 'Abo 20 visuels/mois',
+    images: 20,
+    price: 29,
     priceId: 'price_xxx',
     popular: false,
     locked: true,
+    isSubscription: true,
   },
 ];
 
@@ -213,8 +214,8 @@ export default function ShopshotsClient() {
         <div className="hero__glow"></div>
         <div className="hero__content container">
           <div className="hero__badge" style={{display:'none'}}></div>
-          <h1 className="hero__title">Transformez votre photo en <span className="hero__title-gradient">dizaines de variantes</span></h1>
-          <p className="hero__subtitle">Téléchargez une photo, obtenez des images professionnelles pour votre e‑commerce et réseaux sociaux en quelques minutes.</p>
+          <h1 className="hero__title">Vos visuels produit en <span className="hero__title-gradient">quelques clics</span></h1>
+          <p className="hero__subtitle">Téléchargez une photo, obtenez des packshots professionnels pour votre e-commerce, fiches produit et réseaux sociaux. À partir de 9€.</p>
           <div className="hero__ctas">
             <button className="hero__cta hero__cta--primary btn btn-accent" onClick={() => fileInputRef.current?.click()}>Commencer</button>
           </div>
@@ -239,7 +240,7 @@ export default function ShopshotsClient() {
                 )}
                 <div>
                   <h4 className="plan-name">{plan.name}</h4>
-                  <div className="plan-price">{plan.price === 0 ? 'GRATUIT' : `${plan.price}€`}</div>
+                  <div className="plan-price">{plan.price === 0 ? 'GRATUIT' : `${plan.price}€${plan.isSubscription ? '/mois' : ''}`}</div>
                   <p className="plan-desc">{plan.images} photos professionnelles</p>
                   <ul className="plan-features"><li>✓ Différents arrière-plans</li><li>✓ Qualité HD</li><li>✓ Téléchargement ZIP</li><li>✓ Utilisation commerciale</li></ul>
                 </div>
@@ -277,7 +278,7 @@ export default function ShopshotsClient() {
 
         <div className="generate-wrap">
           <button onClick={handleGenerate} disabled={isGenerating || !productImage || !productDescription.trim()} className={`generate-btn ${isGenerating || !productImage || !productDescription.trim() ? 'disabled' : 'enabled'}`}>
-            {isGenerating ? <span className="btn-loading"><span className="spinner" />Génération en cours...</span> : `Générer ${selectedPlan.images} photos ${selectedPlan.price > 0 ? `(${selectedPlan.price}€)` : '(Gratuit)'} `}
+            {isGenerating ? <span className="btn-loading"><span className="spinner" />Génération en cours...</span> : `Générer ${selectedPlan.images} photos ${selectedPlan.price > 0 ? `(${selectedPlan.price}€${selectedPlan.isSubscription ? '/mois' : ''})` : '(Gratuit)'} `}
           </button>
           {selectedPlan.price === 0 && <p className="generate-note">🎉 Pack gratuit pour tester le service !</p>}
         </div>
@@ -315,7 +316,7 @@ export default function ShopshotsClient() {
           </nav>
         </div>
           <div className="footer__bottom">
-            <p>© <span id="year"></span> Yuca. Sites web & Assistant personnalisé </p>
+            <p>© <span id="year"></span> Yuca. Votre partenaire digital complet.</p>
             <div className="footer__social">
                 <a href="https://www.instagram.com/madebyyuca/" target="_blank" rel="noopener noreferrer" className="footer__social-link" aria-label="Instagram">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">

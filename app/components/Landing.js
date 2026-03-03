@@ -1,6 +1,6 @@
 export const metadata = {
-  title: 'Yuca — Marketing (Landing)',
-  description: 'Marketing landing integrated into the Next app',
+  title: 'Yuca — Votre partenaire digital complet',
+  description: 'Site web, chatbot IA, visuels produit et contenu pour commerces locaux, restaurateurs et artisans.',
 };
 
 import LazyLandingClient from './LazyLandingClient';
@@ -40,16 +40,16 @@ export default function Landing() {
           <div className="hero__grid"></div>
           <div className="hero__glow"></div>
           <div className="hero__content">
-            <div className="hero__badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> Sites web nouvelle génération</div>
-            <h1 className="hero__title">Votre site pro livré en <span className="hero__title-gradient">10 jours</span>.<br/>Yuca répond à vos clients 24/7.</h1>
-            <p className="hero__subtitle">Artisans, commerçants, restaurateurs : obtenez un site moderne qui répond, informe et prend les demandes, même quand vous êtes occupé.</p>
+            <div className="hero__badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> Partenaire digital complet</div>
+            <h1 className="hero__title">Votre <span className="hero__title-gradient">partenaire digital</span> complet.<br/>Site, chatbot, visuels, contenu.</h1>
+            <p className="hero__subtitle">Restaurateurs, caves à vin, épiceries fines, artisans : on gère tout pour vous. Un écosystème digital qui travaille pendant que vous servez vos clients.</p>
             <div className="hero__ctas">
               <a href="#contact" className="hero__cta hero__cta--primary">Demander un devis gratuit <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-              <a href="#services" className="hero__cta hero__cta--secondary">Voir les offres</a>
+              <a href="#services" className="hero__cta hero__cta--secondary">Découvrir nos offres</a>
             </div>
             <div className="hero__stats">
-              <div className="hero__stat"><span className="hero__stat-value">10<span>j</span></span><span className="hero__stat-label">Délai de livraison</span></div>
-              <div className="hero__stat"><span className="hero__stat-value">24<span>/7</span></span><span className="hero__stat-label">Assistant Yuca actif</span></div>
+              <div className="hero__stat"><span className="hero__stat-value">590<span>€</span></span><span className="hero__stat-label">Setup tout compris</span></div>
+              <div className="hero__stat"><span className="hero__stat-value">24<span>/7</span></span><span className="hero__stat-label">Chatbot IA actif</span></div>
               <div className="hero__stat"><span className="hero__stat-value">0<span>€</span></span><span className="hero__stat-label">Devis & conseils</span></div>
             </div>
           </div>
@@ -74,31 +74,65 @@ export default function Landing() {
 
         <section className="section" id="services">
           <div className="section__header" data-reveal>
-            <span className="section__label">Pourquoi Yuca</span>
-            <h2 className="section__title">Tout ce qu'il faut pour être visible en ligne</h2>
-            <p className="section__subtitle">Un site web professionnel couplé à des outils intelligents qui travaillent pour vous.</p>
+            <span className="section__label">Nos offres</span>
+            <h2 className="section__title">3 offres, un seul objectif : vous faire gagner des clients</h2>
+            <p className="section__subtitle">Du site web au contenu vidéo, on vous accompagne à chaque étape. Vous n'avez rien à faire.</p>
           </div>
           <div className="container">
-            <div className="value__grid">
-              <article className="value-card" data-reveal data-reveal-delay="100">
-                <div className="value-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-                <h3 className="value-card__title">Un site qui vous ressemble</h3>
-                <p className="value-card__desc"> Un site professionnel adapté à votre activité. Rapide, lisible sur mobile, visible sur Google.</p>
+            <div className="services__grid">
+              <article className="service-card" data-reveal data-reveal-delay="100">
+                <div className="service-card__header">
+                  <h3 className="service-card__title">Yuca Digital</h3>
+                  <p className="service-card__subtitle">Site sur mesure + chatbot IA + emailing</p>
+                </div>
+                <div className="service-card__price">
+                  <span className="service-card__price-value">590€</span>
+                  <span className="service-card__price-period">setup + à partir de 49€/mois</span>
+                </div>
+                <ul className="service-card__features">
+                  <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Site web sur mesure, rapide, mobile</li>
+                  <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Chatbot IA 24/7 formé sur votre activité</li>
+                  <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Google My Business configuré</li>
+                  <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Config emailing Brevo incluse</li>
+                  <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Maintenance & support inclus</li>
+                </ul>
+                <a href="#tarifs" className="service-card__cta service-card__cta--primary">Voir les formules</a>
               </article>
-              <article className="value-card" data-reveal data-reveal-delay="200">
-                <div className="value-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-                <h3 className="value-card__title">Yuca répond pour vous</h3>
-                <p className="value-card__desc">Horaires, tarifs, disponibilités... Vos clients ont une réponse immédiate, même à 3h du matin.</p>
+              <article className="service-card" data-reveal data-reveal-delay="200">
+                <div className="service-card__header">
+                  <h3 className="service-card__title">Shopshots</h3>
+                  <p className="service-card__subtitle">Visuels produit IA en self-service</p>
+                </div>
+                <div className="service-card__price">
+                  <span className="service-card__price-value">9€</span>
+                  <span className="service-card__price-period">à partir de / 10 visuels</span>
+                </div>
+                <ul className="service-card__features">
+                  <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Packshots & visuels produits par IA</li>
+                  <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Génération rapide, qualité pro</li>
+                  <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Plusieurs arrière-plans au choix</li>
+                  <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Téléchargement immédiat en ZIP</li>
+                  <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Utilisable directement sur le site</li>
+                </ul>
+                <a href="/shopshots" className="service-card__cta service-card__cta--secondary">Essayer Shopshots</a>
               </article>
-              <article className="value-card" data-reveal data-reveal-delay="300">
-                <div className="value-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
-                <h3 className="value-card__title">Moins d'appels, plus de clients</h3>
-                <p className="value-card__desc">Devis, RDV, réservations : vos clients passent à l'action directement depuis votre site.</p>
-              </article>
-              <article className="value-card" data-reveal data-reveal-delay="400">
-                <div className="value-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
-                <h3 className="value-card__title">En ligne dans 10 jours</h3>
-                <p className="value-card__desc">Vous nous envoyez vos infos, on s'occupe de tout. Pas de délais interminables.</p>
+              <article className="service-card" data-reveal data-reveal-delay="300">
+                <div className="service-card__header">
+                  <h3 className="service-card__title">Création de contenu</h3>
+                  <p className="service-card__subtitle">Vidéo, photo, réseaux sociaux, IA</p>
+                </div>
+                <div className="service-card__price">
+                  <span className="service-card__price-value">Sur devis</span>
+                  <span className="service-card__price-period">service sur mesure</span>
+                </div>
+                <ul className="service-card__features">
+                  <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Vidéos courtes & réseaux sociaux</li>
+                  <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Photos professionnelles</li>
+                  <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Automatisation IA du contenu</li>
+                  <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Calendrier éditorial clé en main</li>
+                  <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Adapté à votre cible locale</li>
+                </ul>
+                <a href="#contact" className="service-card__cta service-card__cta--secondary">Parlons de votre projet</a>
               </article>
             </div>
           </div>
@@ -160,9 +194,9 @@ export default function Landing() {
 
         <section className="section section--dark">
           <div className="section__header" data-reveal>
-            <span className="section__label">Inclus dans chaque offre</span>
-            <h2 className="section__title">Tout pour réussir en ligne</h2>
-            <p className="section__subtitle">Des outils concrets qui font la différence pour votre business.</p>
+            <span className="section__label">Inclus avec Yuca Digital</span>
+            <h2 className="section__title">On gère tout pour vous</h2>
+            <p className="section__subtitle">Vous vous concentrez sur vos clients. On s'occupe du reste.</p>
           </div>
           <div className="container">
             <div className="features__grid">
@@ -235,72 +269,85 @@ export default function Landing() {
         <section className="section" style={{background: '#f8fafc'}} id="tarifs">
           <div className="section__header" data-reveal>
             <span className="section__label">Tarifs clairs</span>
-            <h2 className="section__title">Un investissement, pas un abonnement</h2>
-            <p className="section__subtitle">Vous payez une fois. Le site est à vous.</p>
+            <h2 className="section__title">Des formules adaptées à chaque besoin</h2>
+            <p className="section__subtitle">Moins cher qu'un plat du jour par jour. On gère tout, vous gérez votre commerce.</p>
           </div>
           <div className="container">
-            <div className="services__grid">
-                     <article className="service-card" data-reveal>
-                        <div className="service-card__header">
-                            <h3 className="service-card__title">Assistant Yuca</h3>
-                            <p className="service-card__subtitle">Votre assistant client automatique 24/7</p>
-                        </div>
-                        <div className="service-card__price">
-                            <span className="service-card__price-value">490€</span>
-                            <span className="service-card__price-period">paiement unique</span>
-                        </div>
-                        <ul className="service-card__features">
-                            <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Assistant Yuca personnalisé</li>
-                            <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Réponses instantanées 24/7</li>
-                            <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Adapté à votre activité</li>
-                            <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Intégration sur votre site web</li>
-                            <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Configuration du ton et des réponses</li>
-                            <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> 1 mois de support inclus</li>
-                            <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Mise en ligne sous 3 jours</li>
-                        </ul>
-                        <a href="#contact" className="service-card__cta service-card__cta--secondary">Choisir Assistant IA</a>
-                    </article>
-                    <article className="service-card" data-reveal>
-                        <div className="service-card__header">
-                            <h3 className="service-card__title">Essentiel</h3>
-                            <p className="service-card__subtitle">Votre présence en ligne professionnelle</p>
-                        </div>
-                        <div className="service-card__price">
-                            <span className="service-card__price-value">590€</span>
-                            <span className="service-card__price-period">paiement unique</span>
-                        </div>
-                        <ul className="service-card__features">
-                            <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Site one-page responsive</li>
-                            <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Design sur mesure</li>
-                            <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Optimisation Google (SEO)</li>
-                            <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Formulaire de contact</li>
-                            <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Fiche Google My Business</li>
-                            <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> 1 mois de support inclus</li>
-                            <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Livraison 7 jours</li>
-                        </ul>
-                        <a href="#contact" className="service-card__cta service-card__cta--secondary">Choisir Essentiel</a>
-                    </article>
-                    <article className="service-card service-card--featured" data-reveal data-reveal-delay="200">
-                        <span className="service-card__badge">Recommandé</span>
-                        <div className="service-card__header">
-                            <h3 className="service-card__title">Pro + Assistant Yuca</h3>
-                            <p className="service-card__subtitle">Site complet avec automatisation</p>
-                        </div>
-                        <div className="service-card__price">
-                            <span className="service-card__price-value">990€</span>
-                            <span className="service-card__price-period">paiement unique</span>
-                        </div>
-                        <ul className="service-card__features">
-                            <li className="service-card__feature service-card__feature--highlight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Tout Essentiel inclus</li>
-                            <li className="service-card__feature service-card__feature--highlight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Assitant Yuca 24/7 personnalisé</li>
-                            <li className="service-card__feature service-card__feature--highlight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Système de réservation auto</li>
-                            <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Site multi-pages (jusqu'à 5)</li>
-                            <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Notifications email/SMS</li>
-                            <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> 3 mois de support inclus</li>
-                            <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Livraison 10 jours</li>
-                        </ul>
-                        <a href="#contact" className="service-card__cta service-card__cta--primary">Choisir Pro + Assistant Yuca</a>
-                    </article>
+            <h3 className="section__group-title" data-reveal style={{marginBottom: 'var(--sp-6)', fontSize: 'var(--fs-lg)', fontWeight: 600, fontFamily: 'var(--ff-display)'}}>Yuca Digital</h3>
+            <div className="services__grid" style={{marginBottom: 'var(--sp-12)'}}>
+              <article className="service-card" data-reveal>
+                <div className="service-card__header">
+                  <h3 className="service-card__title">Essentiel</h3>
+                  <p className="service-card__subtitle">Site + chatbot + maintenance + support</p>
+                </div>
+                <div className="service-card__price">
+                  <span className="service-card__price-value">590€</span>
+                  <span className="service-card__price-period">setup + 49€/mois</span>
+                </div>
+                <ul className="service-card__features">
+                  <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Site web sur mesure responsive</li>
+                  <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Chatbot IA 24/7 personnalisé</li>
+                  <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Google My Business configuré</li>
+                  <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Config emailing Brevo</li>
+                  <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Maintenance & support inclus</li>
+                </ul>
+                <a href="#contact" className="service-card__cta service-card__cta--secondary">Choisir Essentiel</a>
+              </article>
+              <article className="service-card service-card--featured" data-reveal data-reveal-delay="200">
+                <span className="service-card__badge">Recommandé</span>
+                <div className="service-card__header">
+                  <h3 className="service-card__title">Pro</h3>
+                  <p className="service-card__subtitle">Essentiel + email marketing + avis Google</p>
+                </div>
+                <div className="service-card__price">
+                  <span className="service-card__price-value">590€</span>
+                  <span className="service-card__price-period">setup + 79€/mois</span>
+                </div>
+                <ul className="service-card__features">
+                  <li className="service-card__feature service-card__feature--highlight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Tout Essentiel inclus</li>
+                  <li className="service-card__feature service-card__feature--highlight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> 1 campagne email/mois</li>
+                  <li className="service-card__feature service-card__feature--highlight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Gestion avis Google</li>
+                  <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Rapport mensuel de performance</li>
+                  <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Support prioritaire</li>
+                </ul>
+                <a href="#contact" className="service-card__cta service-card__cta--primary">Choisir Pro</a>
+              </article>
+            </div>
+
+            <div className="services__grid" style={{gridTemplateColumns: 'repeat(2, 1fr)'}}>
+              <article className="service-card" data-reveal>
+                <div className="service-card__header">
+                  <h3 className="service-card__title">Shopshots</h3>
+                  <p className="service-card__subtitle">Visuels produit générés par IA</p>
+                </div>
+                <div className="service-card__price">
+                  <span className="service-card__price-value">9€</span>
+                  <span className="service-card__price-period">à partir de / pack 10 visuels</span>
+                </div>
+                <ul className="service-card__features">
+                  <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Pack 10 visuels : 9€</li>
+                  <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Pack 30 visuels : 19€</li>
+                  <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Abo 20 visuels/mois : 29€/mois</li>
+                  <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Qualité HD, usage commercial</li>
+                </ul>
+                <a href="/shopshots" className="service-card__cta service-card__cta--secondary">Essayer Shopshots</a>
+              </article>
+              <article className="service-card" data-reveal data-reveal-delay="200">
+                <div className="service-card__header">
+                  <h3 className="service-card__title">Création de contenu</h3>
+                  <p className="service-card__subtitle">Vidéo, photo, réseaux sociaux, IA</p>
+                </div>
+                <div className="service-card__price">
+                  <span className="service-card__price-value">Sur devis</span>
+                  <span className="service-card__price-period">service sur mesure</span>
+                </div>
+                <ul className="service-card__features">
+                  <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Vidéos, photos, contenu réseaux</li>
+                  <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Automatisation IA</li>
+                  <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Sur mesure pour votre activité</li>
+                </ul>
+                <a href="#contact" className="service-card__cta service-card__cta--secondary">Demander un devis</a>
+              </article>
             </div>
           </div>
         </section>
@@ -309,9 +356,9 @@ export default function Landing() {
           <div className="cta-section__bg"></div>
           <div className="cta-section__glow"></div>
           <div className="cta-section__content" data-reveal>
-            <h2 className="cta-section__title">Prêt à optimiser votre présence digitale ?</h2>
-            <p className="cta-section__subtitle">Échange gratuit de 30 min. On parle de votre projet, sans jargon.</p>
-            <a href="#contact" className="cta-section__btn">Réserver mon appel <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            <h2 className="cta-section__title">Prêt à passer au digital ?</h2>
+            <p className="cta-section__subtitle">15 min pour comprendre vos besoins. On parle de votre commerce, pas de tech.</p>
+            <a href="#contact" className="cta-section__btn">Parlons de votre projet <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
           </div>
         </section>
 
@@ -336,7 +383,8 @@ export default function Landing() {
                     <select className="form__select" id="business" name="business" required>
                       <option value="">Sélectionner</option>
                       <option value="restaurant">Restaurant / Traiteur</option>
-                      <option value="artisan">Artisan (plombier, électricien...)</option>
+                      <option value="cave-epicerie">Cave à vin / Épicerie fine</option>
+                      <option value="artisan">Artisan</option>
                       <option value="commerce">Commerce local</option>
                       <option value="service">Prestataire de service</option>
                       <option value="autre">Autre</option>
@@ -346,9 +394,10 @@ export default function Landing() {
                     <label className="form__label" htmlFor="offer">Offre qui vous intéresse</label>
                     <select className="form__select" id="offer" name="offer">
                       <option value="">Sélectionner</option>
-                      <option value="assistant">Assistant Yuca (490€)</option>
-                      <option value="essentiel">Essentiel (590€)</option>
-                      <option value="pro-ia">Pro + Assistant Yuca (990€)</option>
+                      <option value="digital-essentiel">Yuca Digital Essentiel (590€ + 49€/mois)</option>
+                      <option value="digital-pro">Yuca Digital Pro (590€ + 79€/mois)</option>
+                      <option value="shopshots">Shopshots (visuels IA)</option>
+                      <option value="contenu">Création de contenu (sur devis)</option>
                       <option value="ne-sait-pas">Je ne sais pas encore</option>
                     </select>
                   </div>
@@ -376,7 +425,7 @@ export default function Landing() {
           </nav>
         </div>
           <div className="footer__bottom">
-            <p>© <span id="year"></span> Yuca. Sites web & Assistant personnalisé </p>
+            <p>© <span id="year"></span> Yuca. Votre partenaire digital complet.</p>
             <div className="footer__social">
                 {/* LinkedIn hidden for now */}
                 <a href="https://www.instagram.com/madebyyuca/" target="_blank" rel="noopener noreferrer" className="footer__social-link" aria-label="Instagram">
