@@ -1,5 +1,15 @@
 import { NextResponse } from 'next/server';
 
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 function isAllowedOrigin(origin) {
   return (
     !origin ||
@@ -56,15 +66,15 @@ export async function POST(req) {
       body: JSON.stringify({
         sender: { name: 'Yuca Site', email: 'yuca.consulting@gmail.com' },
         to: [{ email: 'yuca.consulting@gmail.com' }],
-        subject: `🎯 Nouveau lead Yuca : ${name}`,
+        subject: `🎯 Nouveau lead Yuca : ${escapeHtml(name)}`,
         htmlContent: `
                     <h2>Nouveau lead !</h2>
-                    <p><strong>Nom :</strong> ${name}</p>
-                    <p><strong>Email :</strong> ${email}</p>
-                    <p><strong>Téléphone :</strong> ${phone || 'Non renseigné'}</p>
-                    <p><strong>Activité :</strong> ${business || 'Non renseignée'}</p>
-                    <p><strong>Projet :</strong> ${project || 'Non renseignée'}</p>
-                    <p><strong>Source :</strong> ${source || 'Site'}</p>
+                    <p><strong>Nom :</strong> ${escapeHtml(name)}</p>
+                    <p><strong>Email :</strong> ${escapeHtml(email)}</p>
+                    <p><strong>Téléphone :</strong> ${escapeHtml(phone) || 'Non renseigné'}</p>
+                    <p><strong>Activité :</strong> ${escapeHtml(business) || 'Non renseignée'}</p>
+                    <p><strong>Projet :</strong> ${escapeHtml(project) || 'Non renseignée'}</p>
+                    <p><strong>Source :</strong> ${escapeHtml(source) || 'Site'}</p>
                 `
       })
     });
