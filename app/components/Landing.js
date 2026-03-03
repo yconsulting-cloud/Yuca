@@ -40,12 +40,12 @@ export default function Landing() {
           <div className="hero__grid"></div>
           <div className="hero__glow"></div>
           <div className="hero__content">
-            <div className="hero__badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> Partenaire digital complet</div>
-            <h1 className="hero__title">Votre <span className="hero__title-gradient">partenaire digital</span> complet.<br/>Site, chatbot, visuels, contenu.</h1>
-            <p className="hero__subtitle">Restaurateurs, caves à vin, épiceries fines, artisans : on gère tout pour vous. Un écosystème digital qui travaille pendant que vous servez vos clients.</p>
+            <div className="hero__badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> Pour restaurateurs, caves à vin &amp; artisans</div>
+            <h1 className="hero__title">Le digital ?<br/><span className="hero__title-gradient">On s'en charge.</span></h1>
+            <p className="hero__subtitle">Site web pro, chatbot IA 24/7, visuels produit et contenu — on prend en charge votre présence en ligne. Vous vous concentrez sur vos clients, on s'occupe du reste.</p>
             <div className="hero__ctas">
-              <a href="#contact" className="hero__cta hero__cta--primary">Demander un devis gratuit <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-              <a href="#services" className="hero__cta hero__cta--secondary">Découvrir nos offres</a>
+              <a href="#contact" className="hero__cta hero__cta--primary">Obtenir mon devis gratuit <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+              <a href="#services" className="hero__cta hero__cta--secondary">Voir les offres</a>
             </div>
             <div className="hero__stats">
               <div className="hero__stat"><span className="hero__stat-value">590<span>€</span></span><span className="hero__stat-label">Setup tout compris</span></div>
