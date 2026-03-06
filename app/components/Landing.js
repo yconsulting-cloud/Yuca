@@ -79,7 +79,7 @@ export default function Landing() {
             <picture>
               <source srcSet="/images/hero-dashboard.avif" type="image/avif" />
               <source srcSet="/images/hero-dashboard.webp" type="image/webp" />
-              <img className="hero__visual-img" src="/images/hero-dashboard.jpg" alt="Dashboard Yuca" width="600" height="380" loading="eager" fetchpriority="high" />
+              <img className="hero__visual-img" src="/images/hero-dashboard.jpg" alt="Interface Yuca Digital, site web et assistant IA pour commerce local" width="600" height="380" loading="eager" fetchpriority="high" />
             </picture>
             <div className="hero__visual-float hero__visual-float--1">
               <svg className="hero__visual-float-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
@@ -158,7 +158,7 @@ export default function Landing() {
                 <picture>
                   <source srcSet="/images/assistant.avif" type="image/avif" />
                   <source srcSet="/images/assistant.webp" type="image/webp" />
-                  <img className="image-text__img" src="/images/assistant.jpg" alt="Assistant conversationnel Yuca" width="700" height="467" loading="lazy" />
+                  <img className="image-text__img" src="/images/assistant.jpg" alt="Chatbot IA Yuca répondant aux clients d'un restaurant 24h/24" width="700" height="467" loading="lazy" />
                 </picture>
                 <div className="image-text__float image-text__float--stats">
                   <span className="image-text__float-value">24/7</span>
@@ -188,7 +188,7 @@ export default function Landing() {
                 <picture>
                   <source srcSet="/images/site.avif" type="image/avif" />
                   <source srcSet="/images/site.webp" type="image/webp" />
-                  <img className="image-text__img" src="/images/site.jpg" alt="Site web professionnel" width="700" height="467" loading="lazy" />
+                  <img className="image-text__img" src="/images/site.jpg" alt="Site web sur mesure créé par Yuca pour un commerce local" width="700" height="467" loading="lazy" />
                 </picture>
               </div>
               <div className="image-text__content">
