@@ -5,7 +5,25 @@ import { useEffect } from 'react';
 export default function ChatWidget() {
   useEffect(() => {
     // Ported/adapted chat logic from original landing page to keep identical behavior
-    const SYSTEM_PROMPT = `Vous êtes l'assistant Yuca...`;
+    const SYSTEM_PROMPT = `Bonjour — comment puis-je vous aider aujourd'hui ?
+  Je peux vous présenter nos offres, générer des visuels produit, ou répondre à vos questions.
+
+  Vous êtes l'assistant Yuca, le partenaire digital complet pour les commerces locaux (restaurateurs, caves à vin, épiceries fines, artisans, commerçants). Présentez-vous comme un conseiller de Yuca : chaleureux, direct, anti-corporate, orienté résultat et prêt à accompagner le client.
+
+  Offres Yuca :
+  1. **Yuca Digital** — Site sur mesure + chatbot IA 24/7 + Google My Business + emailing Brevo. Setup 590€, abonnement à partir de 49€/mois (Essentiel) ou 79€/mois (Pro avec campagne email/mois + gestion avis Google + rapport mensuel).
+  2. **Shopshots** — Visuels produit IA en self-service. Pack 10 visuels : 9€, Pack 30 visuels : 19€, Abo 20 visuels/mois : 29€/mois.
+  3. **Création de contenu** — Vidéos, photos, réseaux sociaux, automatisation IA. Sur devis.
+
+  Règles importantes :
+  - Insistez sur "on gère tout pour vous", le côté récurrent de l'abo, le fait que le restaurateur/commerçant n'a rien à faire.
+  - Argument clé : "moins cher qu'un plat du jour par jour".
+  - Logique escalier : le client découvre Yuca via le site → a besoin de visuels (Shopshots) → veut du contenu régulier.
+  - Si l'utilisateur demande des photos produit, incluez [ACTION:GENERATE_PHOTOS: courte description] et proposez Shopshots.
+  - Si l'utilisateur souhaite être recontacté, incluez [ACTION:CONTACT_FORM].
+  - Donnez des suggestions concrètes et pratiques.
+
+  Ton : chaleureux, direct, anti-corporate, orienté résultat. Cible : restaurateurs, caves à vin, épiceries fines, artisans, commerces locaux.`;
     const DISPOSABLE_EMAILS = ['mailinator.com','tempmail'];
 
     const state = { isOpen: false, messages: [], isLoading: false, hasWelcome: false, msgTimestamps: [], isLimited: false, limitEnd: 0, formOpened: null, formSent: false };
@@ -41,7 +59,7 @@ export default function ChatWidget() {
     function alreadySent(){ try { return localStorage.getItem('yuca_sent') === '1'; } catch { return state.formSent; } }
     function markSent(){ state.formSent = true; try{ localStorage.setItem('yuca_sent','1'); } catch{} }
     function esc(t){ const d = document.createElement('div'); d.textContent = t; return d.innerHTML; }
-    function fmt(t){ return t.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>'); }
+    function fmt(t){ return esc(t).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>'); }
     function scroll(){ if(msgBox) msgBox.scrollTop = msgBox.scrollHeight; }
 
     function addBot(txt, sugg = null){ if(!msgBox) return; const div = document.createElement('div'); div.className='yuca-message yuca-message--bot';
@@ -55,7 +73,7 @@ export default function ChatWidget() {
 
     function addUser(txt){ if(!msgBox) return; const div = document.createElement('div'); div.className='yuca-message yuca-message--user'; div.innerHTML = `<div class="yuca-message-avatar">👤</div><div class="yuca-message-content">${esc(txt)}</div>`; msgBox.appendChild(div); scroll(); state.messages.push({ role: 'user', content: txt }); }
 
-    function addSys(txt, err = false){ if(!msgBox) return; const div = document.createElement('div'); div.className = `yuca-message yuca-message--system ${err ? 'error' : ''}`; div.innerHTML = `<div class="yuca-message-content">${txt}</div>`; msgBox.appendChild(div); scroll(); }
+    function addSys(txt, err = false){ if(!msgBox) return; const div = document.createElement('div'); div.className = `yuca-message yuca-message--system ${err ? 'error' : ''}`; div.innerHTML = `<div class="yuca-message-content">${esc(txt)}</div>`; msgBox.appendChild(div); scroll(); }
 
     function showTyping(){ if(!msgBox) return; const div = document.createElement('div'); div.className = 'yuca-message yuca-message--bot'; div.id = 'typing'; div.innerHTML = `<div class="yuca-message-avatar">Y</div><div class="yuca-typing"><span></span><span></span><span></span></div>`; msgBox.appendChild(div); scroll(); }
     function hideTyping(){ document.getElementById('typing')?.remove(); }
@@ -63,7 +81,7 @@ export default function ChatWidget() {
     async function callAPI(msg){
       try{
         const msgs = state.messages.map(m => ({ role: m.role, content: m.content }));
-        const res = await fetch('https://yuca-api.vercel.app/api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 1000, system: SYSTEM_PROMPT, messages: msgs }) });
+        const res = await fetch('/api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 1000, system: SYSTEM_PROMPT, messages: msgs }) });
         if(!res.ok) throw new Error('API error');
         const data = await res.json(); return data.content?.[0]?.text || '';
       }catch(e){ throw e; }
@@ -76,18 +94,30 @@ export default function ChatWidget() {
       input.value = ''; input.disabled = true; sendBtn.disabled = true; state.isLoading = true;
       addUser(content); showTyping();
       try{
-        let resp = await callAPI(content); hideTyping(); let sugg = null, showForm = false;
+        let resp = await callAPI(content); hideTyping(); let sugg = null, showForm = false, showGenerate = false, genDesc = null;
         if(resp.includes('[ACTION:CONTACT_FORM]')){ showForm = true; resp = resp.replace('[ACTION:CONTACT_FORM]','').trim(); }
+        const genMatch = resp.match(/\[ACTION:GENERATE_PHOTOS(?::([^\]]+))?\]/);
+        if(genMatch){ showGenerate = true; genDesc = genMatch[1] ? genMatch[1].trim() : null; resp = resp.replace(genMatch[0],'').trim(); }
         const m = resp.match(/\[SUGGESTIONS:(.+?)\]/); if(m){ sugg = m[1].split('|').map(s=>s.trim()); resp = resp.replace(m[0],'').trim(); }
         addBot(resp, sugg);
         if(showForm) setTimeout(addForm, 300);
+        if(showGenerate){ // append quick action to last bot message
+          setTimeout(()=>{
+            if(!msgBox) return; const last = msgBox.lastElementChild; if(!last) return;
+            const wrap = document.createElement('div'); wrap.className = 'yuca-generate-photos';
+            const q = genDesc ? encodeURIComponent(genDesc) : '';
+            const href = '/shopshots' + (q ? `?prompt=${q}` : '');
+            wrap.innerHTML = `<div style="margin-top:8px"><a class="yuca-generate-btn" href="${href}">Générer des photos</a></div>`;
+            last.appendChild(wrap);
+          }, 200);
+        }
       }catch(e){ hideTyping(); addBot(`Désolé, problème technique. Contactez-moi via contact@madebyyuca.com`, ['Réessayer','Voir les tarifs']); }
       state.isLoading = false; input.disabled = false; sendBtn.disabled = false; input.focus();
     }
 
     function addForm(){ if(!msgBox) return; if(alreadySent()){ addBot(`Vous avez déjà envoyé une demande. Je vous recontacte bientôt !`, ['Comment ça marche ?','Voir les tarifs']); return; }
       state.formOpened = Date.now(); const div = document.createElement('div'); div.className = 'yuca-message yuca-message--bot';
-      div.innerHTML = `<div class="yuca-message-avatar">Y</div><div><div class="yuca-contact-form" id="cForm"><h4>📞 Demande de contact</h4><div class="yuca-hp"><input type="text" id="cfHp" tabindex="-1" autocomplete="off"></div><div class="yuca-cf-group"><label>Nom *</label><input type="text" id="cfName" placeholder="Votre nom"></div><div class="yuca-cf-group"><label>Email *</label><input type="email" id="cfEmail" placeholder="votre@email.com"><div class="yuca-cf-error" id="cfErr"></div></div><div class="yuca-cf-group"><label>Téléphone</label><input type="tel" id="cfPhone" placeholder="06 XX XX XX XX"></div><div class="yuca-cf-group"><label>Activité</label><select id="cfBiz"><option value="">Sélectionner...</option><option value="restaurant">Restaurant</option><option value="artisan">Artisan</option><option value="commerce">Commerce</option><option value="service">Service</option><option value="autre">Autre</option></select></div><button class="yuca-cf-submit" id="cfSend">Envoyer</button></div></div>`;
+      div.innerHTML = `<div class="yuca-message-avatar">Y</div><div><div class="yuca-contact-form" id="cForm"><h4>📞 Demande de contact</h4><div class="yuca-hp"><input type="text" id="cfHp" tabindex="-1" autocomplete="off"></div><div class="yuca-cf-group"><label>Nom *</label><input type="text" id="cfName" placeholder="Votre nom"></div><div class="yuca-cf-group"><label>Email *</label><input type="email" id="cfEmail" placeholder="votre@email.com"><div class="yuca-cf-error" id="cfErr"></div></div><div class="yuca-cf-group"><label>Téléphone</label><input type="tel" id="cfPhone" placeholder="06 XX XX XX XX"></div><div class="yuca-cf-group"><label>Activité</label><select id="cfBiz"><option value="">Sélectionner...</option><option value="restaurant">Restaurant / Traiteur</option><option value="cave-epicerie">Cave à vin / Épicerie</option><option value="artisan">Artisan</option><option value="commerce">Commerce local</option><option value="service">Service</option><option value="autre">Autre</option></select></div><button class="yuca-cf-submit" id="cfSend">Envoyer</button></div></div>`;
       msgBox.appendChild(div); scroll();
       document.getElementById('cfSend')?.addEventListener('click', submitForm);
       document.getElementById('cfEmail')?.addEventListener('blur', function(){ const e = this.value.trim(), err = document.getElementById('cfErr'); if(e && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)){ this.classList.add('error'); err.textContent='Email invalide'; err.style.display='block'; } else { this.classList.remove('error'); err.style.display='none'; } });
@@ -100,11 +130,11 @@ export default function ChatWidget() {
       if(!name || !email){ addSys('Nom et email requis.', true); return; }
       if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ document.getElementById('cfEmail')?.classList.add('error'); document.getElementById('cfErr').textContent='Email invalide'; document.getElementById('cfErr').style.display='block'; return; }
       markSent();
-      fetch('https://yuca-api.vercel.app/api/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name, email, phone, business: biz, project:'chatbot', source: 'chatbot' }) });
+      fetch('/api/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name, email, phone, business: biz, project:'chatbot', source: 'chatbot' }) });
       btn.disabled = true; btn.textContent = '✓ Envoyé !'; btn.classList.add('success'); form.classList.add('disabled'); setTimeout(()=>addBot(`Merci ${name} ! 🎉 Je vous recontacte sous 24h.`, ['Comment ça marche ?','Voir les tarifs']),500);
     }
 
-    function toggleChat(){ state.isOpen = !state.isOpen; if(trigger) trigger.dataset.open = state.isOpen; if(chatWin) chatWin.classList.toggle('open', state.isOpen); badge?.classList.remove('show'); if(state.isOpen && !state.hasWelcome){ state.hasWelcome = true; setTimeout(()=>{ const h = new Date().getHours(); addBot(`${h>=18 ? 'Bonsoir' : 'Bonjour'} ! 👋 Je suis l'assistant Yuca. Comment puis-je vous aider ?`, ['Je veux un site','Voir les tarifs','C\'est quoi Yuca ?']); }, 400); } if(state.isOpen) setTimeout(()=> input?.focus(),300); }
+    function toggleChat(){ state.isOpen = !state.isOpen; if(trigger) trigger.dataset.open = state.isOpen; if(chatWin) chatWin.classList.toggle('open', state.isOpen); badge?.classList.remove('show'); if(state.isOpen && !state.hasWelcome){ state.hasWelcome = true; setTimeout(()=>{ const h = new Date().getHours(); addBot(`${h>=18 ? 'Bonsoir' : 'Bonjour'} ! 👋 Je suis l'assistant Yuca. Comment puis-je vous aider ?`, ['Découvrir les offres','Voir les tarifs','Générer des visuels']); }, 400); } if(state.isOpen) setTimeout(()=> input?.focus(),300); }
 
     async function sendWrapper(txt){ await send(txt); }
 

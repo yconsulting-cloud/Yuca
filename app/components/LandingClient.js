@@ -87,7 +87,7 @@ export default function LandingClient() {
         const biz = document.getElementById('business')?.value || '';
         const offer = document.getElementById('offer')?.value || '';
         const project = document.getElementById('project')?.value || '';
-        fetch('https://yuca-api.vercel.app/api/lead', {
+        fetch('/api/lead', {
           method: 'POST', headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ name, email, phone, business: biz, offer, project, source: 'form' })
         }).catch(() => {});

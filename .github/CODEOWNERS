@@ -1,0 +1,21 @@
+## CODEOWNERS
+# Specify GitHub usernames or teams who must review changes to these paths.
+# IMPORTANT: replace `@REPLACE_WITH_GITHUB_USERNAME` with your actual GitHub username
+# or an organization team (eg `@org/team`).
+
+# Critical site/app code — require review
+/app/ @REPLACE_WITH_GITHUB_USERNAME
+/public/ @REPLACE_WITH_GITHUB_USERNAME
+
+# Shopshots UI and generation logic
+/app/shopshots/ @REPLACE_WITH_GITHUB_USERNAME
+
+# Static published demo pages
+/public/yuca/ @REPLACE_WITH_GITHUB_USERNAME
+
+# Content and legal files
+/README.md @REPLACE_WITH_GITHUB_USERNAME
+/DEPLOYMENT.md @REPLACE_WITH_GITHUB_USERNAME
+
+# All other files (optional)
+# * @REPLACE_WITH_GITHUB_USERNAME

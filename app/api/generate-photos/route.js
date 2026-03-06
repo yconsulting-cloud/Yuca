@@ -62,7 +62,7 @@ export async function POST(req) {
       );
     }
 
-    const { imageData, description, count } = await req.json();
+    const { imageData, description, count, productNameExact } = await req.json();
 
     // 2. VALIDATION STRICTE
     if (!imageData || !description) {
@@ -94,6 +94,14 @@ export async function POST(req) {
     if (description.length < 5 || description.length > 500) {
       return NextResponse.json(
         { error: 'Description invalide (5-500 caractères)' },
+        { status: 400 }
+      );
+    }
+
+    // productNameExact if present should not be empty and used verbatim
+    if (productNameExact && (productNameExact.length < 1 || productNameExact.length > 200)) {
+      return NextResponse.json(
+        { error: 'productNameExact invalide (1-200 caractères)' },
         { status: 400 }
       );
     }
@@ -131,7 +139,12 @@ export async function POST(req) {
     // Générer les photos using official Fal client (queue/subscribe flow)
     for (let i = 0; i < selectedTemplates.length; i++) {
       const template = selectedTemplates[i];
-      const fullPrompt = template.prompt.replace('{product}', description) + '\n\nIMPORTANT: Preserve the main object exactly as in the provided image. Do not change its shape, color, texture, or details. Only change the background and scene around the object to match the described setting.';
+      // Prefer an explicit exact product name if provided by the client
+      const exactName = productNameExact && productNameExact.trim().length > 0 ? productNameExact : description;
+      // Wrap the product literal in guillemets to discourage any auto-translation/normalization
+      const productLiteral = `«${exactName}»`;
+      const replaced = template.prompt.replace('{product}', productLiteral);
+      const fullPrompt = replaced + '\n\nIMPORTANT: Preserve the main object exactly as in the provided image. Do not change its shape, color, texture, or details. Only change the background and scene around the object to match the described setting. Do NOT translate, normalize, anglicize, alter spelling, remove diacritics, or otherwise modify the product name/term provided by the user; use it VERBATIM as: ' + productLiteral + " (exact match, case and accents preserved).";
 
       try {
         const subResult = await fal.subscribe('fal-ai/flux-2-pro/edit', {

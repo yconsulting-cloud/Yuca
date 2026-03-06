@@ -9,7 +9,7 @@ import JSZip from 'jszip';
 const PLANS = [
   {
     id: 'pack-3',
-    name: 'Pack Découverte',
+    name: 'Essai gratuit',
     images: 3,
     price: 0,
     priceId: null,
@@ -18,30 +18,31 @@ const PLANS = [
   },
   {
     id: 'pack-10',
-    name: 'Pack Essentiel',
+    name: 'Pack 10 visuels',
     images: 10,
-    price: 14.99,
+    price: 9,
     priceId: 'price_xxx',
     popular: false,
     locked: true,
   },
   {
-    id: 'pack-25',
-    name: 'Pack Professionnel',
-    images: 25,
-    price: 29.99,
+    id: 'pack-30',
+    name: 'Pack 30 visuels',
+    images: 30,
+    price: 19,
     priceId: 'price_xxx',
     popular: true,
     locked: true,
   },
   {
-    id: 'pack-50',
-    name: 'Pack Premium',
-    images: 50,
-    price: 49.99,
+    id: 'abo-20',
+    name: 'Abo 20 visuels/mois',
+    images: 20,
+    price: 29,
     priceId: 'price_xxx',
     popular: false,
     locked: true,
+    isSubscription: true,
   },
 ];
 
@@ -54,6 +55,9 @@ export default function ShopshotsClient() {
   const [generatedImages, setGeneratedImages] = useState([]);
   const [progress, setProgress] = useState(0);
   const [error, setError] = useState(null);
+  const [preserveThreshold, setPreserveThreshold] = useState(() => {
+    try { const v = localStorage.getItem('yuca_preserve_threshold'); return v ? Number(v) : 0.08; } catch (e) { return 0.08; }
+  });
   const fileInputRef = useRef(null);
   const progressFillRef = useRef(null);
 
@@ -90,16 +94,91 @@ export default function ShopshotsClient() {
   };
 
   const generatePhotos = async () => {
-    setIsGenerating(true); setProgress(5); setGeneratedImages([]); setError(null);
-    let prog = 5; const progInterval = setInterval(() => { prog = Math.min(90, prog + Math.random() * 8); setProgress(prog); }, 700);
+    setIsGenerating(true);
+    setProgress(3);
+    setGeneratedImages([]);
+    setError(null);
+
+    let prog = 3;
+    // smoother progression: approach soft cap (97) with decreasing increments
+    const progInterval = setInterval(() => {
+      if (prog >= 97) { prog = 97; setProgress(prog); return; }
+      const delta = prog < 60 ? (1 + Math.random() * 6) : Math.max(0.4, (100 - prog) * 0.03 + Math.random() * 0.6);
+      prog = Math.min(97, Math.round((prog + delta) * 10) / 10);
+      setProgress(prog);
+    }, 400);
+
     try {
       const base64Image = await fileToBase64(productImage);
-      const response = await fetch('/api/generate-photos', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ imageData: base64Image, description: productDescription, count: selectedPlan.images }) });
+      const response = await fetch('/api/generate-photos', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ imageData: base64Image, description: productDescription, productNameExact: productDescription, count: selectedPlan.images }) });
       if (!response.ok) throw new Error('Erreur lors de la génération');
-      const data = await response.json(); setGeneratedImages(data.images); setProgress(100);
-    } catch (err) { console.error('Generation error:', err); setError('Une erreur est survenue. Réessayez.'); }
-    finally { clearInterval(progInterval); setIsGenerating(false); }
+      const data = await response.json();
+      // ensure a visible transition to 100%
+      setProgress(99);
+      setTimeout(() => setProgress(100), 250);
+
+      // Post-check: ensure product preserved — annotate each image with `preserved`
+      const imagesIn = data.images || [];
+      const annotated = await Promise.all(imagesIn.map(async (it) => {
+        const preserved = await checkPreservation(productImagePreview, it.url).catch((e) => {
+          console.warn('Preservation check failed (CORS or error), assuming preserved', e);
+          return true; // if we cannot check, assume preserved to avoid false negatives
+        });
+        return { ...it, preserved };
+      }));
+
+      setGeneratedImages(annotated);
+    } catch (err) {
+      console.error('Generation error:', err);
+      setError('Une erreur est survenue. Réessayez.');
+      setProgress(0);
+    } finally {
+      clearInterval(progInterval);
+      setIsGenerating(false);
+    }
   };
+
+  // Check if generated image preserved the main object compared to original
+  async function checkPreservation(originalDataUrl, generatedUrl) {
+    if (!originalDataUrl || !generatedUrl) return true;
+    // load images
+    const loadImage = (src) => new Promise((resolve, reject) => {
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
+      img.onload = () => resolve(img);
+      img.onerror = (e) => reject(e);
+      img.src = src;
+    });
+
+    const [origImg, genImg] = await Promise.all([loadImage(originalDataUrl), loadImage(generatedUrl)]);
+
+    // compare resized to 256x256 to be fast
+    const W = 256, H = 256;
+    const c1 = document.createElement('canvas'); c1.width = W; c1.height = H;
+    const c2 = document.createElement('canvas'); c2.width = W; c2.height = H;
+    const ctx1 = c1.getContext('2d'); const ctx2 = c2.getContext('2d');
+    // draw fit
+    ctx1.drawImage(origImg, 0, 0, W, H);
+    ctx2.drawImage(genImg, 0, 0, W, H);
+
+    // get pixels
+    const d1 = ctx1.getImageData(0,0,W,H).data;
+    const d2 = ctx2.getImageData(0,0,W,H).data;
+
+    let diffCount = 0; const total = W * H;
+    for (let i = 0; i < d1.length; i += 4) {
+      const dr = Math.abs(d1[i] - d2[i]);
+      const dg = Math.abs(d1[i+1] - d2[i+1]);
+      const db = Math.abs(d1[i+2] - d2[i+2]);
+      const delta = dr + dg + db; // 0-765
+      if (delta > 60) diffCount++; // pixel considered changed if combined channel diff > 60
+    }
+
+    const pct = diffCount / total;
+    // use adjustable threshold (preserveThreshold) — allow small lighting/background edits
+    const threshold = typeof preserveThreshold === 'number' && !Number.isNaN(preserveThreshold) ? preserveThreshold : 0.12;
+    return pct <= threshold;
+  }
 
   const fileToBase64 = (file) => new Promise((resolve, reject) => { const reader = new FileReader(); reader.onloadend = () => resolve(reader.result); reader.onerror = reject; reader.readAsDataURL(file); });
 
@@ -135,11 +214,10 @@ export default function ShopshotsClient() {
         <div className="hero__glow"></div>
         <div className="hero__content container">
           <div className="hero__badge" style={{display:'none'}}></div>
-          <h1 className="hero__title">Transformez votre photo en <span className="hero__title-gradient">dizaines de variantes</span></h1>
-          <p className="hero__subtitle">Téléchargez une photo, obtenez des images professionnelles pour votre e‑commerce et réseaux sociaux en quelques minutes.</p>
+          <h1 className="hero__title">Vos visuels produit en <span className="hero__title-gradient">quelques clics</span></h1>
+          <p className="hero__subtitle">Téléchargez une photo, obtenez des packshots professionnels pour votre e-commerce, fiches produit et réseaux sociaux. À partir de 9€.</p>
           <div className="hero__ctas">
-            <button className="hero__cta hero__cta--primary btn btn-accent" onClick={() => fileInputRef.current?.click()}>Téléverser une photo</button>
-            <button className="hero__cta hero__cta--secondary btn btn-outline" onClick={() => window.location.href = '/#faq'}>Comment ça marche</button>
+            <button className="hero__cta hero__cta--primary btn btn-accent" onClick={() => fileInputRef.current?.click()}>Commencer</button>
           </div>
         </div>
       </section>
@@ -152,10 +230,17 @@ export default function ShopshotsClient() {
             {PLANS.map((plan) => (
               <div key={plan.id} onClick={() => handleSelectPlan(plan)} className={`plan-card ${plan.locked ? 'locked' : ''} ${selectedPlan.id === plan.id ? 'selected' : ''}`}>
                 {plan.popular && <div className="badge-popular">POPULAIRE</div>}
-                {plan.locked && <div className="badge-soon">BIENTÔT</div>}
+                {plan.locked && (
+                  <div className="badge-lock" aria-hidden>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <rect x="3" y="11" width="18" height="10" rx="2" stroke="currentColor" strokeWidth="1.5" fill="none" />
+                      <path d="M7 11V8a5 5 0 0 1 10 0v3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                    </svg>
+                  </div>
+                )}
                 <div>
                   <h4 className="plan-name">{plan.name}</h4>
-                  <div className="plan-price">{plan.price === 0 ? 'GRATUIT' : `${plan.price}€`}</div>
+                  <div className="plan-price">{plan.price === 0 ? 'GRATUIT' : `${plan.price}€${plan.isSubscription ? '/mois' : ''}`}</div>
                   <p className="plan-desc">{plan.images} photos professionnelles</p>
                   <ul className="plan-features"><li>✓ Différents arrière-plans</li><li>✓ Qualité HD</li><li>✓ Téléchargement ZIP</li><li>✓ Utilisation commerciale</li></ul>
                 </div>
@@ -184,21 +269,36 @@ export default function ShopshotsClient() {
 
         {error && <div className="error-box">⚠️ {error}</div>}
 
+        {isGenerating && (
+          <div className="progress-card progress-top">
+            <div className="progress-bar" aria-hidden="true"><div className="progress-fill" ref={progressFillRef} style={{width: `${progress}%`}} /></div>
+            <p className="progress-text">Génération des photos... {Math.round(progress)}%</p>
+          </div>
+        )}
+
         <div className="generate-wrap">
           <button onClick={handleGenerate} disabled={isGenerating || !productImage || !productDescription.trim()} className={`generate-btn ${isGenerating || !productImage || !productDescription.trim() ? 'disabled' : 'enabled'}`}>
-            {isGenerating ? <span className="btn-loading"><span className="spinner" />Génération en cours...</span> : `Générer ${selectedPlan.images} photos ${selectedPlan.price > 0 ? `(${selectedPlan.price}€)` : '(Gratuit)'} `}
+            {isGenerating ? <span className="btn-loading"><span className="spinner" />Génération en cours...</span> : `Générer ${selectedPlan.images} photos ${selectedPlan.price > 0 ? `(${selectedPlan.price}€${selectedPlan.isSubscription ? '/mois' : ''})` : '(Gratuit)'} `}
           </button>
           {selectedPlan.price === 0 && <p className="generate-note">🎉 Pack gratuit pour tester le service !</p>}
         </div>
 
-        {isGenerating && (
-          <div className="progress-card"><div className="progress-bar"><div className="progress-fill" ref={progressFillRef} /></div><p className="progress-text">Génération des photos... {Math.round(progress)}%</p></div>
-        )}
+        <div className="preserve-control">
+          <label>Seuil de préservation du produit: <strong>{Math.round(preserveThreshold * 100)}%</strong></label>
+          <input type="range" min="0" max="20" step="1" value={Math.round(preserveThreshold * 100)} onChange={(e)=>{ const v = Number(e.target.value)/100; setPreserveThreshold(v); try{ localStorage.setItem('yuca_preserve_threshold', String(v)); }catch{} }} />
+        </div>
 
         {generatedImages.length > 0 && (
           <div className="generated-card">
             <div className="generated-header"><h3 className="generated-title">Vos photos sont prêtes ! 🎉</h3><button onClick={downloadAllAsZip} className="download-btn">📥 Télécharger tout (ZIP)</button></div>
-            <div className="image-grid">{generatedImages.map((img, index) => (<div key={index} className="image-tile"><Image src={img.url} alt={`Photo ${index + 1}`} width={400} height={400} /></div>))}</div>
+            <div className="image-grid">{generatedImages.map((img, index) => (
+              <div key={index} className="image-tile">
+                <div className="image-wrap">
+                  <img src={img.url} alt={`Photo ${index + 1}`} onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = '/images/placeholder.png'; }} />
+                  {img.preserved === false && <div className="preserved-badge">Produit modifié</div>}
+                </div>
+              </div>
+            ))}</div>
           </div>
         )}
       </main>
@@ -216,7 +316,7 @@ export default function ShopshotsClient() {
           </nav>
         </div>
           <div className="footer__bottom">
-            <p>© <span id="year"></span> Yuca. Sites web & Assistant personnalisé </p>
+            <p>© <span id="year"></span> Yuca. Votre partenaire digital complet.</p>
             <div className="footer__social">
                 <a href="https://www.instagram.com/madebyyuca/" target="_blank" rel="noopener noreferrer" className="footer__social-link" aria-label="Instagram">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">

@@ -1,7 +1,10 @@
 .shopshots-page{font-family:var(--ff-body)}
 .shopshots-page .site-header{position:absolute;top:0;left:0;right:0;z-index:40;background:transparent;padding:12px 0}
 .shopshots-page .site-header .container{display:flex;justify-content:space-between;align-items:center;gap:var(--sp-4);max-width:var(--max-w);margin:0 auto}
-.shopshots-page .header-left{display:flex;align-items:center;gap:var(--sp-4)}
+.shopshots-page .header-left{display:flex;align-items:center;gap:var(--sp-1)}
+/* align header right links on same line and prevent wrapping */
+.shopshots-page .header-right-links{display:flex;align-items:center;gap:8px;white-space:nowrap}
+.shopshots-page .header-right-links a{white-space:nowrap}
 .shopshots-page .nav-logo{height:28px}
 .shopshots-page .divider-vertical{width:1px;height:28px;background:var(--c-border);opacity:.6;margin:0 12px}
 .shopshots-page .header-sub{font-weight:600;color:var(--c-text-sec)}
@@ -13,7 +16,7 @@
 	flex-direction:column;
 	align-items:center;
 	justify-content:center;
-	padding:var(--sp-24) 0;
+	padding:var(--sp-24) var(--pad);
 	text-align:center;
 	width:100%;
 	max-width:100%;
@@ -85,13 +88,13 @@
 .shopshots-page .section-card{background:var(--c-bg-alt);border-radius:16px;padding:26px;box-shadow:0 10px 30px rgba(2,6,23,0.04);margin:28px 0}
 .shopshots-page .section-title--small{font-size:1.125rem;margin-bottom:12px;font-weight:700}
 .shopshots-page .upload-drop{border:2px dashed rgba(0,0,0,0.06);border-radius:12px;background:transparent;padding:40px;min-height:150px}
-.shopshots-page .upload-drop .upload-emoji{font-size:40px;margin-bottom:10px}
+.shopshots-page .upload-drop .upload-emoji{font-size:48px;margin-bottom:12px;display:flex;align-items:center;justify-content:center}
 .shopshots-page .upload-instruction{color:var(--c-text-sec);margin-bottom:6px}
 .shopshots-page .upload-sub{color:var(--c-text-ter);font-size:.85rem}
 
 /* Plan card exact styling to match reference */
-.shopshots-page .plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-6);align-items:stretch;justify-items:center;grid-auto-rows:1fr}
-.shopshots-page .plan-card{cursor:pointer;padding:28px;border:1px solid rgba(0,0,0,0.06);border-radius:18px;background:#ffffff;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;text-align:left;width:340px;height:100%;box-sizing:border-box;transition:box-shadow .18s,transform .18s;position:relative}
+.shopshots-page .plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-4);align-items:stretch;justify-items:center;grid-auto-rows:1fr}
+.shopshots-page .plan-card{cursor:pointer;padding:18px;border:1px solid rgba(0,0,0,0.06);border-radius:18px;background:#ffffff;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;text-align:left;width:100%;max-width:340px;height:100%;box-sizing:border-box;transition:box-shadow .18s,transform .18s;position:relative;overflow:visible}
 .shopshots-page .plan-card .plan-name{align-self:center;width:100%;text-align:center}
 .shopshots-page .plan-card .plan-price{font-size:2rem;text-align:center;width:100%;margin-top:6px}
 .shopshots-page .plan-card .plan-desc,.shopshots-page .plan-card .plan-features{color:var(--c-text-sec);margin-top:6px}
@@ -103,24 +106,23 @@
 
 /* Badge positions */
 .shopshots-page .badge-popular{position:absolute;left:50%;transform:translateX(-50%);top:-16px;padding:6px 14px;border-radius:9999px;background:linear-gradient(180deg,var(--c-accent),#00c6ea);color:var(--c-bg-dark);font-weight:800;box-shadow:0 6px 20px rgba(0,217,255,0.12);z-index:12}
-.shopshots-page .plan-card .badge-soon{position:absolute;left:16px;top:16px;z-index:11}
+.shopshots-page .plan-card .badge-lock{position:absolute;right:-10px;top:-10px;z-index:20;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:8px;background:#f3f4f6;color:#6b6b6b;font-size:14px;box-shadow:0 8px 18px rgba(2,6,23,0.08);border:1px solid rgba(0,0,0,0.06);transform:rotate(-18deg)}
+.shopshots-page .plan-card .badge-lock svg{width:18px;height:18px}
 
 
 .shopshots-page .plans-section{padding:var(--sp-12) 0}
 .shopshots-page .section-title{text-align:center;margin-bottom:var(--sp-6);font-size:var(--fs-2xl);font-weight:700}
 .shopshots-page .plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-6);align-items:stretch;justify-items:center;grid-auto-rows:1fr}
-.shopshots-page .plan-card{cursor:pointer;padding:var(--sp-6);border:1px solid var(--c-border);border-radius:var(--rad-lg);background:var(--c-bg-alt);display:flex;flex-direction:column;justify-content:space-between;align-items:center;text-align:center;height:100%;width:340px;box-sizing:border-box;transition:box-shadow .2s,transform .18s}
+.shopshots-page .plan-card{cursor:pointer;padding:var(--sp-6);border:1px solid var(--c-border);border-radius:var(--rad-lg);background:var(--c-bg-alt);display:flex;flex-direction:column;justify-content:space-between;align-items:center;text-align:center;height:100%;width:100%;max-width:340px;box-sizing:border-box;transition:box-shadow .2s,transform .18s;overflow:visible}
 .shopshots-page .plan-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
 .shopshots-page .plan-name{font-size:var(--fs-md);font-weight:700;margin-bottom:8px}
 .shopshots-page .plan-price{font-weight:700;color:var(--c-primary);margin-bottom:6px}
 .shopshots-page .plan-card.locked{opacity:0.6}
 .shopshots-page .badge-popular{background:var(--c-accent);color:var(--c-bg-dark);padding:4px 8px;border-radius:9999px;font-weight:700;font-size:.75rem}
-.shopshots-page .badge-soon{background:var(--c-border);color:var(--c-text-sec);padding:4px 8px;border-radius:6px;font-size:.75rem}
-
 .shopshots-page .upload-drop{display:flex;align-items:center;justify-content:center;padding:var(--sp-8);border:1px dashed var(--c-border);border-radius:12px;background:var(--c-bg);flex-direction:column}
 .shopshots-page .upload-drop.has-preview{padding:0}
 .shopshots-page .preview-img{width:100%;height:auto;border-radius:8px}
-.shopshots-page .upload-emoji{font-size:36px;margin-bottom:8px}
+.shopshots-page .preview-img{width:100%;height:auto;border-radius:8px}
 
 .shopshots-page .description-textarea{width:100%;padding:var(--sp-4);border:1px solid var(--c-border);border-radius:8px;min-height:120px}
 
@@ -128,20 +130,54 @@
 .shopshots-page .hidden-file-input{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none}
 
 .shopshots-page .generate-wrap{margin-top:var(--sp-6);display:flex;flex-direction:column;gap:var(--sp-3);align-items:center}
-.shopshots-page .generate-btn{padding:14px 22px;border-radius:9999px;background:var(--c-accent);color:var(--c-bg-dark);font-weight:700;min-width:420px}
+.shopshots-page .generate-btn{padding:14px 22px;border-radius:9999px;background:var(--c-accent);color:var(--c-bg-dark);font-weight:700;width:100%;max-width:420px;box-sizing:border-box}
 .shopshots-page .generate-btn.disabled{background:linear-gradient(180deg,#efefef,#e9ecef);color:var(--c-text-ter);border:1px solid rgba(0,0,0,0.03)}
-
 .shopshots-page .progress-card{margin-top:var(--sp-6);padding:var(--sp-4);border:1px solid var(--c-border);border-radius:12px;background:var(--c-bg-alt)}
+.shopshots-page .progress-card.progress-top{margin-bottom:8px}
+
+/* Progress bar */
+.shopshots-page .progress-bar{height:12px;background:linear-gradient(90deg,rgba(0,0,0,0.04),rgba(0,0,0,0.02));border-radius:999px;overflow:hidden}
+.shopshots-page .progress-fill{height:100%;width:0%;transition:width 420ms cubic-bezier(.22,.9,.3,1);background:linear-gradient(90deg,#00d9ff 0%, #00a8ff 40%, #0077ff 100%);box-shadow:0 6px 24px rgba(0,217,255,0.08);border-radius:999px}
+.shopshots-page .progress-text{font-size:.95rem;margin-top:8px;color:var(--c-text-sec);text-align:center}
+
+/* Download button styling */
+.shopshots-page .download-btn{background:linear-gradient(135deg,#00e0ff,#00a8ff);color:#001;border:none;padding:10px 14px;border-radius:12px;font-weight:800;box-shadow:0 8px 30px rgba(0,160,255,0.12);cursor:pointer}
+.shopshots-page .download-btn:hover{transform:translateY(-2px)}
+
+/* Image grid tweaks */
+.shopshots-page .image-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px}
+.shopshots-page .image-tile{background:#fff;border-radius:12px;padding:8px;display:flex;align-items:center;justify-content:center}
+.shopshots-page .image-tile img{width:100%;height:220px;object-fit:cover;border-radius:8px}
+
+/* preservation badge */
+.shopshots-page .image-wrap{position:relative;width:100%}
+.shopshots-page .preserved-badge{position:absolute;left:8px;top:8px;background:rgba(255,50,50,0.95);color:#fff;padding:6px 8px;border-radius:8px;font-weight:700;font-size:0.85rem;box-shadow:0 6px 18px rgba(0,0,0,0.12)}
+
+/* Preserve threshold control */
+.shopshots-page .preserve-control{margin-top:12px;display:flex;flex-direction:column;gap:6px;align-items:center}
+.shopshots-page .preserve-control label{font-size:.95rem;color:var(--c-text-sec)}
+.shopshots-page .preserve-control input[type="range"]{width:min(320px,100%);max-width:100%}
+
 .shopshots-page .generated-card{margin-top:var(--sp-6)}
 .shopshots-page .image-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:var(--sp-4);align-items:start}
 
-/* badges */
-.shopshots-page .badge-popular{position:absolute;left:50%;transform:translateX(-50%);top:-12px;padding:6px 12px;border-radius:9999px;background:linear-gradient(180deg,var(--c-accent),#00c6ea);color:var(--c-bg-dark);font-weight:800;box-shadow:0 6px 20px rgba(0,217,255,0.12);z-index:12}
-.shopshots-page .badge-soon{position:absolute;left:16px;top:12px;padding:6px 10px;border-radius:8px;background:#fff3cd;color:#856404;border:1px solid rgba(0,0,0,0.04);z-index:11}
+/* badges (defined earlier) */
 
 @media(max-width:900px){
-	.shopshots-page .plans-grid{grid-template-columns:repeat(auto-fit,minmax(220px,1fr));}
-	.shopshots-page .plan-card{width:auto}
+    	.shopshots-page .plans-grid{grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--sp-4)}
+    	.shopshots-page .plan-card{width:auto;padding:14px}
+}
+
+/* Mobile: add safe padding to header, hero text and main container to avoid text touching edges */
+@media(max-width:768px){
+    	.shopshots-page .site-header .container,
+    	.shopshots-page .hero__content,
+    	.shopshots-page .main-container {
+    		padding-left:12px;
+    		padding-right:12px;
+    	}
+    	.shopshots-page .hero { padding-left: 0; padding-right: 0; min-height:40vh }
+    	.shopshots-page .plans-grid{gap:var(--sp-4)}
 }
 
 /* Cookie card tweak to match reference */
