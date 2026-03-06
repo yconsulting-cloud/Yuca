@@ -123,25 +123,25 @@ export default function Landing() {
                 <div className="value-card__icon value-card__icon--amber">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
                 </div>
-                <span className="service-card__tag service-card__tag--tool">Outil en autonomie</span>
+                <span className="service-card__tag service-card__tag--tool">Photos produit · Inclus avec Pro</span>
                 <h3 className="value-card__title">Shopshots</h3>
-                <p className="value-card__desc">Photos produit pro sans studio ni photographe — uploadez une photo, récupérez des visuels prêts à publier. Dès 9€ / 10 visuels.</p>
+                <p className="value-card__desc">Photos produit pro sans studio ni photographe. Uploadez une photo, récupérez des visuels prêts à publier — dès 9€ / pack. Inclus dans Yuca Digital Pro.</p>
                 <a href="/shopshots" className="value-card__link">
                   Essayer Shopshots
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
               </div>
 
-              {/* Création de contenu */}
+              {/* Création de contenu IA */}
               <div className="value-card" data-reveal data-reveal-delay="300">
                 <div className="value-card__icon value-card__icon--purple">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z"/></svg>
                 </div>
-                <span className="service-card__tag service-card__tag--studio">Studio créatif</span>
+                <span className="service-card__tag service-card__tag--studio">Agent IA · Sur invitation</span>
                 <h3 className="value-card__title">Création de contenu</h3>
-                <p className="value-card__desc">Vidéo, photo, réseaux sociaux — un studio créatif dédié à votre marque avec calendrier éditorial et publication inclus.</p>
+                <p className="value-card__desc">Un agent IA sur-mesure qui transforme vos vidéos existantes en contenus prêts à publier — adapté à votre univers visuel, diffusé automatiquement sur vos réseaux.</p>
                 <a href="#contact" className="value-card__link">
-                  Demander un devis
+                  Rejoindre la liste d'attente
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
               </div>
@@ -329,6 +329,7 @@ export default function Landing() {
                   </div>
                   <ul className="service-card__features">
                     <li className="service-card__feature service-card__feature--highlight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Tout l'Essentiel inclus</li>
+                    <li className="service-card__feature service-card__feature--highlight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Shopshots inclus (pack visuels mensuel)</li>
                     <li className="service-card__feature service-card__feature--highlight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> 1 campagne email/mois</li>
                     <li className="service-card__feature service-card__feature--highlight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Gestion des avis Google</li>
                     <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Rapport mensuel de performance</li>
@@ -342,45 +343,48 @@ export default function Landing() {
             {/* Shopshots + Contenu */}
             <div className="pricing__group pricing__group--secondary" data-reveal>
               <div className="pricing__group-header">
-                <span className="pricing__group-tag pricing__group-tag--other">Autres services</span>
+                <span className="pricing__group-tag pricing__group-tag--other">Services additionnels</span>
                 <h3 className="pricing__group-title">Shopshots & Création de contenu</h3>
-                <p className="pricing__group-desc">Utilisables seuls ou en complément de Yuca Digital.</p>
+                <p className="pricing__group-desc">En autonomie ou en complément de Yuca Digital — Shopshots est inclus dans le Pro.</p>
               </div>
               <div className="services__grid services__grid--two">
                 <article className="service-card" data-reveal>
-                  <span className="service-card__tag service-card__tag--tool">Outil en autonomie</span>
+                  <span className="service-card__tag service-card__tag--tool">Photos produit · Inclus avec Pro</span>
                   <div className="service-card__header">
                     <h3 className="service-card__title">Shopshots</h3>
-                    <p className="service-card__subtitle">Photos produit pro — sans studio</p>
+                    <p className="service-card__subtitle">Visuels produit pro — sans studio ni photographe</p>
                   </div>
                   <div className="service-card__price">
                     <span className="service-card__price-value">9€</span>
-                    <span className="service-card__price-period">à partir de / pack 10 visuels</span>
+                    <span className="service-card__price-period">/ pack 10 visuels — ou inclus avec Pro</span>
                   </div>
                   <ul className="service-card__features">
-                    <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Pack 10 visuels : 9€</li>
+                    <li className="service-card__feature service-card__feature--highlight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Inclus dans Yuca Digital Pro</li>
                     <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Pack 30 visuels : 19€</li>
                     <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Abonnement 20 visuels/mois : 29€/mois</li>
                     <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> HD, usage commercial inclus</li>
+                    <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Essai gratuit disponible</li>
                   </ul>
                   <a href="/shopshots" className="service-card__cta service-card__cta--secondary">Essayer Shopshots</a>
                 </article>
                 <article className="service-card" data-reveal data-reveal-delay="200">
-                  <span className="service-card__tag service-card__tag--studio">Studio créatif</span>
+                  <span className="service-card__tag service-card__tag--studio">Agent IA · Sur invitation</span>
                   <div className="service-card__header">
                     <h3 className="service-card__title">Création de contenu</h3>
-                    <p className="service-card__subtitle">Vidéo, photo, réseaux — entièrement géré</p>
+                    <p className="service-card__subtitle">Votre studio créatif IA, à votre disposition</p>
                   </div>
                   <div className="service-card__price">
-                    <span className="service-card__price-value service-card__price-value--text">Sur devis</span>
-                    <span className="service-card__price-period">service sur mesure</span>
+                    <span className="service-card__price-value service-card__price-value--text">Sur invitation</span>
+                    <span className="service-card__price-period">outil sur-mesure · accès limité</span>
                   </div>
                   <ul className="service-card__features">
-                    <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Vidéos & contenus réseaux sociaux</li>
-                    <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Séances photo professionnelles</li>
-                    <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Calendrier éditorial & publication</li>
+                    <li className="service-card__feature service-card__feature--highlight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Agent IA disponible directement sur Telegram</li>
+                    <li className="service-card__feature service-card__feature--highlight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Génère du contenu à partir de vos vidéos</li>
+                    <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Adapté à votre direction artistique</li>
+                    <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Publication automatique sur vos réseaux</li>
+                    <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Outil 100% custom, à votre disposition</li>
                   </ul>
-                  <a href="#contact" className="service-card__cta service-card__cta--secondary">Demander un devis</a>
+                  <a href="#contact" className="service-card__cta service-card__cta--secondary">Rejoindre la liste d'attente</a>
                 </article>
               </div>
             </div>
