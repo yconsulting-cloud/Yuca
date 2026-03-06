@@ -125,7 +125,7 @@ export default function Landing() {
                 </div>
                 <span className="service-card__tag service-card__tag--tool">Photos produit · Inclus avec Pro</span>
                 <h3 className="value-card__title">Shopshots</h3>
-                <p className="value-card__desc">Photos produit pro sans studio ni photographe. Uploadez une photo, récupérez des visuels prêts à publier — dès 9€ / pack. Inclus dans Yuca Digital Pro.</p>
+                <p className="value-card__desc">Photos produit pro sans studio ni photographe. Uploadez une photo, récupérez des visuels prêts à publier — dès 9€ le pack 10, 19€ le pack 30, ou 29€/mois pour 50 visuels. Inclus avec Pro.</p>
                 <a href="/shopshots" className="value-card__link">
                   Essayer Shopshots
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -356,14 +356,14 @@ export default function Landing() {
                   </div>
                   <div className="service-card__price">
                     <span className="service-card__price-value">9€</span>
-                    <span className="service-card__price-period">/ pack 10 visuels — ou inclus avec Pro</span>
+                    <span className="service-card__price-period">/ pack 10 visuels · inclus avec Pro</span>
                   </div>
                   <ul className="service-card__features">
                     <li className="service-card__feature service-card__feature--highlight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Inclus dans Yuca Digital Pro</li>
+                    <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Pack 10 visuels : 9€</li>
                     <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Pack 30 visuels : 19€</li>
-                    <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Abonnement 20 visuels/mois : 29€/mois</li>
+                    <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Abonnement 50 visuels/mois : 29€/mois</li>
                     <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> HD, usage commercial inclus</li>
-                    <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Essai gratuit disponible</li>
                   </ul>
                   <a href="/shopshots" className="service-card__cta service-card__cta--secondary">Essayer Shopshots</a>
                 </article>

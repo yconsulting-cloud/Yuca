@@ -129,7 +129,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%;height:aut
 .service-card__price{margin-bottom:var(--sp-6)}
 .service-card__price-value{font-family:var(--ff-display);font-size:var(--fs-4xl);font-weight:700;color:var(--c-primary);letter-spacing:-.02em}
 .service-card__price-period{font-size:var(--fs-sm);color:var(--c-text-sec)}
-.service-card__price-value--text{font-size:var(--fs-xl)!important;line-height:1.4}
+.service-card__price-value--text{display:block;font-size:var(--fs-2xl)!important;line-height:1.2}
 .service-card__features{flex:1;margin-bottom:var(--sp-8)}
 .service-card__feature{display:flex;align-items:flex-start;gap:var(--sp-3);padding:var(--sp-3) 0;font-size:var(--fs-base);color:var(--c-text-sec);line-height:1.6}
 .service-card__feature svg{flex-shrink:0;width:20px;height:20px;color:var(--c-accent)}
@@ -147,7 +147,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%;height:aut
 /* SERVICE CARD EXTRAS */
 .services__grid--two{grid-template-columns:repeat(2,1fr)}
 .service-card--primary-offer{border-color:var(--c-accent);box-shadow:0 0 0 1px rgba(0,217,255,.15),var(--shadow)}
-.service-card__tag{display:inline-flex;align-items:center;margin-bottom:var(--sp-3);padding:var(--sp-1) var(--sp-3);font-size:var(--fs-xs);font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--c-accent-dark);background:var(--c-accent-muted);border-radius:var(--rad-full)}
+.service-card__tag{display:inline-flex;align-items:center;align-self:flex-start;margin-bottom:var(--sp-3);padding:var(--sp-1) var(--sp-3);font-size:var(--fs-xs);font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--c-accent-dark);background:var(--c-accent-muted);border-radius:var(--rad-full)}
 .service-card__tag--tool{color:#b45309;background:rgba(251,191,36,.12)}
 .service-card__tag--studio{color:#7c3aed;background:rgba(139,92,246,.1)}
 
