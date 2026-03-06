@@ -99,73 +99,52 @@ export default function Landing() {
           <div className="section__header" data-reveal>
             <span className="section__label">Nos expertises</span>
             <h2 className="section__title">Trois façons de briller en ligne</h2>
-            <p className="section__subtitle">Des services distincts, pensés pour compléter votre présence selon vos besoins — ensemble ou séparément.</p>
+            <p className="section__subtitle">Des services complémentaires — à combiner ou utiliser séparément selon votre situation.</p>
           </div>
           <div className="container">
-            <div className="services__grid">
+            <div className="value__grid value__grid--three">
 
               {/* Yuca Digital */}
-              <article className="service-card service-card--primary-offer" data-reveal data-reveal-delay="100">
+              <div className="value-card" data-reveal data-reveal-delay="100">
+                <div className="value-card__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                </div>
                 <span className="service-card__tag">Forfait complet</span>
-                <div className="service-card__header">
-                  <h3 className="service-card__title">Yuca Digital</h3>
-                  <p className="service-card__subtitle">Site sur mesure + assistant + présence Google</p>
-                </div>
-                <div className="service-card__price">
-                  <span className="service-card__price-value">590€</span>
-                  <span className="service-card__price-period">setup + à partir de 49€/mois</span>
-                </div>
-                <ul className="service-card__features">
-                  <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Site web sur mesure, rapide et mobile</li>
-                  <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Assistant disponible 24h/24 pour vos clients</li>
-                  <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Google My Business configuré & optimisé</li>
-                  <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Emailing & alertes clients inclus</li>
-                  <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Maintenance & support inclus</li>
-                </ul>
-                <a href="#tarifs" className="service-card__cta service-card__cta--primary">Voir les formules</a>
-              </article>
+                <h3 className="value-card__title">Yuca Digital</h3>
+                <p className="value-card__desc">Site sur mesure, assistant intelligent et présence Google — tout géré pour vous. Dès 590€ setup + 49€/mois.</p>
+                <a href="#tarifs" className="value-card__link">
+                  Voir les formules
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+              </div>
 
               {/* Shopshots */}
-              <article className="service-card" data-reveal data-reveal-delay="200">
+              <div className="value-card" data-reveal data-reveal-delay="200">
+                <div className="value-card__icon value-card__icon--amber">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                </div>
                 <span className="service-card__tag service-card__tag--tool">Outil en autonomie</span>
-                <div className="service-card__header">
-                  <h3 className="service-card__title">Shopshots</h3>
-                  <p className="service-card__subtitle">Photos produit pro — sans studio ni photographe</p>
-                </div>
-                <div className="service-card__price">
-                  <span className="service-card__price-value">9€</span>
-                  <span className="service-card__price-period">à partir de / 10 visuels</span>
-                </div>
-                <ul className="service-card__features">
-                  <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Packshots & visuels produit qualité pro</li>
-                  <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Plusieurs décors & ambiances au choix</li>
-                  <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Téléchargement immédiat en ZIP</li>
-                  <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Utilisable partout : site, réseaux, menus</li>
-                  <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Essai gratuit disponible</li>
-                </ul>
-                <a href="/shopshots" className="service-card__cta service-card__cta--secondary">Essayer Shopshots</a>
-              </article>
+                <h3 className="value-card__title">Shopshots</h3>
+                <p className="value-card__desc">Photos produit pro sans studio ni photographe — uploadez une photo, récupérez des visuels prêts à publier. Dès 9€ / 10 visuels.</p>
+                <a href="/shopshots" className="value-card__link">
+                  Essayer Shopshots
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+              </div>
 
               {/* Création de contenu */}
-              <article className="service-card" data-reveal data-reveal-delay="300">
+              <div className="value-card" data-reveal data-reveal-delay="300">
+                <div className="value-card__icon value-card__icon--purple">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+                </div>
                 <span className="service-card__tag service-card__tag--studio">Studio créatif</span>
-                <div className="service-card__header">
-                  <h3 className="service-card__title">Création de contenu</h3>
-                  <p className="service-card__subtitle">Vidéo, photo, réseaux sociaux — clé en main</p>
-                </div>
-                <div className="service-card__price">
-                  <span className="service-card__price-value">Sur devis</span>
-                  <span className="service-card__price-period">service sur mesure</span>
-                </div>
-                <ul className="service-card__features">
-                  <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Vidéos courtes & contenus réseaux sociaux</li>
-                  <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Séances photo professionnelles</li>
-                  <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Calendrier éditorial clé en main</li>
-                  <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Adapté à votre identité & votre cible</li>
-                  <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Pilotage & publication inclus</li>
-                </ul>
-                <a href="#contact" className="service-card__cta service-card__cta--secondary">Demander un devis</a>
-              </article>
+                <h3 className="value-card__title">Création de contenu</h3>
+                <p className="value-card__desc">Vidéo, photo, réseaux sociaux — un studio créatif dédié à votre marque avec calendrier éditorial et publication inclus.</p>
+                <a href="#contact" className="value-card__link">
+                  Demander un devis
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+              </div>
 
             </div>
           </div>
@@ -393,7 +372,7 @@ export default function Landing() {
                     <p className="service-card__subtitle">Vidéo, photo, réseaux — entièrement géré</p>
                   </div>
                   <div className="service-card__price">
-                    <span className="service-card__price-value">Sur devis</span>
+                    <span className="service-card__price-value service-card__price-value--text">Sur devis</span>
                     <span className="service-card__price-period">service sur mesure</span>
                   </div>
                   <ul className="service-card__features">
