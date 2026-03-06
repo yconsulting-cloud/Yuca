@@ -355,14 +355,13 @@ export default function Landing() {
                     <p className="service-card__subtitle">Visuels produit pro — sans studio ni photographe</p>
                   </div>
                   <div className="service-card__price">
-                    <span className="service-card__price-value">9€</span>
-                    <span className="service-card__price-period">/ pack 10 visuels</span>
+                    <span className="service-card__price-value">29€</span>
+                    <span className="service-card__price-period">/ mois · 50 visuels</span>
                   </div>
                   <ul className="service-card__features">
                     <li className="service-card__feature service-card__feature--highlight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Inclus dans Yuca Digital Pro</li>
-                    <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Pack 10 visuels : 9€</li>
-                    <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Pack 30 visuels : 19€</li>
-                    <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Abonnement 50 visuels/mois : 29€/mois</li>
+                    <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> 50 visuels/mois : 29€/mois</li>
+                    <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Packs à l'unité disponibles</li>
                     <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> HD, usage commercial inclus</li>
                   </ul>
                   <a href="/shopshots" className="service-card__cta service-card__cta--secondary">Essayer Shopshots</a>
@@ -378,7 +377,6 @@ export default function Landing() {
                     <span className="service-card__price-period">outil sur-mesure · accès limité</span>
                   </div>
                   <ul className="service-card__features">
-                    <li className="service-card__feature service-card__feature--highlight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Agent IA disponible directement sur Telegram</li>
                     <li className="service-card__feature service-card__feature--highlight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Génère du contenu à partir de vos vidéos</li>
                     <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Adapté à votre direction artistique</li>
                     <li className="service-card__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Publication automatique sur vos réseaux</li>
