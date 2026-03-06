@@ -24,7 +24,7 @@ export async function POST(req) {
       );
     }
 
-    const { planId, priceId } = await req.body.json();
+    const { planId, priceId } = await req.json();
 
     if (!priceId) {
       return NextResponse.json(
