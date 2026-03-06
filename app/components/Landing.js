@@ -51,7 +51,7 @@ export default function Landing() {
               de nouveaux clients.
             </h1>
             <p className="hero__subtitle">
-              Site sur mesure, photos produit pro, contenu créatif — trois expertises pour faire rayonner votre commerce, sans que vous ayez à vous en occuper.
+              Site sur mesure, photos produit pro, contenu créatif. Trois expertises pour faire rayonner votre commerce, sans que vous ayez à vous en occuper.
             </p>
             <div className="hero__ctas">
               <a href="#contact" className="hero__cta hero__cta--primary">
@@ -79,7 +79,7 @@ export default function Landing() {
             <picture>
               <source srcSet="/images/hero-dashboard.avif" type="image/avif" />
               <source srcSet="/images/hero-dashboard.webp" type="image/webp" />
-              <img className="hero__visual-img" src="/images/hero-dashboard.jpg" alt="Dashboard Yuca" width="600" height="380" loading="eager" fetchpriority="high" />
+              <img className="hero__visual-img" src="/images/hero-dashboard.jpg" alt="Interface Yuca Digital, site web et assistant IA pour commerce local" width="600" height="380" loading="eager" fetchpriority="high" />
             </picture>
             <div className="hero__visual-float hero__visual-float--1">
               <svg className="hero__visual-float-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
@@ -99,7 +99,7 @@ export default function Landing() {
           <div className="section__header" data-reveal>
             <span className="section__label">Nos expertises</span>
             <h2 className="section__title">Trois façons de briller en ligne</h2>
-            <p className="section__subtitle">Des services complémentaires — à combiner ou utiliser séparément selon votre situation.</p>
+            <p className="section__subtitle">Des services complémentaires, à combiner ou utiliser séparément selon votre situation.</p>
           </div>
           <div className="container">
             <div className="value__grid value__grid--three">
@@ -111,7 +111,7 @@ export default function Landing() {
                 </div>
                 <span className="service-card__tag">Forfait complet</span>
                 <h3 className="value-card__title">Yuca Digital</h3>
-                <p className="value-card__desc">Site sur mesure, assistant intelligent et présence Google — tout géré pour vous. Dès 590€ setup + 49€/mois.</p>
+                <p className="value-card__desc">Site sur mesure, assistant intelligent et présence Google. Tout géré pour vous. Dès 590€ setup + 49€/mois.</p>
                 <a href="#tarifs" className="value-card__link">
                   Voir les formules
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -125,7 +125,7 @@ export default function Landing() {
                 </div>
                 <span className="service-card__tag service-card__tag--tool">Photos produit · Inclus avec Pro</span>
                 <h3 className="value-card__title">Shopshots</h3>
-                <p className="value-card__desc">Photos produit pro sans studio ni photographe. Uploadez une photo, récupérez des visuels prêts à publier — dès 9€ le pack 10, 19€ le pack 30, ou 29€/mois pour 50 visuels. Inclus avec Pro.</p>
+                <p className="value-card__desc">Photos produit pro sans studio ni photographe. Uploadez une photo, récupérez des visuels prêts à publier. Dès 9€ le pack 10, 19€ le pack 30, ou 29€/mois pour 50 visuels. Inclus avec Pro.</p>
                 <a href="/shopshots" className="value-card__link">
                   Essayer Shopshots
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -139,7 +139,7 @@ export default function Landing() {
                 </div>
                 <span className="service-card__tag service-card__tag--studio">Agent IA · Sur invitation</span>
                 <h3 className="value-card__title">Création de contenu</h3>
-                <p className="value-card__desc">Un agent IA sur-mesure qui transforme vos vidéos existantes en contenus prêts à publier — adapté à votre univers visuel, diffusé automatiquement sur vos réseaux.</p>
+                <p className="value-card__desc">Un agent IA sur-mesure qui transforme vos vidéos existantes en contenus prêts à publier, adaptés à votre univers visuel et diffusés automatiquement sur vos réseaux.</p>
                 <a href="#contact" className="value-card__link">
                   Rejoindre la liste d'attente
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -158,7 +158,7 @@ export default function Landing() {
                 <picture>
                   <source srcSet="/images/assistant.avif" type="image/avif" />
                   <source srcSet="/images/assistant.webp" type="image/webp" />
-                  <img className="image-text__img" src="/images/assistant.jpg" alt="Assistant conversationnel Yuca" width="700" height="467" loading="lazy" />
+                  <img className="image-text__img" src="/images/assistant.jpg" alt="Chatbot IA Yuca répondant aux clients d'un restaurant 24h/24" width="700" height="467" loading="lazy" />
                 </picture>
                 <div className="image-text__float image-text__float--stats">
                   <span className="image-text__float-value">24/7</span>
@@ -168,7 +168,7 @@ export default function Landing() {
               <div className="image-text__content">
                 <span className="section__label">Yuca répond pour vous</span>
                 <h2 className="image-text__title">Même à 3h du matin, vos clients ont une réponse.</h2>
-                <p className="image-text__desc">Votre assistant connaît votre activité par cœur — horaires, tarifs, services, disponibilités. Vos clients obtiennent une réponse immédiate. Vous ne ratez plus aucune opportunité.</p>
+                <p className="image-text__desc">Votre assistant connaît votre activité par cœur : horaires, tarifs, services, disponibilités. Vos clients obtiennent une réponse immédiate. Vous ne ratez plus aucune opportunité.</p>
                 <ul className="image-text__list">
                   <li className="image-text__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Formé spécifiquement sur votre activité</li>
                   <li className="image-text__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Répond en français et en anglais</li>
@@ -188,12 +188,12 @@ export default function Landing() {
                 <picture>
                   <source srcSet="/images/site.avif" type="image/avif" />
                   <source srcSet="/images/site.webp" type="image/webp" />
-                  <img className="image-text__img" src="/images/site.jpg" alt="Site web professionnel" width="700" height="467" loading="lazy" />
+                  <img className="image-text__img" src="/images/site.jpg" alt="Site web sur mesure créé par Yuca pour un commerce local" width="700" height="467" loading="lazy" />
                 </picture>
               </div>
               <div className="image-text__content">
                 <span className="section__label">Site web</span>
-                <h2 className="image-text__title">Un site qui vous ressemble — et qui convainc.</h2>
+                <h2 className="image-text__title">Un site qui vous ressemble et qui convainc.</h2>
                 <p className="image-text__desc">Pas de template générique. Chaque site est conçu sur mesure pour refléter votre identité et transformer vos visiteurs en clients. Optimisé pour Google, rapide, impeccable sur mobile.</p>
                 <ul className="image-text__list">
                   <li className="image-text__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Design moderne, pensé pour votre clientèle</li>
@@ -228,7 +228,7 @@ export default function Landing() {
               <article className="feature-card" data-reveal data-reveal-delay="300">
                 <div className="feature-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
                 <h3 className="feature-card__title">Site sécurisé (HTTPS)</h3>
-                <p className="feature-card__desc">Certificat SSL inclus. Vos visiteurs voient le cadenas de confiance — gage de sérieux pour votre commerce.</p>
+                <p className="feature-card__desc">Certificat SSL inclus. Vos visiteurs voient le cadenas de confiance, gage de sérieux pour votre commerce.</p>
               </article>
               <article className="feature-card" data-reveal data-reveal-delay="400">
                 <div className="feature-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
@@ -254,7 +254,7 @@ export default function Landing() {
           <div className="section__header" data-reveal>
             <span className="section__label">Comment ça marche</span>
             <h2 className="section__title">De zéro à en ligne en 7 jours.</h2>
-            <p className="section__subtitle">Un process rodé, sans jargon technique. Vous parlez de votre commerce — on s'occupe du reste.</p>
+            <p className="section__subtitle">Un process rodé, sans jargon technique. Vous parlez de votre commerce, on s'occupe du reste.</p>
           </div>
           <div className="container">
             <div className="process__grid">
@@ -345,14 +345,14 @@ export default function Landing() {
               <div className="pricing__group-header">
                 <span className="pricing__group-tag pricing__group-tag--other">Services additionnels</span>
                 <h3 className="pricing__group-title">Shopshots & Création de contenu</h3>
-                <p className="pricing__group-desc">En autonomie ou en complément de Yuca Digital — Shopshots est inclus dans le Pro.</p>
+                <p className="pricing__group-desc">En autonomie ou en complément de Yuca Digital. Shopshots est inclus dans le forfait Pro.</p>
               </div>
               <div className="services__grid services__grid--two">
                 <article className="service-card" data-reveal>
                   <span className="service-card__tag service-card__tag--tool">Photos produit · Inclus avec Pro</span>
                   <div className="service-card__header">
                     <h3 className="service-card__title">Shopshots</h3>
-                    <p className="service-card__subtitle">Visuels produit pro — sans studio ni photographe</p>
+                    <p className="service-card__subtitle">Visuels produit pro, sans studio ni photographe</p>
                   </div>
                   <div className="service-card__price">
                     <span className="service-card__price-value">29€</span>
@@ -439,7 +439,7 @@ export default function Landing() {
                     <option value="">Sélectionner</option>
                     <option value="digital-essentiel">Yuca Digital Essentiel (590€ + 49€/mois)</option>
                     <option value="digital-pro">Yuca Digital Pro (590€ + 79€/mois)</option>
-                    <option value="shopshots">Shopshots — photos produit</option>
+                    <option value="shopshots">Shopshots (photos produit)</option>
                     <option value="contenu">Création de contenu (sur devis)</option>
                     <option value="ne-sait-pas">Je ne sais pas encore</option>
                   </select>
@@ -459,7 +459,7 @@ export default function Landing() {
       <footer className="footer">
         <div className="footer__content">
           <a href="#" className="footer__logo">Yuca<span>.</span></a>
-          <p>Basé en France — intervention à distance dans le monde entier.</p>
+          <p>Basé en France, intervention à distance dans le monde entier.</p>
           <nav className="footer__links">
             <a href="#services" className="footer__link">Services</a>
             <a href="#tarifs" className="footer__link">Tarifs</a>
