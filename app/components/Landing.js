@@ -356,7 +356,7 @@ export default function Landing() {
                   </div>
                   <div className="service-card__price">
                     <span className="service-card__price-value">9€</span>
-                    <span className="service-card__price-period">/ pack 10 visuels · inclus avec Pro</span>
+                    <span className="service-card__price-period">/ pack 10 visuels</span>
                   </div>
                   <ul className="service-card__features">
                     <li className="service-card__feature service-card__feature--highlight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg> Inclus dans Yuca Digital Pro</li>
