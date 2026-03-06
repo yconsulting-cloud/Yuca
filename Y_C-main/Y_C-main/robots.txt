@@ -1,7 +1,0 @@
-# Robots.txt pour madebyyuca.com
-
-User-agent: *
-Allow: /
-
-# Sitemap
-Sitemap: https://madebyyuca.com/sitemap.xml

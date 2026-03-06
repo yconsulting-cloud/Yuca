@@ -12,11 +12,11 @@ function escapeHtml(str) {
 
 function isAllowedOrigin(origin) {
   return (
-    !origin ||
-    origin.endsWith('.madebyyuca.com') ||
+    origin &&
+    (origin.endsWith('.madebyyuca.com') ||
     origin === 'https://madebyyuca.com' ||
     origin.startsWith('http://localhost') ||
-    origin.startsWith('http://127.0.0.1')
+    origin.startsWith('http://127.0.0.1'))
   );
 }
 
@@ -33,7 +33,7 @@ export async function POST(req) {
     }
 
     const body = await req.json();
-    const { name, email, phone, business, project, source } = body;
+    const { name, email, phone, business, project, source, offer } = body;
 
     // 1. Add contact to Brevo
     await fetch('https://api.brevo.com/v3/contacts', {
@@ -49,7 +49,8 @@ export async function POST(req) {
           TELEPHONE: phone,
           ACTIVITE: business,
           PROJET: project,
-          SOURCE: source || 'site'
+          SOURCE: source || 'site',
+          OFFRE: offer || ''
         },
         listIds: [5],
         updateEnabled: true
@@ -64,8 +65,8 @@ export async function POST(req) {
         'api-key': process.env.BREVO_API_KEY || ''
       },
       body: JSON.stringify({
-        sender: { name: 'Yuca Site', email: 'yuca.consulting@gmail.com' },
-        to: [{ email: 'yuca.consulting@gmail.com' }],
+        sender: { name: 'Yuca Site', email: process.env.NOTIFICATION_EMAIL },
+        to: [{ email: process.env.NOTIFICATION_EMAIL }],
         subject: `🎯 Nouveau lead Yuca : ${escapeHtml(name)}`,
         htmlContent: `
                     <h2>Nouveau lead !</h2>
@@ -73,7 +74,8 @@ export async function POST(req) {
                     <p><strong>Email :</strong> ${escapeHtml(email)}</p>
                     <p><strong>Téléphone :</strong> ${escapeHtml(phone) || 'Non renseigné'}</p>
                     <p><strong>Activité :</strong> ${escapeHtml(business) || 'Non renseignée'}</p>
-                    <p><strong>Projet :</strong> ${escapeHtml(project) || 'Non renseignée'}</p>
+                    <p><strong>Offre souhaitée :</strong> ${escapeHtml(offer) || 'Non renseignée'}</p>
+                    <p><strong>Projet :</strong> ${escapeHtml(project) || 'Non renseigné'}</p>
                     <p><strong>Source :</strong> ${escapeHtml(source) || 'Site'}</p>
                 `
       })

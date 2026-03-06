@@ -14,12 +14,12 @@ export function middleware(request) {
   response.headers.set(
     'Content-Security-Policy',
     "default-src 'self'; " +
-    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com https://vercel.live; " +
+    "script-src 'self' 'unsafe-inline' https://js.stripe.com; " +
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
     "img-src 'self' data: https: blob:; " +
     "font-src 'self' https://fonts.gstatic.com; " +
-    "connect-src 'self' https://fal.run https://api.stripe.com; " +
-    "frame-src 'self' https://js.stripe.com https://vercel.live;"
+    "connect-src 'self' https://fal.run https://api.stripe.com https://api.brevo.com; " +
+    "frame-src 'self' https://js.stripe.com;"
   );
 
   return response;
