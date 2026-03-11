@@ -81,9 +81,12 @@ export default function ChatWidget() {
     async function callAPI(msg){
       try{
         const msgs = state.messages.map(m => ({ role: m.role, content: m.content }));
-        const res = await fetch('/api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 1000, system: SYSTEM_PROMPT, messages: msgs }) });
+        const res = await fetch('/api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ model: 'claude-sonnet-4-6', max_tokens: 1000, system: SYSTEM_PROMPT, messages: msgs }) });
         if(!res.ok) throw new Error('API error');
-        const data = await res.json(); return data.content?.[0]?.text || '';
+        const data = await res.json();
+        const text = data.content?.[0]?.text;
+        if (!text) throw new Error(data.error || 'Empty response');
+        return text;
       }catch(e){ throw e; }
     }
 
