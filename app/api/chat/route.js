@@ -60,7 +60,7 @@ export async function POST(req) {
         'anthropic-version': '2023-06-01'
       },
       body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
+        model: 'claude-sonnet-4-6',
         max_tokens: 1000,
         system: systemWithDate,
         messages: messages
@@ -68,6 +68,9 @@ export async function POST(req) {
     });
 
     const data = await response.json();
+    if (!response.ok) {
+      return NextResponse.json({ error: data?.error?.message || 'Anthropic API error' }, { status: response.status });
+    }
     return NextResponse.json(data, { headers: { 'Access-Control-Allow-Origin': origin } });
 
   } catch (error) {
