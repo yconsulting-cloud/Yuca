@@ -82,8 +82,8 @@ export default function ChatWidget() {
       try{
         const msgs = state.messages.map(m => ({ role: m.role, content: m.content }));
         const res = await fetch('/api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ model: 'claude-sonnet-4-6', max_tokens: 1000, system: SYSTEM_PROMPT, messages: msgs }) });
-        if(!res.ok) throw new Error('API error');
         const data = await res.json();
+        if(!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
         const text = data.content?.[0]?.text;
         if (!text) throw new Error(data.error || 'Empty response');
         return text;
@@ -114,7 +114,7 @@ export default function ChatWidget() {
             last.appendChild(wrap);
           }, 200);
         }
-      }catch(e){ hideTyping(); addBot(`Désolé, problème technique. Contactez-moi via contact@madebyyuca.com`, ['Réessayer','Voir les tarifs']); }
+      }catch(e){ hideTyping(); addBot(`Erreur: ${e.message}`, ['Réessayer']); }
       state.isLoading = false; input.disabled = false; sendBtn.disabled = false; input.focus();
     }
 
