@@ -213,7 +213,7 @@ export default function ShopshotsClient() {
         <div className="hero__grid"></div>
         <div className="hero__glow"></div>
         <div className="hero__content container">
-          <div className="hero__badge" style={{display:'none'}}></div>
+          <div className="hero__badge">Photos produit · IA · Sans studio</div>
           <h1 className="hero__title">Vos visuels produit en <span className="hero__title-gradient">quelques clics</span></h1>
           <p className="hero__subtitle">Téléchargez une photo, obtenez des packshots professionnels pour votre e-commerce, fiches produit et réseaux sociaux. À partir de 9€.</p>
           <div className="hero__ctas">
