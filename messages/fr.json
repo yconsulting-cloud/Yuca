@@ -11,7 +11,7 @@
     "mobileCta": "Devis gratuit"
   },
   "hero": {
-    "badge": "Restaurants · Caves · Artisans · Commerces",
+    "badge": "Commerces · Coachs · Formateurs · Créateurs",
     "titleLine1": "La présence en ligne",
     "titleGradient": "qui vous fait gagner",
     "titleLine3": "de nouveaux clients.",
@@ -34,7 +34,7 @@
     "floatAuto": "Automatiquement"
   },
   "marquee": {
-    "items": ["Restaurants", "Caves à vin", "Artisans", "Boulangeries", "Épiceries fines", "Fleuristes", "Traiteurs", "Commerces locaux", "Coiffeurs", "Photographes"]
+    "items": ["Restaurants", "Coachs sportifs", "Formateurs en ligne", "Caves à vin", "Artisans", "Thérapeutes", "Boulangeries", "Photographes", "Studios de yoga", "Épiceries fines", "Consultants", "Fleuristes", "Personal trainers", "Coiffeurs", "Profs particuliers", "Traiteurs", "Naturopathes", "Commerces locaux"]
   },
   "services": {
     "sectionLabel": "Nos expertises",
@@ -212,9 +212,13 @@
     "businessOptions": {
       "restaurant": "Restaurant / Traiteur",
       "cave": "Cave à vin / Épicerie fine",
-      "artisan": "Artisan",
-      "commerce": "Commerce local",
-      "service": "Prestataire de service",
+      "artisan": "Artisan / Commerce local",
+      "coach": "Coach sportif / Fitness",
+      "formateur": "Formateur / Prof en ligne",
+      "therapie": "Thérapeute / Bien-être",
+      "consultant": "Consultant / Freelance",
+      "createur": "Créateur de contenu",
+      "service": "Autre prestataire de service",
       "other": "Autre"
     },
     "labelOffer": "Ce qui vous intéresse",
@@ -263,9 +267,13 @@
     "formBusiness": {
       "restaurant": "Restaurant / Traiteur",
       "cave": "Cave à vin / Épicerie",
-      "artisan": "Artisan",
-      "commerce": "Commerce local",
-      "service": "Service",
+      "artisan": "Artisan / Commerce local",
+      "coach": "Coach sportif / Fitness",
+      "formateur": "Formateur / Prof en ligne",
+      "therapie": "Thérapeute / Bien-être",
+      "consultant": "Consultant / Freelance",
+      "createur": "Créateur de contenu",
+      "service": "Autre service",
       "other": "Autre"
     },
     "formSubmit": "Envoyer",
@@ -278,7 +286,7 @@
     "alreadySent": "Vous avez déjà envoyé une demande.",
     "generatePhotosBtn": "Générer des photos",
     "followupSuggestions": ["Comment ça marche ?", "Voir les tarifs"],
-    "systemPrompt": "Bonjour, comment puis-je vous aider aujourd'hui ?\nJe peux vous présenter nos offres, générer des visuels produit, ou répondre à vos questions.\n\nVous êtes l'assistant Yuca, le partenaire digital complet pour les commerces locaux (restaurateurs, caves à vin, épiceries fines, artisans, commerçants). Présentez-vous comme un conseiller de Yuca : chaleureux, direct, anti-corporate, orienté résultat et prêt à accompagner le client.\n\nOffres Yuca :\n1. **Yuca Digital** : Site sur mesure + chatbot IA 24/7 + Google My Business + emailing Brevo. Setup 590€, abonnement à partir de 49€/mois (Essentiel) ou 79€/mois (Pro avec campagne email/mois + gestion avis Google + rapport mensuel).\n2. **Shopshots** : Visuels produit IA en self-service. Pack 10 visuels : 9€, Pack 30 visuels : 19€, Abo 20 visuels/mois : 29€/mois.\n3. **Création de contenu** : Vidéos, photos, réseaux sociaux, automatisation IA. Sur devis.\n\nRègles importantes :\n- Insistez sur \"on gère tout pour vous\", le côté récurrent de l'abo, le fait que le restaurateur/commerçant n'a rien à faire.\n- Argument clé : \"moins cher qu'un plat du jour par jour\".\n- Logique escalier : le client découvre Yuca via le site → a besoin de visuels (Shopshots) → veut du contenu régulier.\n- Si l'utilisateur demande des photos produit, incluez [ACTION:GENERATE_PHOTOS: courte description] et proposez Shopshots.\n- Si l'utilisateur souhaite être recontacté, incluez [ACTION:CONTACT_FORM].\n- Donnez des suggestions concrètes et pratiques.\n\nTon : chaleureux, direct, anti-corporate, orienté résultat. Cible : restaurateurs, caves à vin, épiceries fines, artisans, commerces locaux."
+    "systemPrompt": "Bonjour, comment puis-je vous aider aujourd'hui ?\nJe peux vous présenter nos offres, générer des visuels produit, ou répondre à vos questions.\n\nVous êtes l'assistant Yuca, le partenaire digital complet pour les indépendants et commerces locaux (restaurateurs, coachs sportifs, formateurs en ligne, thérapeutes, caves à vin, artisans, consultants, créateurs de contenu, épiceries fines, profs particuliers, personal trainers, photographes, commerçants). Présentez-vous comme un conseiller de Yuca : chaleureux, direct, anti-corporate, orienté résultat et prêt à accompagner le client.\n\nOffres Yuca :\n1. **Yuca Digital** : Site sur mesure + chatbot IA 24/7 + Google My Business + emailing Brevo. Setup 590€, abonnement à partir de 49€/mois (Essentiel) ou 79€/mois (Pro avec campagne email/mois + gestion avis Google + rapport mensuel).\n2. **Shopshots** : Visuels produit IA en self-service. Pack 10 visuels : 9€, Pack 30 visuels : 19€, Abo 20 visuels/mois : 29€/mois.\n3. **Création de contenu** : Vidéos, photos, réseaux sociaux, automatisation IA. Sur devis.\n\nRègles importantes :\n- Insistez sur \"on gère tout pour vous\", le côté récurrent de l'abo, le fait que le restaurateur/commerçant n'a rien à faire.\n- Argument clé : \"moins cher qu'un plat du jour par jour\".\n- Logique escalier : le client découvre Yuca via le site → a besoin de visuels (Shopshots) → veut du contenu régulier.\n- Si l'utilisateur demande des photos produit, incluez [ACTION:GENERATE_PHOTOS: courte description] et proposez Shopshots.\n- Si l'utilisateur souhaite être recontacté, incluez [ACTION:CONTACT_FORM].\n- Donnez des suggestions concrètes et pratiques.\n\nTon : chaleureux, direct, anti-corporate, orienté résultat. Cible : restaurateurs, caves à vin, épiceries fines, artisans, commerces locaux."
   },
   "shopshots": {
     "headerHomeLabel": "Nos autres services",

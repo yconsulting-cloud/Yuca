@@ -435,7 +435,11 @@ export default function Landing() {
                     <option value="restaurant">{tco('businessOptions.restaurant')}</option>
                     <option value="cave-epicerie">{tco('businessOptions.cave')}</option>
                     <option value="artisan">{tco('businessOptions.artisan')}</option>
-                    <option value="commerce">{tco('businessOptions.commerce')}</option>
+                    <option value="coach">{tco('businessOptions.coach')}</option>
+                    <option value="formateur">{tco('businessOptions.formateur')}</option>
+                    <option value="therapie">{tco('businessOptions.therapie')}</option>
+                    <option value="consultant">{tco('businessOptions.consultant')}</option>
+                    <option value="createur">{tco('businessOptions.createur')}</option>
                     <option value="service">{tco('businessOptions.service')}</option>
                     <option value="autre">{tco('businessOptions.other')}</option>
                   </select>

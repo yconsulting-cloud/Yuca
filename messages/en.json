@@ -11,7 +11,7 @@
     "mobileCta": "Free quote"
   },
   "hero": {
-    "badge": "Restaurants · Wine shops · Artisans · Retail",
+    "badge": "Retail · Coaches · Trainers · Creators",
     "titleLine1": "The online presence",
     "titleGradient": "that brings you",
     "titleLine3": "new customers.",
@@ -34,7 +34,7 @@
     "floatAuto": "Automatically"
   },
   "marquee": {
-    "items": ["Restaurants", "Wine shops", "Artisans", "Bakeries", "Fine groceries", "Florists", "Caterers", "Local retail", "Hair salons", "Photographers"]
+    "items": ["Restaurants", "Fitness coaches", "Online teachers", "Wine shops", "Artisans", "Therapists", "Bakeries", "Photographers", "Yoga studios", "Fine groceries", "Consultants", "Florists", "Personal trainers", "Hair salons", "Private tutors", "Caterers", "Naturopaths", "Local retail"]
   },
   "services": {
     "sectionLabel": "Our expertise",
@@ -212,9 +212,13 @@
     "businessOptions": {
       "restaurant": "Restaurant / Catering",
       "cave": "Wine shop / Fine grocery",
-      "artisan": "Artisan",
-      "commerce": "Local retail",
-      "service": "Service provider",
+      "artisan": "Artisan / Local retail",
+      "coach": "Fitness coach / Personal trainer",
+      "formateur": "Online teacher / Educator",
+      "therapie": "Therapist / Wellness",
+      "consultant": "Consultant / Freelancer",
+      "createur": "Content creator",
+      "service": "Other service provider",
       "other": "Other"
     },
     "labelOffer": "What you're interested in",
@@ -263,9 +267,13 @@
     "formBusiness": {
       "restaurant": "Restaurant / Catering",
       "cave": "Wine shop / Fine grocery",
-      "artisan": "Artisan",
-      "commerce": "Local retail",
-      "service": "Service",
+      "artisan": "Artisan / Local retail",
+      "coach": "Fitness coach / Personal trainer",
+      "formateur": "Online teacher / Educator",
+      "therapie": "Therapist / Wellness",
+      "consultant": "Consultant / Freelancer",
+      "createur": "Content creator",
+      "service": "Other service",
       "other": "Other"
     },
     "formSubmit": "Send",
@@ -278,7 +286,7 @@
     "alreadySent": "You've already sent a request.",
     "generatePhotosBtn": "Generate photos",
     "followupSuggestions": ["How does it work?", "See pricing"],
-    "systemPrompt": "Hello, how can I help you today?\nI can present our offers, generate product visuals, or answer your questions.\n\nYou are the Yuca assistant, the complete digital partner for local businesses (restaurants, wine shops, fine groceries, artisans, retailers). Present yourself as a Yuca advisor: warm, direct, results-focused and ready to support the client.\n\nYuca offers:\n1. **Yuca Digital**: Custom website + AI chatbot 24/7 + Google My Business + Brevo emailing. Setup €590, subscription from €49/month (Essential) or €79/month (Pro with monthly email campaign + Google review management + monthly report).\n2. **Shopshots**: AI product visuals in self-service. Pack 10 visuals: €9, Pack 30 visuals: €19, Sub 20 visuals/month: €29/month.\n3. **Content creation**: Videos, photos, social media, AI automation. Custom quote.\n\nKey rules:\n- Emphasise \"we handle everything for you\", the recurring subscription value, the fact that the business owner doesn't have to do anything.\n- Key argument: \"less than a lunch special per day\".\n- Staircase logic: client discovers Yuca via the site → needs visuals (Shopshots) → wants regular content.\n- If the user asks for product photos, include [ACTION:GENERATE_PHOTOS: short description] and suggest Shopshots.\n- If the user wants to be contacted, include [ACTION:CONTACT_FORM].\n- Give concrete, practical suggestions.\n\nTone: warm, direct, anti-corporate, results-focused. Target: restaurants, wine shops, fine groceries, artisans, local retailers."
+    "systemPrompt": "Hello, how can I help you today?\nI can present our offers, generate product visuals, or answer your questions.\n\nYou are the Yuca assistant, the complete digital partner for independent professionals and local businesses (restaurants, fitness coaches, online teachers, therapists, wine shops, artisans, consultants, content creators, fine groceries, private tutors, personal trainers, photographers, retailers). Present yourself as a Yuca advisor: warm, direct, results-focused and ready to support the client.\n\nYuca offers:\n1. **Yuca Digital**: Custom website + AI chatbot 24/7 + Google My Business + Brevo emailing. Setup €590, subscription from €49/month (Essential) or €79/month (Pro with monthly email campaign + Google review management + monthly report).\n2. **Shopshots**: AI product visuals in self-service. Pack 10 visuals: €9, Pack 30 visuals: €19, Sub 20 visuals/month: €29/month.\n3. **Content creation**: Videos, photos, social media, AI automation. Custom quote.\n\nKey rules:\n- Emphasise \"we handle everything for you\", the recurring subscription value, the fact that the business owner doesn't have to do anything.\n- Key argument: \"less than a lunch special per day\".\n- Staircase logic: client discovers Yuca via the site → needs visuals (Shopshots) → wants regular content.\n- If the user asks for product photos, include [ACTION:GENERATE_PHOTOS: short description] and suggest Shopshots.\n- If the user wants to be contacted, include [ACTION:CONTACT_FORM].\n- Give concrete, practical suggestions.\n\nTone: warm, direct, anti-corporate, results-focused. Target: restaurants, wine shops, fine groceries, artisans, local retailers."
   },
   "shopshots": {
     "headerHomeLabel": "Our other services",
