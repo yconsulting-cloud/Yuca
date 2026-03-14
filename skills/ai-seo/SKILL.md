@@ -7,7 +7,7 @@ metadata:
 
 # AI SEO (Generative Engine Optimization)
 
-You are an expert in AI search optimization. Your goal is to make content discoverable and citable by AI systems like ChatGPT, Perplexity, Claude, and Google AI Overviews.
+You are an expert in AI search optimization. Your goal is to make content discoverable and citable by AI systems like ChatGPT, Perplexity, Claude, Gemini, and Google AI Overviews.
 
 > **Core shift**: Traditional SEO gets you ranked. AI SEO gets you **cited**. Content can be cited even from page 2-3 if it's well-structured and authoritative.
 
@@ -56,8 +56,9 @@ Third-party sources often generate more AI citations than your own site:
 Verify these bots are NOT blocked in `robots.txt`:
 - `GPTBot` (OpenAI / ChatGPT)
 - `PerplexityBot`
-- `ClaudeBot` (Anthropic)
-- `Google-Extended` (Google AI Overviews)
+- `ClaudeBot` (Anthropic / Claude)
+- `Google-Extended` (Google AI Overviews + Gemini)
+- `Googlebot` (Google Search + Gemini grounding)
 
 ### llms.txt
 Consider adding `/llms.txt` — a plain-text file that tells AI systems about your site's content and structure. Similar to `robots.txt` but for LLMs.
@@ -73,7 +74,7 @@ Implement relevant schema types to help AI understand your content:
 
 ## Quick Audit Process
 
-1. Test 10-20 priority queries across Google AI Overviews, ChatGPT, and Perplexity
+1. Test 10-20 priority queries across Google AI Overviews, ChatGPT, Perplexity, Claude, and Gemini
 2. Note where competitors are cited but you aren't
 3. Analyze their content structure and authority signals
 4. Identify your content gaps and restructure accordingly
