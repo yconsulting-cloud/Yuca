@@ -28,12 +28,23 @@ export default function LandingClient() {
       burger.setAttribute('aria-expanded', String(next));
       document.body.style.overflow = next ? 'hidden' : '';
     }
-    function closeMenu() { if (!mobile || !overlay || !burger) return; mobile.dataset.open = 'false'; overlay.dataset.visible = 'false'; burger.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; }
+    function closeMenu() {
+      if (!mobile || !overlay || !burger) return;
+      mobile.dataset.open = 'false';
+      overlay.dataset.visible = 'false';
+      burger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
 
     const onScroll = debounce(handleScroll, 10);
     const onBurgerClick = () => toggleMenu();
     const onOverlayClick = () => closeMenu();
-    const onKeyDown = (e) => { if (e.key === 'Escape' && mobile && mobile.dataset.open === 'true') { closeMenu(); burger && burger.focus(); } };
+    const onKeyDown = (e) => {
+      if (e.key === 'Escape' && mobile && mobile.dataset.open === 'true') {
+        closeMenu();
+        burger && burger.focus();
+      }
+    };
 
     window.addEventListener('scroll', onScroll, { passive: true });
     handleScroll();
@@ -69,13 +80,85 @@ export default function LandingClient() {
     const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
     let obs = null;
     if (!reduced && 'IntersectionObserver' in window) {
-      obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-revealed'); obs.unobserve(e.target); } }); }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+      obs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('is-revealed'); obs.unobserve(e.target); }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
       reveals.forEach(el => obs.observe(el));
     } else {
       reveals.forEach(el => el.classList.add('is-revealed'));
     }
 
-    // Contact form handler (simple)
+    // ── COUNTER ANIMATION ────────────────────────────────────────
+    // Fires after the hero fadeUp animation completes (~1.8s)
+    let counterTimeout = null;
+    if (!reduced) {
+      counterTimeout = setTimeout(() => {
+        document.querySelectorAll('.hero__stat-value').forEach(el => {
+          const textNode = el.childNodes[0];
+          if (!textNode || textNode.nodeType !== Node.TEXT_NODE) return;
+          const target = parseInt(textNode.nodeValue.trim(), 10);
+          if (isNaN(target) || target <= 1) return;
+          const duration = 1400;
+          const startTime = performance.now();
+          const tick = (now) => {
+            const progress = Math.min((now - startTime) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+            textNode.nodeValue = String(Math.round(eased * target));
+            if (progress < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+        });
+      }, 1800);
+    }
+
+    // ── MAGNETIC BUTTONS (desktop / pointer device only) ─────────
+    const magnetHandlers = [];
+    const isPointer = window.matchMedia('(hover: hover) and (min-width: 768px)').matches;
+    if (!reduced && isPointer) {
+      const magnetBtns = document.querySelectorAll(
+        '.hero__cta--primary, .nav__cta, .cta-section__btn, .form__submit, .service-card__cta--primary'
+      );
+      magnetBtns.forEach(btn => {
+        const onMove = (e) => {
+          const rect = btn.getBoundingClientRect();
+          const x = (e.clientX - rect.left - rect.width / 2) * 0.18;
+          const y = (e.clientY - rect.top - rect.height / 2) * 0.18;
+          btn.style.transform = `translate(${x}px, ${y}px)`;
+        };
+        const onLeave = () => { btn.style.transform = ''; };
+        btn.addEventListener('mousemove', onMove);
+        btn.addEventListener('mouseleave', onLeave);
+        magnetHandlers.push({ el: btn, onMove, onLeave });
+      });
+    }
+
+    // ── HERO PARALLAX (large desktop only) ───────────────────────
+    let heroMoveHandler = null;
+    let heroLeaveHandler = null;
+    const isLargeDesktop = window.matchMedia('(hover: hover) and (min-width: 1024px)').matches;
+    if (!reduced && isLargeDesktop) {
+      const heroVisual = document.querySelector('.hero__visual');
+      const hero = document.querySelector('.hero');
+      if (heroVisual && hero) {
+        heroMoveHandler = (e) => {
+          const rect = hero.getBoundingClientRect();
+          const x = (e.clientX - rect.left - rect.width / 2) / rect.width;
+          const y = (e.clientY - rect.top - rect.height / 2) / rect.height;
+          heroVisual.style.transform = `perspective(1200px) rotateY(${x * 5}deg) rotateX(${y * -3}deg) scale3d(1.02,1.02,1.02)`;
+        };
+        heroLeaveHandler = () => {
+          heroVisual.style.transition = 'transform .6s cubic-bezier(.16,1,.3,1)';
+          heroVisual.style.transform = 'perspective(1200px) rotateY(0deg) rotateX(0deg) scale3d(1,1,1)';
+          setTimeout(() => { if (heroVisual) heroVisual.style.transition = ''; }, 650);
+        };
+        hero.addEventListener('mousemove', heroMoveHandler);
+        hero.addEventListener('mouseleave', heroLeaveHandler);
+      }
+    }
+
+    // ── CONTACT FORM ─────────────────────────────────────────────
     const contactForm = document.getElementById('contactForm');
     let contactSubmitHandler = null;
     if (contactForm) {
@@ -102,7 +185,6 @@ export default function LandingClient() {
     if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
     return () => {
-      // cleanup listeners
       window.__yucaLandingInit = false;
       window.removeEventListener('scroll', onScroll);
       if (burger) burger.removeEventListener('click', onBurgerClick);
@@ -112,6 +194,14 @@ export default function LandingClient() {
       anchorHandlers.forEach(({ el, fn }) => el.removeEventListener('click', fn));
       if (obs) obs.disconnect();
       if (contactForm && contactSubmitHandler) contactForm.removeEventListener('submit', contactSubmitHandler);
+      if (counterTimeout) clearTimeout(counterTimeout);
+      magnetHandlers.forEach(({ el, onMove, onLeave }) => {
+        el.removeEventListener('mousemove', onMove);
+        el.removeEventListener('mouseleave', onLeave);
+      });
+      const hero = document.querySelector('.hero');
+      if (hero && heroMoveHandler) hero.removeEventListener('mousemove', heroMoveHandler);
+      if (hero && heroLeaveHandler) hero.removeEventListener('mouseleave', heroLeaveHandler);
       document.body.style.overflow = '';
     };
   }, []);
