@@ -89,6 +89,22 @@ export default function Landing() {
           </div>
         </section>
 
+        {/* ── MARQUEE ──────────────────────────────────────── */}
+        <div className="marquee-wrap" aria-hidden="true">
+          <div className="marquee-track">
+            {[0, 1].map(i => (
+              <div key={i} className="marquee-content">
+                {['Restaurants', 'Caves à vin', 'Artisans', 'Boulangeries', 'Épiceries fines', 'Fleuristes', 'Traiteurs', 'Commerces locaux', 'Coiffeurs', 'Photographes'].map((item, j) => (
+                  <span key={j} className="marquee-item">
+                    <svg className="marquee-star" viewBox="0 0 12 12" fill="currentColor"><path d="M6 0l1.5 4.5H12L8.25 7.5 9.75 12 6 9 2.25 12l1.5-4.5L0 4.5h4.5z"/></svg>
+                    {item}
+                  </span>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* ── SERVICES ─────────────────────────────────────── */}
         <section className="section" id="services">
           <div className="section__header" data-reveal>
@@ -209,36 +225,36 @@ export default function Landing() {
             <p className="section__subtitle">Chaque détail est pris en charge. Vous, vous vous concentrez sur ce que vous faites de mieux.</p>
           </div>
           <div className="container">
-            <div className="features__grid">
-              <article className="feature-card" data-reveal data-reveal-delay="100">
+            <div className="bento__grid">
+              <article className="feature-card bento-card bento-card--wide" data-reveal data-reveal-delay="100">
                 <div className="feature-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div>
                 <h3 className="feature-card__title">SEO & Google Maps</h3>
-                <p className="feature-card__desc">Votre site optimisé pour apparaître en premier dans les recherches locales. Fiche Google My Business créée et configurée.</p>
+                <p className="feature-card__desc">Votre site optimisé pour apparaître en premier dans les recherches locales. Fiche Google My Business créée et configurée. Soyez trouvé avant vos concurrents.</p>
               </article>
-              <article className="feature-card" data-reveal data-reveal-delay="200">
+              <article className="feature-card bento-card" data-reveal data-reveal-delay="200">
                 <div className="feature-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
-                <h3 className="feature-card__title">Alertes en temps réel</h3>
-                <p className="feature-card__desc">Un email ou SMS dès qu'un client vous contacte ou prend rendez-vous. Ne ratez plus aucune opportunité.</p>
+                <h3 className="feature-card__title">Alertes temps réel</h3>
+                <p className="feature-card__desc">Notification immédiate à chaque nouveau contact client.</p>
               </article>
-              <article className="feature-card" data-reveal data-reveal-delay="300">
+              <article className="feature-card bento-card" data-reveal data-reveal-delay="300">
                 <div className="feature-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-                <h3 className="feature-card__title">Site sécurisé (HTTPS)</h3>
-                <p className="feature-card__desc">Certificat SSL inclus. Vos visiteurs voient le cadenas de confiance, gage de sérieux pour votre commerce.</p>
+                <h3 className="feature-card__title">HTTPS & Sécurité</h3>
+                <p className="feature-card__desc">Certificat SSL inclus. Cadenas de confiance visible.</p>
               </article>
-              <article className="feature-card" data-reveal data-reveal-delay="400">
+              <article className="feature-card bento-card bento-card--wide" data-reveal data-reveal-delay="400">
                 <div className="feature-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
-                <h3 className="feature-card__title">Design & Réseaux</h3>
-                <p className="feature-card__desc">Visuels, intégrations sociales et identité visuelle pour mettre vos produits et services en valeur.</p>
+                <h3 className="feature-card__title">Photos produit par IA</h3>
+                <p className="feature-card__desc">Visuels professionnels générés à partir de vos photos. Sans studio, sans photographe. Prêts à publier sur votre site et vos réseaux sociaux.</p>
               </article>
-              <article className="feature-card" data-reveal data-reveal-delay="500">
+              <article className="feature-card bento-card" data-reveal data-reveal-delay="500">
                 <div className="feature-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
-                <h3 className="feature-card__title">Photos & Visuels</h3>
-                <p className="feature-card__desc">Retouches et mises en scène de vos produits pour une présentation irréprochable sur votre site et vos réseaux.</p>
+                <h3 className="feature-card__title">Design & Réseaux</h3>
+                <p className="feature-card__desc">Identité visuelle cohérente sur tous vos canaux.</p>
               </article>
-              <article className="feature-card" data-reveal data-reveal-delay="600">
+              <article className="feature-card bento-card bento-card--wide" data-reveal data-reveal-delay="600">
                 <div className="feature-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
-                <h3 className="feature-card__title">Support & Formation</h3>
-                <p className="feature-card__desc">On vous accompagne à chaque étape et vous formons à piloter votre présence en toute autonomie.</p>
+                <h3 className="feature-card__title">Support & Accompagnement</h3>
+                <p className="feature-card__desc">On vous accompagne à chaque étape et vous formons à piloter votre présence en toute autonomie. Pas de jargon technique, juste des résultats.</p>
               </article>
             </div>
           </div>
