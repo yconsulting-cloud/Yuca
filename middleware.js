@@ -1,15 +1,18 @@
-// middleware.js - Security headers
-import { NextResponse } from 'next/server';
+// middleware.js - i18n routing + security headers
+import createIntlMiddleware from 'next-intl/middleware';
+import { routing } from './i18n/routing';
+
+const intlMiddleware = createIntlMiddleware(routing);
 
 export function middleware(request) {
-  const response = NextResponse.next();
+  const response = intlMiddleware(request);
 
   // Security Headers
   response.headers.set('X-Frame-Options', 'DENY');
   response.headers.set('X-Content-Type-Options', 'nosniff');
   response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
   response.headers.set('X-XSS-Protection', '1; mode=block');
-  
+
   // Content Security Policy
   response.headers.set(
     'Content-Security-Policy',
@@ -26,7 +29,5 @@ export function middleware(request) {
 }
 
 export const config = {
-  matcher: [
-    '/((?!_next/static|_next/image|favicon.ico).*)',
-  ],
+  matcher: ['/((?!api|_next|_vercel|.*\\..*).*)'],
 };

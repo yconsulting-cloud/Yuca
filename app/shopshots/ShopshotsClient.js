@@ -5,48 +5,18 @@ import Image from 'next/image';
 import './shopshots.css';
 import { saveAs } from 'file-saver';
 import JSZip from 'jszip';
+import { useTranslations } from 'next-intl';
 
-const PLANS = [
-  {
-    id: 'pack-3',
-    name: 'Essai gratuit',
-    images: 3,
-    price: 0,
-    priceId: null,
-    popular: false,
-    locked: false,
-  },
-  {
-    id: 'pack-10',
-    name: 'Pack 10 visuels',
-    images: 10,
-    price: 9,
-    priceId: 'price_xxx',
-    popular: false,
-    locked: true,
-  },
-  {
-    id: 'pack-30',
-    name: 'Pack 30 visuels',
-    images: 30,
-    price: 19,
-    priceId: 'price_xxx',
-    popular: true,
-    locked: true,
-  },
-  {
-    id: 'abo-20',
-    name: 'Abo 20 visuels/mois',
-    images: 20,
-    price: 29,
-    priceId: 'price_xxx',
-    popular: false,
-    locked: true,
-    isSubscription: true,
-  },
+const PLAN_DEFS = [
+  { id: 'pack-3',  images: 3,  price: 0,  priceId: null,       popular: false, locked: false },
+  { id: 'pack-10', images: 10, price: 9,  priceId: 'price_xxx', popular: false, locked: true },
+  { id: 'pack-30', images: 30, price: 19, priceId: 'price_xxx', popular: true,  locked: true },
+  { id: 'abo-20',  images: 20, price: 29, priceId: 'price_xxx', popular: false, locked: true, isSubscription: true },
 ];
 
 export default function ShopshotsClient() {
+  const t = useTranslations('shopshots');
+  const PLANS = PLAN_DEFS.map(p => ({ ...p, name: t(`plans.${p.id}`) }));
   const [productImage, setProductImage] = useState(null);
   const [productImagePreview, setProductImagePreview] = useState(null);
   const [productDescription, setProductDescription] = useState('');
@@ -64,8 +34,8 @@ export default function ShopshotsClient() {
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     if (!file) return;
-    if (!file.type.startsWith('image/')) { setError('Veuillez sélectionner une image valide'); return; }
-    if (file.size > 10 * 1024 * 1024) { setError('L\'image est trop grande (max 10MB)'); return; }
+    if (!file.type.startsWith('image/')) { setError(t('errInvalidImage')); return; }
+    if (file.size > 10 * 1024 * 1024) { setError(t('errImageTooLarge')); return; }
     setProductImage(file);
     const reader = new FileReader();
     reader.onloadend = () => setProductImagePreview(reader.result);
@@ -74,14 +44,14 @@ export default function ShopshotsClient() {
   };
 
   const handleSelectPlan = (plan) => {
-    if (plan.locked) { setError('Ce pack sera bientôt disponible !'); return; }
+    if (plan.locked) { setError(t('errLockedPack')); return; }
     setSelectedPlan(plan); setError(null);
   };
 
   const handleGenerate = async () => {
-    if (!productImage) { setError('Veuillez télécharger une photo de votre produit'); return; }
-    if (!productDescription.trim()) { setError('Veuillez décrire votre produit'); return; }
-    if (selectedPlan.price > 0 && selectedPlan.locked) { setError('Ce pack n\'est pas encore disponible'); return; }
+    if (!productImage) { setError(t('errNoImage')); return; }
+    if (!productDescription.trim()) { setError(t('errNoDesc')); return; }
+    if (selectedPlan.price > 0 && selectedPlan.locked) { setError(t('errPackNotAvailable')); return; }
     if (selectedPlan.price > 0) { handlePayment(); return; }
     await generatePhotos();
   };
@@ -90,7 +60,7 @@ export default function ShopshotsClient() {
     try {
       const response = await fetch('/api/create-checkout', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ planId: selectedPlan.id, priceId: selectedPlan.priceId }) });
       const { url } = await response.json(); window.location.href = url;
-    } catch (err) { setError('Erreur lors du paiement. Réessayez.'); }
+    } catch (err) { setError(t('errPayment')); }
   };
 
   const generatePhotos = async () => {
@@ -111,7 +81,7 @@ export default function ShopshotsClient() {
     try {
       const base64Image = await fileToBase64(productImage);
       const response = await fetch('/api/generate-photos', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ imageData: base64Image, description: productDescription, productNameExact: productDescription, count: selectedPlan.images }) });
-      if (!response.ok) throw new Error('Erreur lors de la génération');
+      if (!response.ok) throw new Error(t('errGeneration'));
       const data = await response.json();
       // ensure a visible transition to 100%
       setProgress(99);
@@ -130,7 +100,7 @@ export default function ShopshotsClient() {
       setGeneratedImages(annotated);
     } catch (err) {
       console.error('Generation error:', err);
-      setError('Une erreur est survenue. Réessayez.');
+      setError(t('errGeneration'));
       setProgress(0);
     } finally {
       clearInterval(progInterval);
@@ -188,9 +158,9 @@ export default function ShopshotsClient() {
     if (!generatedImages || generatedImages.length === 0) return;
     try {
       const response = await fetch('/api/download-zip', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ images: generatedImages }) });
-      if (!response.ok) throw new Error('Erreur lors de la préparation du ZIP');
+      if (!response.ok) throw new Error(t('errZip'));
       const blob = await response.blob(); saveAs(blob, `yuca-photos-produit-${Date.now()}.zip`);
-    } catch (err) { console.error('Download ZIP error:', err); setError('Impossible de préparer le ZIP. Réessayez.'); }
+    } catch (err) { console.error('Download ZIP error:', err); setError(t('errZip')); }
   };
 
   return (
@@ -198,12 +168,12 @@ export default function ShopshotsClient() {
       <header className="site-header">
         <div className="container">
           <div className="header-left">
-            <a href="/" className="nav__logo" aria-label="Yuca - Accueil">Yuca<span>.</span></a>
+            <a href="/" className="nav__logo" aria-label={t('heroLogoAriaLabel')}>Yuca<span>.</span></a>
             <div className="divider-vertical" />
             <div className="header-sub">Shopshots</div>
           </div>
           <div className="header-right-links">
-            <a href="/" className="nav-link btn btn-outline">Nos autres services</a>
+            <a href="/" className="nav-link btn btn-outline">{t('headerHomeLabel')}</a>
           </div>
         </div>
       </header>
@@ -213,23 +183,23 @@ export default function ShopshotsClient() {
         <div className="hero__grid"></div>
         <div className="hero__glow"></div>
         <div className="hero__content container">
-          <div className="hero__badge">Photos produit · IA · Sans studio</div>
-          <h1 className="hero__title">Vos visuels produit en <span className="hero__title-gradient">quelques clics</span></h1>
-          <p className="hero__subtitle">Téléchargez une photo, obtenez des packshots professionnels pour votre e-commerce, fiches produit et réseaux sociaux. À partir de 9€.</p>
+          <div className="hero__badge">{t('heroBadge')}</div>
+          <h1 className="hero__title">{t('heroTitle')} <span className="hero__title-gradient">{t('heroTitleGradient')}</span></h1>
+          <p className="hero__subtitle">{t('heroSubtitle')}</p>
           <div className="hero__ctas">
-            <button className="hero__cta hero__cta--primary btn btn-accent" onClick={() => fileInputRef.current?.click()}>Commencer</button>
+            <button className="hero__cta hero__cta--primary btn btn-accent" onClick={() => fileInputRef.current?.click()}>{t('heroCta')}</button>
           </div>
         </div>
       </section>
 
       <main className="main-container">
         <div className="plans-section">
-          <h3 className="section-title">Choisissez votre pack</h3>
+          <h3 className="section-title">{t('plansTitle')}</h3>
 
           <div className="plans-grid">
             {PLANS.map((plan) => (
               <div key={plan.id} onClick={() => handleSelectPlan(plan)} className={`plan-card ${plan.locked ? 'locked' : ''} ${selectedPlan.id === plan.id ? 'selected' : ''}`}>
-                {plan.popular && <div className="badge-popular">POPULAIRE</div>}
+                {plan.popular && <div className="badge-popular">{t('planPopular')}</div>}
                 {plan.locked && (
                   <div className="badge-lock" aria-hidden>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -240,9 +210,9 @@ export default function ShopshotsClient() {
                 )}
                 <div>
                   <h4 className="plan-name">{plan.name}</h4>
-                  <div className="plan-price">{plan.price === 0 ? 'GRATUIT' : `${plan.price}€${plan.isSubscription ? '/mois' : ''}`}</div>
-                  <p className="plan-desc">{plan.images} photos professionnelles</p>
-                  <ul className="plan-features"><li>✓ Différents arrière-plans</li><li>✓ Qualité HD</li><li>✓ Téléchargement ZIP</li><li>✓ Utilisation commerciale</li></ul>
+                  <div className="plan-price">{plan.price === 0 ? t('planFree') : `${plan.price}€${plan.isSubscription ? t('planPerMonth') : ''}`}</div>
+                  <p className="plan-desc">{t('planPhotosDesc', { count: plan.images })}</p>
+                  <ul className="plan-features">{t.raw('planFeatures').map((f, i) => <li key={i}>✓ {f}</li>)}</ul>
                 </div>
               </div>
             ))}
@@ -250,20 +220,20 @@ export default function ShopshotsClient() {
         </div>
 
         <div className="section-card">
-          <h3 className="section-title--small">1. Téléchargez votre photo produit</h3>
+          <h3 className="section-title--small">{t('step1Title')}</h3>
           <input ref={fileInputRef} type="file" accept="image/*" onChange={handleImageUpload} className="hidden-file-input" />
           <div onClick={() => fileInputRef.current?.click()} className={`upload-drop ${productImagePreview ? 'has-preview' : ''}`}>
             {productImagePreview ? (
               <div><Image src={productImagePreview} alt="Preview" className="preview-img" width={600} height={400} /></div>
             ) : (
-              <div><div className="upload-emoji">📸</div><p className="upload-instruction">Cliquez pour télécharger une image</p><p className="upload-sub">JPG, PNG (max 10MB)</p></div>
+              <div><div className="upload-emoji">{t('uploadEmoji')}</div><p className="upload-instruction">{t('uploadInstruction')}</p><p className="upload-sub">{t('uploadSub')}</p></div>
             )}
           </div>
         </div>
 
         <div className="section-card">
-          <h3 className="section-title--small">2. Décrivez votre produit</h3>
-          <textarea value={productDescription} onChange={(e) => setProductDescription(e.target.value)} placeholder="Ex: Bouteille d'eau en acier inoxydable, couleur bleue marine" maxLength={200} className="description-textarea" />
+          <h3 className="section-title--small">{t('step2Title')}</h3>
+          <textarea value={productDescription} onChange={(e) => setProductDescription(e.target.value)} placeholder={t('descPlaceholder')} maxLength={200} className="description-textarea" />
           <div className="muted-right">{productDescription.length}/200</div>
         </div>
 
@@ -272,30 +242,30 @@ export default function ShopshotsClient() {
         {isGenerating && (
           <div className="progress-card progress-top">
             <div className="progress-bar" aria-hidden="true"><div className="progress-fill" ref={progressFillRef} style={{width: `${progress}%`}} /></div>
-            <p className="progress-text">Génération des photos... {Math.round(progress)}%</p>
+            <p className="progress-text">{t('progressText', { pct: Math.round(progress) })}</p>
           </div>
         )}
 
         <div className="generate-wrap">
           <button onClick={handleGenerate} disabled={isGenerating || !productImage || !productDescription.trim()} className={`generate-btn ${isGenerating || !productImage || !productDescription.trim() ? 'disabled' : 'enabled'}`}>
-            {isGenerating ? <span className="btn-loading"><span className="spinner" />Génération en cours...</span> : `Générer ${selectedPlan.images} photos ${selectedPlan.price > 0 ? `(${selectedPlan.price}€${selectedPlan.isSubscription ? '/mois' : ''})` : '(Gratuit)'} `}
+            {isGenerating ? <span className="btn-loading"><span className="spinner" />{t('generatingBtn')}</span> : selectedPlan.price === 0 ? t('generateBtnFree', { count: selectedPlan.images }) : t('generateBtnPaid', { count: selectedPlan.images, price: selectedPlan.price, sub: selectedPlan.isSubscription ? t('planPerMonth') : '' })}
           </button>
-          {selectedPlan.price === 0 && <p className="generate-note">🎉 Pack gratuit pour tester le service !</p>}
+          {selectedPlan.price === 0 && <p className="generate-note">{t('freePack')}</p>}
         </div>
 
         <div className="preserve-control">
-          <label>Seuil de préservation du produit: <strong>{Math.round(preserveThreshold * 100)}%</strong></label>
+          <label>{t('preserveLabel')} <strong>{Math.round(preserveThreshold * 100)}%</strong></label>
           <input type="range" min="0" max="20" step="1" value={Math.round(preserveThreshold * 100)} onChange={(e)=>{ const v = Number(e.target.value)/100; setPreserveThreshold(v); try{ localStorage.setItem('yuca_preserve_threshold', String(v)); }catch{} }} />
         </div>
 
         {generatedImages.length > 0 && (
           <div className="generated-card">
-            <div className="generated-header"><h3 className="generated-title">Vos photos sont prêtes ! 🎉</h3><button onClick={downloadAllAsZip} className="download-btn">📥 Télécharger tout (ZIP)</button></div>
+            <div className="generated-header"><h3 className="generated-title">{t('resultTitle')}</h3><button onClick={downloadAllAsZip} className="download-btn">{t('downloadZip')}</button></div>
             <div className="image-grid">{generatedImages.map((img, index) => (
               <div key={index} className="image-tile">
                 <div className="image-wrap">
                   <img src={img.url} alt={`Photo ${index + 1}`} onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = '/images/placeholder.png'; }} />
-                  {img.preserved === false && <div className="preserved-badge">Produit modifié</div>}
+                  {img.preserved === false && <div className="preserved-badge">{t('imgModified')}</div>}
                 </div>
               </div>
             ))}</div>
@@ -306,26 +276,26 @@ export default function ShopshotsClient() {
       <footer className="footer">
         <div className="footer__content">
           <a href="/" className="footer__logo">Yuca<span>.</span></a>
-            <p>Basé en France – intervention à distance dans le monde entier.</p>
+          <p>{t('footerTagline')}</p>
           <nav className="footer__links">
-              <a href="/#services" className="footer__link">Services</a>
-              <a href="/#tarifs" className="footer__link">Tarifs</a>
-              <a href="/#contact" className="footer__link">Contact</a>
-              <a href="/mentions-legales.html" className="footer__link">Mentions légales</a>
-              <a href="/politique-confidentialite.html" className="footer__link">Politique de confidentialité</a>
+            <a href="/#services" className="footer__link">{t('footerServices')}</a>
+            <a href="/#tarifs" className="footer__link">{t('footerPricing')}</a>
+            <a href="/#contact" className="footer__link">{t('footerContact')}</a>
+            <a href="/mentions-legales.html" className="footer__link">{t('footerLegal')}</a>
+            <a href="/politique-confidentialite.html" className="footer__link">{t('footerPrivacy')}</a>
           </nav>
         </div>
-          <div className="footer__bottom">
-            <p>© <span id="year"></span> Yuca. Votre partenaire digital complet.</p>
-            <div className="footer__social">
-                <a href="https://www.instagram.com/madebyyuca/" target="_blank" rel="noopener noreferrer" className="footer__social-link" aria-label="Instagram">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <rect x="3" y="3" width="18" height="18" rx="5" ry="5" />
-                    <path d="M16 11.37A4 4 0 1 1 11.37 7 4 4 0 0 1 16 11.37z" />
-                    <circle cx="17.5" cy="6.5" r="0.5" />
-                  </svg>
-                </a>
-            </div>
+        <div className="footer__bottom">
+          <p>© <span id="year"></span> {t('footerCopyright')}</p>
+          <div className="footer__social">
+            <a href="https://www.instagram.com/madebyyuca/" target="_blank" rel="noopener noreferrer" className="footer__social-link" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1 1 11.37 7 4 4 0 0 1 16 11.37z" />
+                <circle cx="17.5" cy="6.5" r="0.5" />
+              </svg>
+            </a>
+          </div>
         </div>
       </footer>
     </div>

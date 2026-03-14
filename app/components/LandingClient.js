@@ -174,7 +174,7 @@ export default function LandingClient() {
           method: 'POST', headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ name, email, phone, business: biz, offer, project, source: 'form' })
         }).catch(() => {});
-        alert('Merci ! Je vous recontacte sous 24h.');
+        alert(contactForm.dataset.successMsg || 'Merci !');
         contactForm.reset();
       };
       contactForm.addEventListener('submit', contactSubmitHandler);
