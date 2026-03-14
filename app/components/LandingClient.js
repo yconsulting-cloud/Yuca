@@ -50,6 +50,8 @@ export default function LandingClient() {
     handleScroll();
     if (burger) burger.addEventListener('click', onBurgerClick);
     if (overlay) overlay.addEventListener('click', onOverlayClick);
+    const mobileClose = document.getElementById('navMobileClose');
+    if (mobileClose) mobileClose.addEventListener('click', () => closeMenu());
     const mobileLinkHandlers = [];
     mobileLinks.forEach(l => {
       const fn = () => closeMenu();
@@ -174,7 +176,7 @@ export default function LandingClient() {
           method: 'POST', headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ name, email, phone, business: biz, offer, project, source: 'form' })
         }).catch(() => {});
-        alert('Merci ! Je vous recontacte sous 24h.');
+        alert(contactForm.dataset.successMsg || 'Merci !');
         contactForm.reset();
       };
       contactForm.addEventListener('submit', contactSubmitHandler);

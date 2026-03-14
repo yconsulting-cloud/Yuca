@@ -1,0 +1,379 @@
+{
+  "nav": {
+    "ariaLabel": "Main navigation",
+    "logoAriaLabel": "Yuca - Home",
+    "services": "Services",
+    "process": "Process",
+    "pricing": "Pricing",
+    "contact": "Contact",
+    "shopshots": "Shopshots",
+    "cta": "Free quote",
+    "mobileCta": "Free quote"
+  },
+  "hero": {
+    "badge": "Restaurants · Wine shops · Artisans · Retail",
+    "titleLine1": "The online presence",
+    "titleGradient": "that brings you",
+    "titleLine3": "new customers.",
+    "subtitle": "Custom website, professional product photos, creative content. Three expertises to make your business shine online — all managed for you.",
+    "ctaPrimary": "Get a free quote",
+    "ctaSecondary": "See our services",
+    "statDaysValue": "7",
+    "statDaysSuffix": "d",
+    "statDaysLabel": "Site live",
+    "stat247Value": "24",
+    "stat247Suffix": "/7",
+    "stat247Label": "For your customers",
+    "statFreeValue": "0",
+    "statFreeSuffix": "€",
+    "statFreeLabel": "Free advice",
+    "imgAlt": "Yuca Digital interface, website and AI assistant for local business",
+    "floatNewMsg": "New message",
+    "floatReplying": "Replying…",
+    "floatAppt": "Appointment confirmed",
+    "floatAuto": "Automatically"
+  },
+  "marquee": {
+    "items": ["Restaurants", "Wine shops", "Artisans", "Bakeries", "Fine groceries", "Florists", "Caterers", "Local retail", "Hair salons", "Photographers"]
+  },
+  "services": {
+    "sectionLabel": "Our expertise",
+    "sectionTitle": "Three ways to shine online",
+    "sectionSubtitle": "Complementary services you can combine or use separately depending on your needs.",
+    "digital": {
+      "tag": "Full package",
+      "title": "Yuca Digital",
+      "desc": "Custom website, smart assistant and Google presence. Everything managed for you. From €590 setup + €49/month.",
+      "cta": "See plans"
+    },
+    "shopshots": {
+      "tag": "Product photos · Included with Pro",
+      "title": "Shopshots",
+      "desc": "Professional product photos without a studio or photographer. Upload a photo, get publish-ready visuals. From €9 for 10 images, €19 for 30, or €29/month for 50. Included with Pro.",
+      "cta": "Try Shopshots"
+    },
+    "content": {
+      "tag": "AI Agent · By invitation",
+      "title": "Content creation",
+      "desc": "A custom AI agent that turns your existing videos into publish-ready content, tailored to your visual identity and automatically distributed to your networks.",
+      "cta": "Join the waitlist"
+    }
+  },
+  "assistant": {
+    "sectionLabel": "Yuca answers for you",
+    "title": "Even at 3 AM, your customers get an answer.",
+    "desc": "Your assistant knows your business inside out: hours, pricing, services, availability. Customers get instant replies. You never miss another opportunity.",
+    "imgAlt": "Yuca AI chatbot answering a restaurant's customers 24/7",
+    "floatLabel": "Always available",
+    "features": [
+      "Trained specifically on your business",
+      "Responds in French and English",
+      "Forwards requests to you when needed",
+      "Zero maintenance on your end"
+    ]
+  },
+  "site": {
+    "sectionLabel": "Website",
+    "title": "A website that looks like you and converts.",
+    "desc": "No generic templates. Each site is custom-designed to reflect your identity and turn visitors into customers. Google-optimised, fast, and flawless on mobile.",
+    "imgAlt": "Custom website built by Yuca for a local business",
+    "features": [
+      "Modern design built for your clientele",
+      "Optimised for local SEO",
+      "Perfect on mobile and tablet",
+      "Google My Business profile optimised"
+    ]
+  },
+  "features": {
+    "sectionLabel": "Included with Yuca Digital",
+    "sectionTitle": "Everything you need to be found, contacted and chosen.",
+    "sectionSubtitle": "Every detail is handled. You focus on what you do best.",
+    "seo": {
+      "title": "SEO & Google Maps",
+      "desc": "Your site optimised to rank first in local searches. Google My Business profile created and configured. Get found before your competitors."
+    },
+    "alerts": {
+      "title": "Real-time alerts",
+      "desc": "Instant notification for every new customer contact."
+    },
+    "ssl": {
+      "title": "HTTPS & Security",
+      "desc": "SSL certificate included. Visible trust padlock."
+    },
+    "photos": {
+      "title": "AI product photos",
+      "desc": "Professional visuals generated from your photos. No studio, no photographer. Ready to publish on your site and social networks."
+    },
+    "design": {
+      "title": "Design & Social",
+      "desc": "Consistent visual identity across all your channels."
+    },
+    "support": {
+      "title": "Support & Guidance",
+      "desc": "We guide you every step of the way and train you to manage your presence independently. No technical jargon — just results."
+    }
+  },
+  "process": {
+    "sectionLabel": "How it works",
+    "sectionTitle": "From zero to live in 7 days.",
+    "sectionSubtitle": "A proven process, no technical jargon. You tell us about your business — we handle the rest.",
+    "step1": { "title": "Discovery call", "desc": "15 min to understand your business, goals and needs. Free, no commitment." },
+    "step2": { "title": "Mockup & fixed quote", "desc": "We show you your site design. Fixed price, no surprises along the way." },
+    "step3": { "title": "Built in 7 days", "desc": "Site development and full setup of your assistant and Google presence." },
+    "step4": { "title": "Go live", "desc": "Your site is live. Customers find you. We're here if you need us." }
+  },
+  "pricing": {
+    "sectionLabel": "Transparent pricing",
+    "sectionTitle": "Plans for every need",
+    "sectionSubtitle": "No hidden fees, no surprises. What you see is what you pay.",
+    "digitalGroup": {
+      "tag": "Full package",
+      "title": "Yuca Digital",
+      "desc": "Your complete online presence, managed for you every month."
+    },
+    "essential": {
+      "title": "Essential",
+      "subtitle": "Website + assistant + maintenance + support",
+      "priceValue": "€590",
+      "pricePeriod": "setup + €49/month",
+      "features": [
+        "Custom responsive website",
+        "Conversational assistant 24/7",
+        "Google My Business set up",
+        "Brevo email configured",
+        "Maintenance & support included"
+      ],
+      "cta": "Choose Essential"
+    },
+    "pro": {
+      "badge": "Recommended",
+      "title": "Pro",
+      "subtitle": "Essential + email marketing + Google reviews",
+      "priceValue": "€590",
+      "pricePeriod": "setup + €79/month",
+      "features": [
+        "Everything in Essential",
+        "Shopshots included (monthly visual pack)",
+        "1 email campaign/month",
+        "Google review management",
+        "Monthly performance report",
+        "Priority support"
+      ],
+      "cta": "Choose Pro"
+    },
+    "addonsGroup": {
+      "tag": "Additional services",
+      "title": "Shopshots & Content creation",
+      "desc": "Standalone or as an add-on to Yuca Digital. Shopshots is included in the Pro plan."
+    },
+    "shopshots": {
+      "tag": "Product photos · Included with Pro",
+      "title": "Shopshots",
+      "subtitle": "Pro product visuals, no studio or photographer",
+      "priceValue": "€29",
+      "pricePeriod": "/ month · 50 visuals",
+      "features": [
+        "Included in Yuca Digital Pro",
+        "50 visuals/month: €29/month",
+        "One-off packs available",
+        "HD, commercial use included"
+      ],
+      "cta": "Try Shopshots"
+    },
+    "contentu": {
+      "tag": "AI Agent · By invitation",
+      "title": "Content creation",
+      "subtitle": "Your AI creative studio, at your disposal",
+      "priceValue": "By invitation",
+      "pricePeriod": "custom tool · limited access",
+      "features": [
+        "Generates content from your videos",
+        "Adapted to your creative direction",
+        "Auto-published to your networks",
+        "100% custom tool, at your disposal"
+      ],
+      "cta": "Join the waitlist"
+    }
+  },
+  "cta": {
+    "title": "Let's take 15 minutes to talk about your business.",
+    "subtitle": "A free call, no commitment. We'll tell you exactly what we can do for you.",
+    "btn": "Book a free call"
+  },
+  "contact": {
+    "title": "Let's talk about your project",
+    "desc": "Fill in the form. We'll get back to you within 24h with concrete recommendations tailored to your business.",
+    "labelName": "Name *",
+    "labelEmail": "Email *",
+    "labelPhone": "Phone",
+    "phonePlaceholder": "So we can call you back quickly",
+    "labelBusiness": "Your business *",
+    "selectDefault": "Select",
+    "businessOptions": {
+      "restaurant": "Restaurant / Catering",
+      "cave": "Wine shop / Fine grocery",
+      "artisan": "Artisan",
+      "commerce": "Local retail",
+      "service": "Service provider",
+      "other": "Other"
+    },
+    "labelOffer": "What you're interested in",
+    "offerOptions": {
+      "essential": "Yuca Digital Essential (€590 + €49/month)",
+      "pro": "Yuca Digital Pro (€590 + €79/month)",
+      "shopshots": "Shopshots (product photos)",
+      "content": "Content creation (custom quote)",
+      "unknown": "Not sure yet"
+    },
+    "labelProject": "Your project in a few words",
+    "projectPlaceholder": "Your business, your needs, your questions…",
+    "submit": "Send my request",
+    "successMsg": "Thanks! We'll get back to you within 24h."
+  },
+  "footer": {
+    "tagline": "Based in France, serving clients remotely worldwide.",
+    "services": "Services",
+    "pricing": "Pricing",
+    "contact": "Contact",
+    "legal": "Legal notice",
+    "privacy": "Privacy policy",
+    "copyright": "Yuca. Website · Visuals · Content."
+  },
+  "cookie": {
+    "text": "We use cookies to improve your experience and provide download features. By continuing, you accept our use of cookies.",
+    "accept": "Accept"
+  },
+  "chat": {
+    "ariaOpen": "Open chat",
+    "inputPlaceholder": "Ask your question...",
+    "greeting": "Hello",
+    "greetingEvening": "Good evening",
+    "greetingMsg": "! 👋 I'm the Yuca assistant. How can I help you?",
+    "suggestions": ["Discover our offers", "See pricing", "Generate visuals"],
+    "limitMsg": "Too many messages. Please try again later.",
+    "pauseMsg": "5-minute break.",
+    "formTitle": "📞 Contact request",
+    "formLabelName": "Name *",
+    "formLabelEmail": "Email *",
+    "formEmailPlaceholder": "your@email.com",
+    "formLabelPhone": "Phone",
+    "formPhonePlaceholder": "+1 XXX XXX XXXX",
+    "formLabelBusiness": "Business type",
+    "formSelectDefault": "Select...",
+    "formBusiness": {
+      "restaurant": "Restaurant / Catering",
+      "cave": "Wine shop / Fine grocery",
+      "artisan": "Artisan",
+      "commerce": "Local retail",
+      "service": "Service",
+      "other": "Other"
+    },
+    "formSubmit": "Send",
+    "formSent": "✓ Sent!",
+    "formEmailInvalid": "Invalid email",
+    "alreadySentMsg": "You've already sent a request. I'll be in touch soon!",
+    "afterSent": "Thank you {name}! 🎉 We'll get back to you within 24h.",
+    "nameEmailRequired": "Name and email required.",
+    "fillForm": "Please take the time to fill in the form.",
+    "alreadySent": "You've already sent a request.",
+    "generatePhotosBtn": "Generate photos",
+    "followupSuggestions": ["How does it work?", "See pricing"],
+    "systemPrompt": "Hello, how can I help you today?\nI can present our offers, generate product visuals, or answer your questions.\n\nYou are the Yuca assistant, the complete digital partner for local businesses (restaurants, wine shops, fine groceries, artisans, retailers). Present yourself as a Yuca advisor: warm, direct, results-focused and ready to support the client.\n\nYuca offers:\n1. **Yuca Digital**: Custom website + AI chatbot 24/7 + Google My Business + Brevo emailing. Setup €590, subscription from €49/month (Essential) or €79/month (Pro with monthly email campaign + Google review management + monthly report).\n2. **Shopshots**: AI product visuals in self-service. Pack 10 visuals: €9, Pack 30 visuals: €19, Sub 20 visuals/month: €29/month.\n3. **Content creation**: Videos, photos, social media, AI automation. Custom quote.\n\nKey rules:\n- Emphasise \"we handle everything for you\", the recurring subscription value, the fact that the business owner doesn't have to do anything.\n- Key argument: \"less than a lunch special per day\".\n- Staircase logic: client discovers Yuca via the site → needs visuals (Shopshots) → wants regular content.\n- If the user asks for product photos, include [ACTION:GENERATE_PHOTOS: short description] and suggest Shopshots.\n- If the user wants to be contacted, include [ACTION:CONTACT_FORM].\n- Give concrete, practical suggestions.\n\nTone: warm, direct, anti-corporate, results-focused. Target: restaurants, wine shops, fine groceries, artisans, local retailers."
+  },
+  "shopshots": {
+    "headerHomeLabel": "Our other services",
+    "heroLogoAriaLabel": "Yuca - Home",
+    "heroBadge": "Product photos · AI · No studio",
+    "heroTitle": "Your product visuals in",
+    "heroTitleGradient": "a few clicks",
+    "heroSubtitle": "Upload a photo, get professional packshots for your e-commerce, product pages and social media. From €9.",
+    "heroCta": "Get started",
+    "plansTitle": "Choose your plan",
+    "planPopular": "POPULAR",
+    "planFree": "FREE",
+    "planPerMonth": "/month",
+    "planPhotosDesc": "{count} professional photos",
+    "planFeatures": ["Various backgrounds", "HD quality", "ZIP download", "Commercial use"],
+    "plans": {
+      "pack-3": "Free trial",
+      "pack-10": "Pack 10 visuals",
+      "pack-30": "Pack 30 visuals",
+      "abo-20": "Sub 20 visuals/month"
+    },
+    "step1Title": "1. Upload your product photo",
+    "uploadEmoji": "📸",
+    "uploadInstruction": "Click to upload an image",
+    "uploadSub": "JPG, PNG (max 10MB)",
+    "step2Title": "2. Describe your product",
+    "descPlaceholder": "E.g. Stainless steel water bottle, navy blue",
+    "preserveLabel": "Product preservation threshold:",
+    "generateBtnFree": "Generate {count} photos (Free) ",
+    "generateBtnPaid": "Generate {count} photos (€{price}{sub})",
+    "generatingBtn": "Generating...",
+    "progressText": "Generating photos... {pct}%",
+    "freePack": "🎉 Free pack to test the service!",
+    "resultTitle": "Your photos are ready! 🎉",
+    "downloadZip": "📥 Download all (ZIP)",
+    "imgModified": "Product altered",
+    "errInvalidImage": "Please select a valid image",
+    "errImageTooLarge": "Image is too large (max 10MB)",
+    "errLockedPack": "This pack will be available soon!",
+    "errNoImage": "Please upload a product photo",
+    "errNoDesc": "Please describe your product",
+    "errPackNotAvailable": "This pack is not yet available",
+    "errPayment": "Payment error. Please try again.",
+    "errGeneration": "An error occurred. Please try again.",
+    "errZip": "Could not prepare the ZIP. Please try again.",
+    "footerTagline": "Based in France – serving clients remotely worldwide.",
+    "footerServices": "Services",
+    "footerPricing": "Pricing",
+    "footerContact": "Contact",
+    "footerLegal": "Legal notice",
+    "footerPrivacy": "Privacy policy",
+    "footerCopyright": "Yuca. Your complete digital partner."
+  },
+  "success": {
+    "badge": "Order received",
+    "title": "Thank you — payment confirmed",
+    "subtitle": "Your payment has been processed successfully",
+    "subtitleRef": "Your payment has been processed — Reference: {id}",
+    "backHome": "Back to home",
+    "contact": "Contact us"
+  },
+  "meta": {
+    "homeTitle": "Yuca — Website creation for local businesses & restaurants",
+    "homeDesc": "Yuca builds your custom website, manages your Google presence and generates AI product photos. Restaurants, artisans and local retail. From €49/month.",
+    "layoutTitle": "Yuca — Website, product photos and content for local businesses",
+    "layoutTitleTemplate": "%s | Yuca",
+    "layoutDesc": "Yuca builds custom websites, generates AI product photos and creates content for restaurants, wine shops, artisans and local businesses.",
+    "layoutKeywords": "local business website, restaurant website, artisan website creation, professional product photos, AI product photos, local SEO, AI business assistant, Yuca, Yuca Digital, madebyyuca, made by yuca",
+    "ogTitle": "Yuca — Website, product photos and content for local businesses",
+    "ogDesc": "Custom website, AI product photos and content creation for restaurants, wine shops, artisans and local businesses. Made by Yuca.",
+    "ogLocale": "en_GB",
+    "ogImgAlt": "Yuca — digital agency for local businesses",
+    "twitterTitle": "Yuca — Website, product photos and content for local businesses",
+    "twitterDesc": "Custom website, AI product photos and content creation for restaurants, wine shops, artisans and local businesses.",
+    "shopshotsTitle": "Shopshots — Professional AI product photos | Yuca",
+    "shopshotsDesc": "Create professional product photos in a few clicks with AI. No studio or photographer needed. From €9 for a pack of 10 visuals. Included in Yuca Digital Pro.",
+    "schemaOrgDesc": "Yuca is a digital agency specialised for local businesses. We build custom websites, generate AI product photos with Shopshots, and create content for restaurants, wine shops, artisans and retailers.",
+    "schemaCatalogName": "Yuca Services",
+    "schemaEssentielDesc": "Custom website + AI assistant 24/7 + Google My Business + emailing. Setup €590, subscription €49/month.",
+    "schemaProDesc": "Everything in Essential + Shopshots + monthly email campaign + Google review management + monthly report. Setup €590, subscription €79/month.",
+    "schemaShopshotsDesc": "AI-powered professional product photo generator. No studio or photographer needed. From €9 for 10 visuals or €29/month for 50 visuals.",
+    "faq1Q": "What is Yuca?",
+    "faq1A": "Yuca (also known as Made by Yuca, madebyyuca.com) is a French digital agency specialising in website creation for local businesses: restaurants, wine shops, artisans, fine groceries and retailers. Yuca offers three services: Yuca Digital (website + AI assistant + Google presence), Shopshots (AI product photo generator) and Content creation.",
+    "faq2Q": "How much does a website cost for a local business or restaurant?",
+    "faq2A": "Yuca offers two plans: Yuca Digital Essential at €590 setup + €49/month, and Yuca Digital Pro at €590 setup + €79/month. Both include a custom website, a 24/7 AI assistant, Google My Business setup and maintenance. The Pro plan also includes Shopshots, a monthly email campaign and Google review management.",
+    "faq3Q": "How do I create professional product photos without a studio?",
+    "faq3A": "With Yuca's Shopshots, you upload a simple photo of your product and the AI generates professional, publish-ready visuals. No studio, no photographer. From €9 for 10 visuals, €19 for 30 visuals, or €29/month for 50 visuals. Shopshots is included in the Yuca Digital Pro plan.",
+    "faq4Q": "How quickly can my website go live?",
+    "faq4A": "Yuca launches your site in 7 days. The process includes a 15-minute discovery call, a mockup with a fixed quote, then full development and launch within a week.",
+    "faq5Q": "What types of businesses does Yuca work with?",
+    "faq5A": "Yuca mainly works with local businesses: restaurants, wine shops, fine groceries, artisans, bakers, florists and all types of local retail. The offer is designed for professionals who want an effective online presence without dealing with the technical side."
+  },
+  "localeSwitcher": {
+    "fr": "FR",
+    "en": "EN",
+    "ariaLabel": "Switch language"
+  }
+}
