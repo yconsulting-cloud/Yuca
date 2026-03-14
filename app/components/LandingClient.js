@@ -50,6 +50,8 @@ export default function LandingClient() {
     handleScroll();
     if (burger) burger.addEventListener('click', onBurgerClick);
     if (overlay) overlay.addEventListener('click', onOverlayClick);
+    const mobileClose = document.getElementById('navMobileClose');
+    if (mobileClose) mobileClose.addEventListener('click', () => closeMenu());
     const mobileLinkHandlers = [];
     mobileLinks.forEach(l => {
       const fn = () => closeMenu();

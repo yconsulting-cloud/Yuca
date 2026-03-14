@@ -40,6 +40,9 @@ export default function Landing() {
       </nav>
       <div className="nav-overlay" id="navOverlay" data-visible="false"></div>
       <nav className="nav-mobile" id="navMobile" data-open="false">
+        <button className="nav-mobile__close" id="navMobileClose" type="button" aria-label="Fermer le menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="24" height="24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
         <ul>
           <li><a href="#services">{tn('services')}</a></li>
           <li><a href="#comment">{tn('process')}</a></li>
