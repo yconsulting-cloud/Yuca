@@ -1,7 +1,7 @@
 'use client';
 
 import { useLocale } from 'next-intl';
-import { useRouter, usePathname } from 'next/navigation';
+import { useRouter, usePathname } from '../../navigation';
 import { useTransition } from 'react';
 
 export default function LocaleSwitcher() {
@@ -13,9 +13,7 @@ export default function LocaleSwitcher() {
   function switchLocale(next) {
     if (next === locale) return;
     startTransition(() => {
-      let path = pathname;
-      if (path.startsWith('/en')) path = path.slice(3) || '/';
-      router.push(next === 'en' ? `/en${path === '/' ? '' : path}` : path || '/');
+      router.replace(pathname, { locale: next });
     });
   }
 
@@ -42,4 +40,5 @@ export default function LocaleSwitcher() {
     </div>
   );
 }
+
 
