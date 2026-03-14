@@ -1,8 +1,3 @@
-export const metadata = {
-  title: 'Yuca — Site web, visuels & contenu pour commerces',
-  description: 'Site sur mesure, photos produit professionnelles et création de contenu pour restaurateurs, caves à vin, artisans et commerces locaux.',
-};
-
 import LazyLandingClient from './LazyLandingClient';
 
 export default function Landing() {

@@ -20,7 +20,7 @@ export const metadata = {
     default: 'Yuca — Site web, photos produit et contenu pour commerces',
     template: '%s | Yuca',
   },
-  description: 'Yuca crée des sites web sur mesure, génère des photos produit par IA et produit du contenu pour restaurants, caves à vin, artisans et commerces locaux. Made by Yuca.',
+  description: 'Yuca crée des sites web sur mesure, génère des photos produit par IA et produit du contenu pour restaurants, caves à vin, artisans et commerces locaux.',
   keywords: [
     'site web commerce local',
     'site web restaurant',
@@ -91,13 +91,17 @@ const DeferredWidgets = dynamic(() => import('./components/DeferredWidgetsClient
 
 const schemaOrganization = {
   '@context': 'https://schema.org',
-  '@type': 'Organization',
+  '@type': ['Organization', 'ProfessionalService'],
   '@id': 'https://madebyyuca.com/#organization',
   name: 'Yuca',
   alternateName: ['Made by Yuca', 'madebyyuca', 'Yuca Digital'],
   url: 'https://madebyyuca.com',
-  logo: 'https://madebyyuca.com/logo.png',
+  logo: 'https://madebyyuca.com/logo-full-yuca-nobg.png',
   description: 'Yuca est une agence digitale spécialisée pour les commerces locaux. Nous créons des sites web sur mesure, générons des photos produit par IA avec Shopshots, et produisons du contenu pour restaurants, caves à vin, artisans et commerçants.',
+  address: {
+    '@type': 'PostalAddress',
+    addressCountry: 'FR',
+  },
   foundingLocation: { '@type': 'Place', addressCountry: 'FR' },
   areaServed: 'FR',
   sameAs: ['https://www.instagram.com/madebyyuca/'],
@@ -141,11 +145,6 @@ const schemaWebSite = {
   name: 'Yuca',
   url: 'https://madebyyuca.com',
   publisher: { '@id': 'https://madebyyuca.com/#organization' },
-  potentialAction: {
-    '@type': 'SearchAction',
-    target: 'https://madebyyuca.com/?q={search_term_string}',
-    'query-input': 'required name=search_term_string',
-  },
 };
 
 const schemaFAQ = {
