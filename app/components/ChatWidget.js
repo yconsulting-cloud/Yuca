@@ -165,7 +165,7 @@ export default function ChatWidget() {
           <div className="yuca-chat-avatar">Y</div>
           <div className="yuca-chat-header-info">
             <h3>Yuca</h3>
-            <div className="yuca-chat-header-status">En ligne</div>
+            <p>On répond vite ⚡</p>
           </div>
           <button id="chatClose" className="yuca-chat-close" aria-label="Fermer" onClick={() => document.getElementById('chatTrigger')?.click()}>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>

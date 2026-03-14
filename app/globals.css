@@ -19,11 +19,10 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%;height:aut
 .nav__right{display:flex;align-items:center;gap:var(--sp-4)}
 .nav__cta{padding:var(--sp-3) var(--sp-6);font-size:var(--fs-sm);font-weight:600;color:var(--c-bg-dark);background:var(--c-accent);border-radius:var(--rad-full);transition:all var(--trans)}
 .nav__cta:hover{background:var(--c-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px var(--c-accent-glow)}
-.locale-switcher{display:flex;align-items:center;gap:2px;font-size:var(--fs-xs);font-weight:600}
-.locale-btn{background:none;border:none;cursor:pointer;padding:3px 6px;border-radius:4px;color:var(--c-text-sec);font-size:var(--fs-xs);font-weight:600;transition:color var(--trans)}
-.locale-btn:hover{color:var(--c-primary)}
-.locale-btn--active{color:var(--c-primary)}
-.locale-sep{color:var(--c-border);line-height:1}
+.locale-switcher{display:flex;align-items:center;gap:4px}
+.locale-btn{background:none;border:none;cursor:pointer;padding:4px 5px;border-radius:6px;font-size:1.15rem;line-height:1;opacity:.55;transition:opacity var(--trans),transform var(--trans)}
+.locale-btn:hover{opacity:.85;transform:scale(1.1)}
+.locale-btn--active{opacity:1}
 .nav__burger{display:none;flex-direction:column;gap:5px;padding:var(--sp-2);z-index:401}
 .nav__burger span{display:block;width:22px;height:2px;background:var(--c-primary);transition:all var(--trans)}
 .nav__burger[aria-expanded="true"] span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
@@ -375,24 +374,10 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%;height:aut
 	margin-bottom: 3px;
 	color: var(--c-text-inv);
 }
-.yuca-chat-header-status {
-	display: flex;
-	align-items: center;
-	gap: 6px;
+.yuca-chat-header-info p {
 	font-size: 13px;
-	color: rgba(255, 255, 255, 0.7);
-}
-.yuca-chat-header-status::before {
-	content: '';
-	width: 8px;
-	height: 8px;
-	background: var(--c-success);
-	border-radius: 50%;
-	animation: yuca-blink 2s ease-in-out infinite;
-}
-@keyframes yuca-blink {
-	0%, 100% { opacity: 1; }
-	50% { opacity: 0.5; }
+	color: rgba(255,255,255,.6);
+	margin: 0;
 }
 .yuca-chat-messages {
 	flex: 1;
