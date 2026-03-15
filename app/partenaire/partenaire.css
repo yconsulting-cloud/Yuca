@@ -1,0 +1,9 @@
+@media (max-width: 768px) {
+  .partenaire-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+  .partenaire-right {
+    position: static !important;
+  }
+}
