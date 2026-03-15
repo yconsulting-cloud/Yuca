@@ -467,9 +467,9 @@ export default function Landing() {
 
       </main>
 
-      {process.env.NEXT_PUBLIC_WHATSAPP_NUMBER && (
+      {(process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '41000000000') && (
         <a
-          href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}`}
+          href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '41000000000'}`}
           className="whatsapp-float"
           target="_blank"
           rel="noopener noreferrer"
