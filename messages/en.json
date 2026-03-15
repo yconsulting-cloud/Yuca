@@ -34,7 +34,26 @@
     "floatAuto": "Automatically"
   },
   "marquee": {
-    "items": ["Restaurants", "Fitness coaches", "Online teachers", "Wine shops", "Artisans", "Therapists", "Bakeries", "Photographers", "Yoga studios", "Fine groceries", "Consultants", "Florists", "Personal trainers", "Hair salons", "Private tutors", "Caterers", "Naturopaths", "Local retail"]
+    "items": [
+      "Restaurants",
+      "Fitness coaches",
+      "Online teachers",
+      "Wine shops",
+      "Artisans",
+      "Therapists",
+      "Bakeries",
+      "Photographers",
+      "Yoga studios",
+      "Fine groceries",
+      "Consultants",
+      "Florists",
+      "Personal trainers",
+      "Hair salons",
+      "Private tutors",
+      "Caterers",
+      "Naturopaths",
+      "Local retail"
+    ]
   },
   "services": {
     "sectionLabel": "Our expertise",
@@ -117,10 +136,22 @@
     "sectionLabel": "How it works",
     "sectionTitle": "From zero to live in 7 days.",
     "sectionSubtitle": "A proven process, no technical jargon. You tell us about your business, we handle the rest.",
-    "step1": { "title": "Discovery call", "desc": "15 min to understand your business, goals and needs. Free, no commitment." },
-    "step2": { "title": "Mockup & fixed quote", "desc": "We show you your site design. Fixed price, no surprises along the way." },
-    "step3": { "title": "Built in 7 days", "desc": "Site development and full setup of your assistant and Google presence." },
-    "step4": { "title": "Go live", "desc": "Your site is live. Customers find you. We're here if you need us." }
+    "step1": {
+      "title": "Discovery call",
+      "desc": "15 min to understand your business, goals and needs. Free, no commitment."
+    },
+    "step2": {
+      "title": "Mockup & fixed quote",
+      "desc": "We show you your site design. Fixed price, no surprises along the way."
+    },
+    "step3": {
+      "title": "Built in 7 days",
+      "desc": "Site development and full setup of your assistant and Google presence."
+    },
+    "step4": {
+      "title": "Go live",
+      "desc": "Your site is live. Customers find you. We're here if you need us."
+    }
   },
   "pricing": {
     "sectionLabel": "Transparent pricing",
@@ -253,7 +284,11 @@
     "greeting": "Hello",
     "greetingEvening": "Good evening",
     "greetingMsg": "! 👋 I'm the Yuca assistant. How can I help you?",
-    "suggestions": ["Discover our offers", "See pricing", "Generate visuals"],
+    "suggestions": [
+      "Discover our offers",
+      "See pricing",
+      "Generate visuals"
+    ],
     "limitMsg": "Too many messages. Please try again later.",
     "pauseMsg": "5-minute break.",
     "formTitle": "📞 Contact request",
@@ -285,7 +320,10 @@
     "fillForm": "Please take the time to fill in the form.",
     "alreadySent": "You've already sent a request.",
     "generatePhotosBtn": "Generate photos",
-    "followupSuggestions": ["How does it work?", "See pricing"],
+    "followupSuggestions": [
+      "How does it work?",
+      "See pricing"
+    ],
     "systemPrompt": "Hello, how can I help you today?\nI can present our offers, generate product visuals, or answer your questions.\n\nYou are the Yuca assistant, the complete digital partner for independent professionals and local businesses (restaurants, fitness coaches, online teachers, therapists, wine shops, artisans, consultants, content creators, fine groceries, private tutors, personal trainers, photographers, retailers). Present yourself as a Yuca advisor: warm, direct, results-focused and ready to support the client.\n\nYuca offers:\n1. **Yuca Digital**: Custom website + AI chatbot 24/7 + Google My Business + Brevo emailing. Setup €590, subscription from €49/month (Essential) or €79/month (Pro with monthly email campaign + Google review management + monthly report).\n2. **Shopshots**: AI product visuals in self-service. Pack 10 visuals: €9, Pack 30 visuals: €19, Sub 20 visuals/month: €29/month.\n3. **Content creation**: Videos, photos, social media, AI automation. Custom quote.\n\nKey rules:\n- Emphasise \"we handle everything for you\", the recurring subscription value, the fact that the business owner doesn't have to do anything.\n- Key argument: \"less than a lunch special per day\".\n- Staircase logic: client discovers Yuca via the site → needs visuals (Shopshots) → wants regular content.\n- If the user asks for product photos, include [ACTION:GENERATE_PHOTOS: short description] and suggest Shopshots.\n- If the user wants to be contacted, include [ACTION:CONTACT_FORM].\n- Give concrete, practical suggestions.\n\nTone: warm, direct, anti-corporate, results-focused. Target: restaurants, wine shops, fine groceries, artisans, local retailers."
   },
   "shopshots": {
@@ -301,7 +339,12 @@
     "planFree": "FREE",
     "planPerMonth": "/month",
     "planPhotosDesc": "{count} professional photos",
-    "planFeatures": ["Various backgrounds", "HD quality", "ZIP download", "Commercial use"],
+    "planFeatures": [
+      "Various backgrounds",
+      "HD quality",
+      "ZIP download",
+      "Commercial use"
+    ],
     "plans": {
       "pack-3": "Free trial",
       "pack-10": "Pack 10 visuals",
@@ -338,7 +381,15 @@
     "footerContact": "Contact",
     "footerLegal": "Legal notice",
     "footerPrivacy": "Privacy policy",
-    "footerCopyright": "Yuca. Your complete digital partner."
+    "footerCopyright": "Yuca. Your complete digital partner.",
+    "emailGate": {
+      "title": "Get your photos by email",
+      "desc": "Leave your email to receive your photos and stay informed about our offers.",
+      "labelName": "Your first name (optional)",
+      "labelEmail": "Your email *",
+      "submit": "Generate my photos →",
+      "skip": "Continue without email"
+    }
   },
   "success": {
     "badge": "Order received",

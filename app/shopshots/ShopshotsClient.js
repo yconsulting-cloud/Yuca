@@ -28,6 +28,10 @@ export default function ShopshotsClient() {
   const [preserveThreshold, setPreserveThreshold] = useState(() => {
     try { const v = localStorage.getItem('yuca_preserve_threshold'); return v ? Number(v) : 0.08; } catch (e) { return 0.08; }
   });
+  const [showEmailGate, setShowEmailGate] = useState(false);
+  const [gateName, setGateName] = useState('');
+  const [gateEmail, setGateEmail] = useState('');
+  const [gateSubmitting, setGateSubmitting] = useState(false);
   const fileInputRef = useRef(null);
   const progressFillRef = useRef(null);
 
@@ -53,6 +57,24 @@ export default function ShopshotsClient() {
     if (!productDescription.trim()) { setError(t('errNoDesc')); return; }
     if (selectedPlan.price > 0 && selectedPlan.locked) { setError(t('errPackNotAvailable')); return; }
     if (selectedPlan.price > 0) { handlePayment(); return; }
+    try { if (!localStorage.getItem('yuca_shopshots_lead')) { setShowEmailGate(true); return; } } catch {}
+    await generatePhotos();
+  };
+
+  const handleGateSubmit = async (skip = false) => {
+    if (!skip && gateEmail && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(gateEmail)) {
+      setGateSubmitting(true);
+      try {
+        await fetch('/api/lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: gateName, email: gateEmail, source: 'shopshots', project: 'Shopshots - essai gratuit' })
+        });
+      } catch {}
+      setGateSubmitting(false);
+    }
+    try { localStorage.setItem('yuca_shopshots_lead', '1'); } catch {}
+    setShowEmailGate(false);
     await generatePhotos();
   };
 
@@ -272,6 +294,42 @@ export default function ShopshotsClient() {
           </div>
         )}
       </main>
+
+      {showEmailGate && (
+        <div className="email-gate-overlay" onClick={(e) => { if (e.target === e.currentTarget) handleGateSubmit(true); }}>
+          <div className="email-gate-modal">
+            <h3 className="email-gate-title">{t('emailGate.title')}</h3>
+            <p className="email-gate-desc">{t('emailGate.desc')}</p>
+            <div className="email-gate-form">
+              <input
+                type="text"
+                className="email-gate-input"
+                placeholder={t('emailGate.labelName')}
+                value={gateName}
+                onChange={e => setGateName(e.target.value)}
+              />
+              <input
+                type="email"
+                className="email-gate-input"
+                placeholder={t('emailGate.labelEmail')}
+                value={gateEmail}
+                onChange={e => setGateEmail(e.target.value)}
+                onKeyDown={e => { if (e.key === 'Enter' && gateEmail) handleGateSubmit(false); }}
+              />
+              <button
+                className="email-gate-btn"
+                onClick={() => handleGateSubmit(false)}
+                disabled={gateSubmitting || !gateEmail}
+              >
+                {gateSubmitting ? '...' : t('emailGate.submit')}
+              </button>
+              <button className="email-gate-skip" onClick={() => handleGateSubmit(true)}>
+                {t('emailGate.skip')}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       <footer className="footer">
         <div className="footer__content">

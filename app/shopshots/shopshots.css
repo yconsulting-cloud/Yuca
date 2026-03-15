@@ -104,3 +104,74 @@
   .shopshots-page .generated-header{flex-direction:column;align-items:flex-start}
 }
 @media(max-width:480px){.shopshots-page .plans-grid{grid-template-columns:1fr}}
+
+/* ── EMAIL GATE MODAL ─────────────────────────────────────── */
+.email-gate-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 20, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 16px;
+}
+.email-gate-modal {
+  background: #fff;
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+.email-gate-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0 0 8px;
+}
+.email-gate-desc {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0 0 20px;
+  line-height: 1.5;
+}
+.email-gate-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.email-gate-input {
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.email-gate-input:focus { border-color: #6c47ff; }
+.email-gate-btn {
+  background: #6c47ff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  margin-top: 4px;
+}
+.email-gate-btn:hover:not(:disabled) { background: #5835e8; transform: translateY(-1px); }
+.email-gate-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.email-gate-skip {
+  background: none;
+  border: none;
+  color: #999;
+  font-size: 0.82rem;
+  cursor: pointer;
+  text-align: center;
+  padding: 4px;
+  text-decoration: underline;
+}
+.email-gate-skip:hover { color: #555; }

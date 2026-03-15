@@ -7,6 +7,16 @@ export default function LandingClient() {
     if (window.__yucaLandingInit) return;
     window.__yucaLandingInit = true;
 
+    // Capture UTM source from URL and persist in sessionStorage
+    function getLeadSource() {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const utmSource = params.get('utm_source') || params.get('ref');
+        if (utmSource) sessionStorage.setItem('yuca_utm_source', utmSource);
+        return sessionStorage.getItem('yuca_utm_source') || 'form';
+      } catch { return 'form'; }
+    }
+
     const debounce = (fn, wait) => {
       let t;
       return (...args) => { clearTimeout(t); t = setTimeout(() => fn(...args), wait); };
@@ -174,7 +184,7 @@ export default function LandingClient() {
         const project = document.getElementById('project')?.value || '';
         fetch('/api/lead', {
           method: 'POST', headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, email, phone, business: biz, offer, project, source: 'form' })
+          body: JSON.stringify({ name, email, phone, business: biz, offer, project, source: getLeadSource() })
         }).catch(() => {});
         alert(contactForm.dataset.successMsg || 'Merci !');
         contactForm.reset();
