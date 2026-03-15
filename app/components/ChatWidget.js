@@ -143,11 +143,39 @@ export default function ChatWidget() {
     document.addEventListener('keydown', (e) => { if(e.key === 'Escape' && state.isOpen) toggleChat(); });
     setTimeout(()=>{ if(!state.isOpen) badge?.classList.add('show'); }, 3000);
 
+    // Proactive trigger: open chat once per session after 20s or 50% scroll
+    let proactiveTimer = null;
+    let proactiveScrollFn = null;
+    if (!sessionStorage.getItem('yuca_chat_prompted')) {
+      proactiveScrollFn = () => {
+        const doc = document.documentElement;
+        const scrolled = window.scrollY / ((doc.scrollHeight - doc.clientHeight) || 1);
+        if (scrolled > 0.5 && !state.isOpen) {
+          sessionStorage.setItem('yuca_chat_prompted', '1');
+          clearTimeout(proactiveTimer);
+          window.removeEventListener('scroll', proactiveScrollFn);
+          proactiveScrollFn = null;
+          toggleChat();
+        }
+      };
+      window.addEventListener('scroll', proactiveScrollFn, { passive: true });
+      proactiveTimer = setTimeout(() => {
+        if (!state.isOpen) {
+          sessionStorage.setItem('yuca_chat_prompted', '1');
+          if (proactiveScrollFn) window.removeEventListener('scroll', proactiveScrollFn);
+          proactiveScrollFn = null;
+          toggleChat();
+        }
+      }, 20000);
+    }
+
     return () => {
       try{ trigger?.removeEventListener('click', toggleChat); }catch(e){}
       try{ sendBtn?.removeEventListener('click', () => sendWrapper()); }catch(e){}
       try{ input?.removeEventListener('keypress', () => {}); }catch(e){}
       try{ document.removeEventListener('keydown', () => {}); }catch(e){}
+      clearTimeout(proactiveTimer);
+      if (proactiveScrollFn) window.removeEventListener('scroll', proactiveScrollFn);
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

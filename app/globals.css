@@ -623,3 +623,29 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%;height:aut
 	}
 	.yuca-chat-trigger { bottom: 16px; right: 16px; }
 }
+
+/* ── WHATSAPP FLOATING BUTTON ─────────────────────────────── */
+.whatsapp-float {
+  position: fixed;
+  bottom: 88px;
+  right: 20px;
+  width: 52px;
+  height: 52px;
+  background: #25d366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.45);
+  z-index: 999;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+}
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.55);
+}
+@media (max-width: 480px) {
+  .whatsapp-float { bottom: 80px; right: 16px; }
+}
